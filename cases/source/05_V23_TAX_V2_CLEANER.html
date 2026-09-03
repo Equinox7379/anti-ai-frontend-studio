@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>企业所得税纳税调整测算底稿 · v2</title>
+<style>
+  :root{
+    --bg:#FAFAF9; --surface:#FFFFFF;
+    --ink:#1F3A5F; --ink-2:#5A6B7D;
+    --line:#D8DDE3; --line-strong:#1F3A5F;
+    --band:#F1F2F0; --band-deep:#E9EBE8;
+    --up:#8C3A2E; --down:#1F6B4A;
+    --serif:"Source Han Serif SC","Noto Serif SC","STSong","SimSun",serif;
+    --sans:"Source Han Sans SC","Noto Sans SC","Microsoft YaHei",sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:var(--sans);background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 32px 120px;}
+
+  .bar{display:flex;justify-content:space-between;align-items:center;padding:18px 0 14px;}
+  .bar .name{font-size:12px;color:var(--ink-2);letter-spacing:.02em;}
+  .btn{font-family:var(--sans);font-size:14px;color:var(--ink);background:none;border:1px solid var(--line-strong);padding:9px 20px;cursor:pointer;border-radius:0;min-height:44px;}
+  .btn:hover{background:var(--ink);color:#fff;}
+  .btn:active{opacity:.8;}
+  .btn:focus-visible{outline:2px solid var(--ink);outline-offset:2px;}
+
+  header{padding:56px 0 0;}
+  h1{font-family:var(--serif);font-weight:300;font-size:28px;line-height:1.2;letter-spacing:-0.01em;max-width:28em;}
+  .lede{margin-top:20px;max-width:44em;color:var(--ink-2);}
+  .lede button{background:none;border:none;color:var(--ink);font:inherit;cursor:pointer;padding:0;text-decoration:underline;text-underline-offset:3px;}
+  .lede button:focus-visible{outline:2px solid var(--ink);outline-offset:2px;}
+
+  section{margin-top:64px;}
+  .sec-title{font-family:var(--serif);font-weight:300;font-size:20px;line-height:1.4;letter-spacing:0;padding-bottom:10px;border-bottom:2px solid var(--line-strong);}
+  .sec-title .unit{font-family:var(--sans);font-weight:400;font-size:12px;color:var(--ink-2);margin-left:14px;}
+
+  table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums;}
+  thead th{font-size:12px;font-weight:400;color:var(--ink-2);text-align:left;padding:14px 24px 14px 0;}
+  thead th.num, td.num{text-align:right;padding-right:12px;}
+
+  tbody td{font-size:15px;padding:13px 24px 13px 0;vertical-align:top;border:none;}
+  td.name{min-width:12em;}
+  td.caliber{font-size:12px;color:var(--ink-2);}
+  td.num{white-space:nowrap;}
+  td .up{color:var(--up);}
+  td .zero{color:var(--ink-2);}
+
+  .group-head td{background:var(--band);font-size:13px;font-weight:600;padding:8px 12px 8px 14px;color:var(--ink);}
+  tr.item:hover td{background:var(--band-deep);}
+  tr.gap td{height:28px;padding:0;border:none;background:none;}
+
+  .rowbtn{background:none;border:none;font:inherit;font-size:14px;color:var(--ink-2);cursor:pointer;padding:0;text-decoration:underline;text-underline-offset:3px;}
+  .rowbtn:hover{color:var(--ink);}
+  .rowbtn:focus-visible{outline:2px solid var(--ink);outline-offset:2px;}
+
+  tr.detail td{padding:0 0 16px 0;border:none;}
+  .detail-box{padding:4px 16px 12px;background:var(--band);border-left:2px solid var(--line-strong);}
+  .detail-box .src{font-size:12px;color:var(--ink-2);line-height:1.8;}
+  .detail-box .calc{margin-top:6px;font-size:14px;font-variant-numeric:tabular-nums;}
+  @media (prefers-reduced-motion: no-preference){
+    .detail-box{animation:reveal .15s ease-out;}
+    @keyframes reveal{from{opacity:0;}to{opacity:1;}}
+  }
+
+  tfoot td{background:var(--band-deep);padding:14px 24px 14px 14px;font-size:20px;font-variant-numeric:tabular-nums;letter-spacing:-0.01em;}
+  tfoot td:first-child{font-size:15px;letter-spacing:0;}
+  tfoot .num{color:var(--up);}
+
+  .foot-note{margin-top:48px;font-size:12px;color:var(--ink-2);max-width:44em;}
+  .foot-note p+p{margin-top:6px;}
+
+  @media (max-width:720px){
+    .wrap{padding:0 20px 72px;}
+    h1{font-size:20px;}
+    header{padding-top:40px;}
+    section{margin-top:48px;}
+    td.caliber{display:none;}
+    thead th.caliber{display:none;}
+    tbody td{padding-right:14px;}
+    .btn{padding:9px 14px;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="bar">
+    <span class="name">2026 年度 · 汇算清缴工作底稿 · 示例数据</span>
+    <button class="btn" type="button" onclick="window.print()">打印本页</button>
+  </div>
+
+  <header>
+    <h1>企业所得税纳税调整测算</h1>
+    <p class="lede">
+      本底稿按账载金额与税法限额逐项比对，计算纳税调整额。各调整项的
+      <button type="button" data-detail>政策依据</button>
+      在行内展开。
+    </p>
+  </header>
+
+  <section aria-label="纳税调整项目明细">
+    <div class="sec-title">纳税调整项目明细 <span class="unit">单位：元 · 调增为红色</span></div>
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">调整项目</th>
+          <th scope="col" class="num">账载金额</th>
+          <th scope="col" class="caliber">限额口径</th>
+          <th scope="col" class="num">税法限额</th>
+          <th scope="col" class="num">调增额</th>
+          <th scope="col">依据</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="group-head"><td colspan="6">超限调增项目</td></tr>
+
+        <tr class="item">
+          <td class="name">业务招待费</td>
+          <td class="num">86,000.00</td>
+          <td class="caliber">发生额 60% 与营业收入 5‰ 孰低</td>
+          <td class="num">51,600.00</td>
+          <td class="num"><span class="up">34,400.00</span></td>
+          <td><button class="rowbtn" type="button" aria-expanded="false" aria-controls="d1">展开</button></td>
+        </tr>
+        <tr class="detail" id="d1" hidden>
+          <td colspan="6"><div class="detail-box">
+            <span class="src">《企业所得税法实施条例》第四十三条：按照发生额的 60% 扣除，但最高不得超过当年销售（营业）收入的 5‰。</span>
+            <p class="calc">86,000 × 60% = 51,600.00；12,600,000 × 5‰ = 63,000.00；孰低取 51,600.00 → 调增 34,400.00</p>
+          </div></td>
+        </tr>
+
+        <tr class="item">
+          <td class="name">职工福利费</td>
+          <td class="num">420,000.00</td>
+          <td class="caliber">工资薪金总额 × 14%</td>
+          <td class="num">392,000.00</td>
+          <td class="num"><span class="up">28,000.00</span></td>
+          <td><button class="rowbtn" type="button" aria-expanded="false" aria-controls="d2">展开</button></td>
+        </tr>
+        <tr class="detail" id="d2" hidden>
+          <td colspan="6"><div class="detail-box">
+            <span class="src">《企业所得税法实施条例》第四十条：职工福利费支出，不超过工资薪金总额 14% 的部分，准予扣除。</span>
+            <p class="calc">工资总额 2,800,000 × 14% = 392,000.00 → 调增 28,000.00</p>
+          </div></td>
+        </tr>
+
+        <tr class="item">
+          <td class="name">职工教育经费</td>
+          <td class="num">260,000.00</td>
+          <td class="caliber">工资薪金总额 × 8%</td>
+          <td class="num">224,000.00</td>
+          <td class="num"><span class="up">36,000.00</span></td>
+          <td><button class="rowbtn" type="button" aria-expanded="false" aria-controls="d3">展开</button></td>
+        </tr>
+        <tr class="detail" id="d3" hidden>
+          <td colspan="6"><div class="detail-box">
+            <span class="src">《企业所得税法实施条例》第四十二条，经财税〔2018〕51 号调整：不超过工资薪金总额 8% 的部分准予扣除，超过部分准予结转以后年度。</span>
+            <p class="calc">2,800,000 × 8% = 224,000.00 → 调增 36,000.00（可结转）</p>
+          </div></td>
+        </tr>
+
+        <tr class="item">
+          <td class="name">公益性捐赠</td>
+          <td class="num">250,000.00</td>
+          <td class="caliber">利润总额 × 12%</td>
+          <td class="num">222,000.00</td>
+          <td class="num"><span class="up">28,000.00</span></td>
+          <td><button class="rowbtn" type="button" aria-expanded="false" aria-controls="d5">展开</button></td>
+        </tr>
+        <tr class="detail" id="d5" hidden>
+          <td colspan="6"><div class="detail-box">
+            <span class="src">《企业所得税法》第九条、实施条例第五十一至五十三条：年度利润总额 12% 以内的部分准予扣除，超过部分准予结转以后三年。</span>
+            <p class="calc">1,850,000 × 12% = 222,000.00 → 调增 28,000.00（可结转三年）</p>
+          </div></td>
+        </tr>
+
+        <tr class="item">
+          <td class="name">行政罚款</td>
+          <td class="num">12,000.00</td>
+          <td class="caliber">不得扣除</td>
+          <td class="num">0.00</td>
+          <td class="num"><span class="up">12,000.00</span></td>
+          <td><button class="rowbtn" type="button" aria-expanded="false" aria-controls="d6">展开</button></td>
+        </tr>
+        <tr class="detail" id="d6" hidden>
+          <td colspan="6"><div class="detail-box">
+            <span class="src">《企业所得税法》第十条第（四）项：罚金、罚款和被没收财物的损失，不得扣除。</span>
+            <p class="calc">行政罚款 12,000.00 全额调增，不得结转</p>
+          </div></td>
+        </tr>
+
+        <tr class="gap" aria-hidden="true"><td colspan="6"></td></tr>
+        <tr class="group-head"><td colspan="6">未超限项目 · 无需调整</td></tr>
+
+        <tr class="item">
+          <td class="name">工会经费</td>
+          <td class="num">48,000.00</td>
+          <td class="caliber">工资薪金总额 × 2%</td>
+          <td class="num">56,000.00</td>
+          <td class="num"><span class="zero">—</span></td>
+          <td><button class="rowbtn" type="button" aria-expanded="false" aria-controls="d4">展开</button></td>
+        </tr>
+        <tr class="detail" id="d4" hidden>
+          <td colspan="6"><div class="detail-box">
+            <span class="src">《企业所得税法实施条例》第四十一条：拨缴的工会经费，不超过工资薪金总额 2% 的部分，准予扣除。</span>
+            <p class="calc">2,800,000 × 2% = 56,000.00 ≥ 48,000.00，未超限</p>
+          </div></td>
+        </tr>
+
+        <tr class="item">
+          <td class="name">广告费和业务宣传费</td>
+          <td class="num">580,000.00</td>
+          <td class="caliber">营业收入 × 15%</td>
+          <td class="num">1,890,000.00</td>
+          <td class="num"><span class="zero">—</span></td>
+          <td><button class="rowbtn" type="button" aria-expanded="false" aria-controls="d7">展开</button></td>
+        </tr>
+        <tr class="detail" id="d7" hidden>
+          <td colspan="6"><div class="detail-box">
+            <span class="src">《企业所得税法实施条例》第四十四条：符合条件的广告费和业务宣传费支出，不超过当年销售（营业）收入 15% 的部分，准予扣除。</span>
+            <p class="calc">12,600,000 × 15% = 1,890,000.00 ≥ 580,000.00，未超限</p>
+          </div></td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td>纳税调增合计</td>
+          <td colspan="3"></td>
+          <td class="num">138,400.00</td>
+          <td></td>
+        </tr>
+      </tfoot>
+    </table>
+  </section>
+
+  <div class="foot-note">
+    <p>示例数据用于演示测算口径；正式使用时以账载数据与当年有效政策文号为准。</p>
+    <p>结转项目（职工教育经费、公益性捐赠）的以后年度扣除，须另建结转台账跟踪。</p>
+  </div>
+
+</div>
+
+<script>
+(function(){
+  document.querySelectorAll('.rowbtn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var row = document.getElementById(btn.getAttribute('aria-controls'));
+      var open = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!open));
+      row.hidden = open;
+      btn.textContent = open ? '展开' : '收起';
+    });
+  });
+  document.querySelector('[data-detail]').addEventListener('click', function(){
+    document.querySelector('.rowbtn').click();
+    document.querySelector('#d1').scrollIntoView({behavior:'smooth', block:'nearest'});
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<title>AI 味显影对照 · 卡11 语言示范</title>
+<link rel="icon" href="data:,">
+<style>
+:root{
+  --bg:#2a2028; --bg-deep:#211920; --paper:#f3eadf; --soft:#d4c7ce; --dim:#a79aa2; --muted:#786d74;
+  --coral:#ff8060; --mint:#a8d6c2;
+  --sans:"Boundary Sans","Lato","Aptos","Segoe UI",Arial,sans-serif;
+  --serif:"Boundary Serif","Noto Serif SC","Noto Serif CJK SC","Source Han Serif SC","Songti SC","STSong","SimSun",serif;
+  --x:clamp(22px,4.8vw,76px); --content:1160px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--paper);font-family:var(--sans);font-size:15px;line-height:1.7;}
+.app{min-height:100vh;max-width:var(--content);margin:0 auto;padding:0 clamp(20px,4vw,48px) 120px;position:relative;overflow:hidden;}
+a{color:inherit;}
+.skip-link{position:absolute;left:-9999px;}
+.skip-link:focus{left:0;top:0;background:var(--paper);color:var(--bg);padding:8px 14px;z-index:9;}
+
+.ghost{position:fixed;z-index:-1;top:22vh;color:rgba(255,255,255,.024);font-family:var(--sans);font-weight:900;line-height:.72;pointer-events:none;user-select:none;}
+.ghost-a{left:-3vw;font-size:min(30vw,430px);}
+.ghost-b{right:-2vw;font-size:min(30vw,430px);}
+
+.topbar{display:flex;justify-content:space-between;align-items:center;padding:22px 0;border-bottom:1px solid rgba(243,234,223,.14);}
+.brand{font-family:var(--sans);font-size:15px;font-weight:900;letter-spacing:.01em;background:none;border:0;color:var(--paper);cursor:default;}
+.topbar-side{display:flex;align-items:center;gap:18px;font-size:11px;font-weight:700;}
+.top-context{color:var(--dim);letter-spacing:.09em;}
+.top-tag{color:var(--mint);letter-spacing:.13em;}
+
+main{padding-top:clamp(66px,9.5vh,116px);}
+.kicker{font-size:11px;font-weight:700;letter-spacing:.13em;color:var(--coral);margin-bottom:28px;}
+h1{font-family:var(--serif);font-size:clamp(30px,4.2vw,58px);font-weight:600;letter-spacing:-.026em;line-height:1.16;max-width:22em;}
+h1 em{font-style:normal;color:var(--mint);}
+.lede{margin-top:24px;max-width:38em;color:var(--dim);font-size:15px;}
+
+.exposure{position:relative;margin-top:clamp(56px,8vh,96px);}
+.exposure-copy{display:flex;flex-direction:column;gap:clamp(28px,4.5vh,44px);}
+.group{display:flex;flex-direction:column;gap:10px;}
+.micro-label{font-size:11px;font-weight:700;letter-spacing:.13em;color:var(--muted);}
+.exposure-line{position:relative;display:grid;width:100%;appearance:none;border:0;background:none;color:var(--paper);font-family:var(--serif);font-size:clamp(21px,2.7vw,34px);line-height:1.55;letter-spacing:-.014em;text-align:left;padding:0;cursor:default;text-wrap:pretty;}
+.exposure-line .layer-a,.exposure-line .layer-b{grid-area:1/1;transition:color .2s ease;}
+.exposure-line .layer-a{clip-path:inset(-8% calc(100% - var(--reveal)) -8% 0);color:var(--dim);}
+.exposure-line .layer-b{clip-path:inset(-8% 0 -8% var(--reveal));}
+.exposure-line:hover .layer-a{color:var(--coral);}
+.exposure-line:hover .layer-b{color:#fff;}
+
+.scrub{position:absolute;z-index:3;left:var(--reveal);width:1px;top:-24px;bottom:-24px;transform:translateX(-50%);background:rgba(243,234,223,.42);pointer-events:none;}
+.scrub::before{content:"";position:absolute;top:0;left:50%;width:13px;height:13px;border-radius:50%;background:var(--paper);transform:translate(-50%,-50%);}
+@media (prefers-reduced-motion: no-preference){
+  .scrub{transition:opacity .2s ease;}
+  .exposure-line .layer-a,.exposure-line .layer-b{transition:color .2s ease;}
+}
+
+.range-wrap{display:grid;grid-template-columns:44px 1fr 44px;gap:18px;align-items:center;margin-top:64px;font-weight:900;font-size:17px;}
+.range-wrap>span:first-child{color:var(--coral);text-align:right;}
+.range-wrap>span:last-child{color:var(--mint);}
+.range-wrap input[type=range]{width:100%;margin:0;appearance:none;-webkit-appearance:none;height:44px;background:transparent;cursor:ew-resize;}
+.range-wrap input[type=range]::-webkit-slider-runnable-track{height:1px;background:rgba(243,234,223,.42);}
+.range-wrap input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:13px;height:13px;border-radius:50%;background:var(--paper);margin-top:-6px;}
+.range-wrap input[type=range]::-moz-range-track{height:1px;background:rgba(243,234,223,.42);}
+.range-wrap input[type=range]::-moz-range-thumb{width:13px;height:13px;border-radius:50%;background:var(--paper);border:0;}
+.range-wrap input[type=range]:focus-visible{outline:2px solid var(--mint);outline-offset:6px;}
+.readout{margin-top:14px;font-size:13px;color:var(--dim);letter-spacing:.02em;}
+
+.footer{margin-top:96px;padding-top:22px;border-top:1px solid rgba(243,234,223,.14);display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;font-size:12px;color:var(--muted);}
+.footer b{color:var(--dim);font-weight:700;}
+
+@media (max-width:640px){
+  .topbar{padding:16px 0;}
+  .lede{font-size:13.5px;}
+  .exposure-line{font-size:19px;line-height:1.7;}
+  .ghost-a{font-size:52vw;top:16vh;}
+  .ghost-b{font-size:52vw;top:52vh;}
+  .range-wrap{grid-template-columns:34px 1fr 34px;gap:12px;margin-top:48px;}
+}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">跳到主要内容</a>
+<div class="app" id="app">
+  <span class="ghost ghost-a" aria-hidden="true">误</span>
+  <span class="ghost ghost-b" aria-hidden="true">准</span>
+
+  <header class="topbar">
+    <span class="brand">AI 味显影对照</span>
+    <div class="topbar-side">
+      <span class="top-context">六组对照</span>
+      <span class="top-tag">卡11 语言</span>
+    </div>
+  </header>
+
+  <main id="main">
+    <p class="kicker">反 AI 味 · 排版即界面</p>
+    <h1>拖动刻度，看同一处设计<em>从 AI 味显影成准则</em>。</h1>
+    <p class="lede">左端是生成模型的默认写法，右端是工作包条款的修复版。六组对照对应宪法 A–D 层。每一行都在原位改写，不新增版面。</p>
+
+    <section class="exposure" id="exposure" style="--reveal:38%" aria-label="AI 味与准则的双向显影">
+      <div class="exposure-copy">
+
+        <div class="group">
+          <p class="micro-label">文案 · W 层</p>
+          <p class="exposure-line"><span class="layer-a">赋能企业，解锁增长新潜能</span><span class="layer-b">导出上月增值税申报表</span></p>
+        </div>
+
+        <div class="group">
+          <p class="micro-label">间距 · B 层</p>
+          <p class="exposure-line"><span class="layer-a">每个区块之间，均匀间隔二十四像素</span><span class="layer-b">组内贴合八像素，组间拉开六十四像素</span></p>
+        </div>
+
+        <div class="group">
+          <p class="micro-label">图标 · C 层</p>
+          <p class="exposure-line"><span class="layer-a">火箭、闪电、星星，各带一个发光圆底</span><span class="layer-b">线性图标，十六与二十像素，仅此两档</span></p>
+        </div>
+
+        <div class="group">
+          <p class="micro-label">行动按钮 · C 层</p>
+          <p class="exposure-line"><span class="layer-a">蓝紫渐变大按钮，免费开始</span><span class="layer-b">一像素边框，打印本页</span></p>
+        </div>
+
+        <div class="group">
+          <p class="micro-label">字阶 · A 层</p>
+          <p class="exposure-line"><span class="layer-a">十六、二十、二十四、三十二，逐级均匀爬升</span><span class="layer-b">正文十五像素，标题四十像素，一跳两倍七</span></p>
+        </div>
+
+        <div class="group">
+          <p class="micro-label">内容姿态 · D 层</p>
+          <p class="exposure-line"><span class="layer-a">已关联依据三比三，方案 A 已保存于十点四十二</span><span class="layer-b">状态进日志，版面只留任务本身</span></p>
+        </div>
+
+      </div>
+      <div class="scrub" aria-hidden="true"></div>
+    </section>
+
+    <div class="range-wrap">
+      <span aria-hidden="true">误</span>
+      <input id="reveal" type="range" min="0" max="100" value="38" aria-label="在 AI 味与准则之间显影">
+      <span aria-hidden="true">准</span>
+    </div>
+    <p class="readout" id="readout">当前位置：偏 AI 味一端。</p>
+
+    <div class="footer">
+      <span><b>语言来源</b>　会计临界点 · 双重显影（卡11，源码级直采）</span>
+      <span><b>内容来源</b>　反 AI 前端工作包 v2.3 · 宪法 A–D 层条款示例</span>
+    </div>
+  </main>
+</div>
+
+<script>
+(function(){
+  var ex = document.getElementById('exposure');
+  var input = document.getElementById('reveal');
+  var readout = document.getElementById('readout');
+  function pct(){ return Math.round(input.value); }
+  function apply(){
+    ex.style.setProperty('--reveal', input.value + '%');
+    var v = pct();
+    if (v <= 15) readout.textContent = '当前位置：纯 AI 味端。';
+    else if (v >= 85) readout.textContent = '当前位置：纯准则端。';
+    else if (v < 50) readout.textContent = '当前位置：偏 AI 味一端（' + v + '%）。';
+    else readout.textContent = '当前位置：偏准则一端（' + v + '%）。';
+  }
+  input.addEventListener('input', apply);
+  apply();
+})();
+</script>
+</body>
+</html>

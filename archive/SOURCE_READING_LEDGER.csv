@@ -1,0 +1,175 @@
+﻿source,path,bytes,disposition
+v5.5.0,COMPATIBILITY.md,674,read_and_synthesized; archived_in_original_zip
+v5.5.0,FEEDBACK_LEDGER.md,1644,read_and_synthesized; archived_in_original_zip
+v5.5.0,FILE_INDEX.md,7978,read_and_synthesized; archived_in_original_zip
+v5.5.0,ITERATION_LEDGER.md,5184,read_and_synthesized; archived_in_original_zip
+v5.5.0,OWNER_USAGE.md,3247,read_and_synthesized; archived_in_original_zip
+v5.5.0,PACKAGE_INFO.json,1714,read_for_mechanism_or_validation; archived_in_original_zip
+v5.5.0,QUICKSTART_15_MIN.md,4409,read_and_synthesized; archived_in_original_zip
+v5.5.0,README.md,6102,read_and_synthesized; archived_in_original_zip
+v5.5.0,SELF_CRITIQUE_V5.5.md,1449,copied_to_deep_library_and_synthesized
+v5.5.0,START_HERE.md,6313,read_and_synthesized; archived_in_original_zip
+v5.5.0,V4_TO_V5_CHANGELOG.md,1382,read_and_synthesized; archived_in_original_zip
+v5.5.0,V5.3_TO_V5.4_CHANGELOG.md,1422,read_and_synthesized; archived_in_original_zip
+v5.5.0,V5.4.1_TO_V5.4.2_CHANGELOG.md,1413,read_and_synthesized; archived_in_original_zip
+v5.5.0,V5.4.2_TO_V5.5.0_CHANGELOG.md,4449,read_and_synthesized; archived_in_original_zip
+v5.5.0,V5.4_TO_V5.4.1_CHANGELOG.md,1997,read_and_synthesized; archived_in_original_zip
+v5.5.0,VALIDATION_REPORT.json,3748,read_for_mechanism_or_validation; archived_in_original_zip
+v5.5.0,benchmarks/BENCHMARKS.json,17406,read_for_mechanism_or_validation; archived_in_original_zip
+v5.5.0,benchmarks/README.md,429,read_and_synthesized; archived_in_original_zip
+v5.5.0,examples/ACCOUNTING_DESIGN_DIRECTIONS.md,3000,read_and_synthesized; archived_in_original_zip
+v5.5.0,examples/ACCOUNTING_DESIGN_SPEC.json,8644,read_for_mechanism_or_validation; archived_in_original_zip
+v5.5.0,examples/ACCOUNTING_REFERENCE_CANDIDATES.json,17305,read_for_mechanism_or_validation; archived_in_original_zip
+v5.5.0,examples/ACCOUNTING_REFERENCE_TRIAD.md,1501,read_and_synthesized; archived_in_original_zip
+v5.5.0,examples/AUDIT_DESIGN_DIRECTIONS.md,2377,read_and_synthesized; archived_in_original_zip
+v5.5.0,examples/AUDIT_REFERENCE_CANDIDATES.json,17346,read_for_mechanism_or_validation; archived_in_original_zip
+v5.5.0,examples/AUDIT_REFERENCE_TRIAD.md,1436,read_and_synthesized; archived_in_original_zip
+v5.5.0,examples/JIUAN_INVENTORY_CLOUD_FIRST_SPEC.json,6677,read_for_mechanism_or_validation; archived_in_original_zip
+v5.5.0,examples/README.md,828,read_and_synthesized; archived_in_original_zip
+v5.5.0,examples/TARGETED_POLISH_DESIGN_SPEC.json,5312,read_for_mechanism_or_validation; archived_in_original_zip
+v5.5.0,examples/tax-workpaper-excellence/DESIGN_SPEC.json,9434,read_for_mechanism_or_validation; archived_in_original_zip
+v5.5.0,examples/tax-workpaper-excellence/IMPLEMENTATION_BRIEF.md,6738,read_and_synthesized; archived_in_original_zip
+v5.5.0,examples/tax-workpaper-excellence/IMPLEMENTATION_RECEIPT.md,2077,read_and_synthesized; archived_in_original_zip
+v5.5.0,examples/tax-workpaper-excellence/PREVIOUS_BOX_WALL_FAILURE.md,1856,read_and_synthesized; archived_in_original_zip
+v5.5.0,examples/tax-workpaper-excellence/README.md,812,read_and_synthesized; archived_in_original_zip
+v5.5.0,examples/tax-workpaper-excellence/TAX_SURFACE_AUDIT.json,2953,read_for_mechanism_or_validation; archived_in_original_zip
+v5.5.0,examples/tax-workpaper-excellence/TAX_WORKPAPER_DESIGN_SPEC.md,3417,read_and_synthesized; archived_in_original_zip
+v5.5.0,examples/tax-workpaper-excellence/TAX_WORKPAPER_EXCELLENCE_NOTE.md,5322,read_and_synthesized; archived_in_original_zip
+v5.5.0,examples/tax-workpaper-excellence/TAX_WORKPAPER_LOCAL_IMPLEMENTATION_HANDOFF.md,2229,read_and_synthesized; archived_in_original_zip
+v5.5.0,examples/tax-workpaper-excellence/TAX_WORKPAPER_REDESIGN_REPORT.md,2955,read_and_synthesized; archived_in_original_zip
+v5.5.0,examples/tax-workpaper-excellence/rejected-box-wall-desktop-1440x900.png,187213,read_and_synthesized; archived_in_original_zip
+v5.5.0,examples/tax-workpaper-excellence/tax-workpaper-desktop-1440x900.png,145207,read_and_synthesized; archived_in_original_zip
+v5.5.0,examples/tax-workpaper-excellence/tax-workpaper-desktop-error-1440x900.png,137914,read_and_synthesized; archived_in_original_zip
+v5.5.0,examples/tax-workpaper-excellence/tax-workpaper-desktop-full.png,195158,read_and_synthesized; archived_in_original_zip
+v5.5.0,examples/tax-workpaper-excellence/tax-workpaper-mobile-390x844.png,70594,read_and_synthesized; archived_in_original_zip
+v5.5.0,examples/tax-workpaper-excellence/tax-workpaper-mobile-error-390x844.png,68820,read_and_synthesized; archived_in_original_zip
+v5.5.0,examples/tax-workpaper-excellence/tax-workpaper-mobile-full.png,177150,read_and_synthesized; archived_in_original_zip
+v5.5.0,examples/tax-workpaper-excellence/tax-workpaper-prototype.html,24754,read_and_synthesized; archived_in_original_zip
+v5.5.0,governance/AI_STYLE_CLUSTER_REGISTRY.md,3060,read_and_synthesized; archived_in_original_zip
+v5.5.0,governance/CLOUD_FIRST_COLLABORATION.md,1315,read_and_synthesized; archived_in_original_zip
+v5.5.0,governance/CROSS_PROJECT_DIVERSITY.md,861,read_and_synthesized; archived_in_original_zip
+v5.5.0,governance/EXECUTION_COMPLIANCE_PROTOCOL.md,1751,copied_to_deep_library_and_synthesized
+v5.5.0,governance/FEEDBACK_TRIAGE.md,1531,read_and_synthesized; archived_in_original_zip
+v5.5.0,governance/GPT_DEFAULT_RECIPES.md,3217,copied_to_deep_library_and_synthesized
+v5.5.0,governance/HARD_GATES.md,3365,read_and_synthesized; archived_in_original_zip
+v5.5.0,governance/LOW_CAPABILITY_AGENT_RULES.md,932,read_and_synthesized; archived_in_original_zip
+v5.5.0,governance/THIRD_PARTY_SKILL_INTEROP.md,3400,read_and_synthesized; archived_in_original_zip
+v5.5.0,playbook/01_DOMAIN_TO_FORM.md,2717,copied_to_deep_library_and_synthesized
+v5.5.0,playbook/02_COMPOSITION_GRAMMAR.md,2602,copied_to_deep_library_and_synthesized
+v5.5.0,playbook/03_ART_DIRECTION_ENGINE.md,1963,copied_to_deep_library_and_synthesized
+v5.5.0,playbook/04_TYPOGRAPHY_ENGINE_ZH.md,3222,copied_to_deep_library_and_synthesized
+v5.5.0,playbook/05_COLOR_SURFACE_ENGINE.md,1869,copied_to_deep_library_and_synthesized
+v5.5.0,playbook/06_COMPONENT_STATE_ENGINE.md,1906,copied_to_deep_library_and_synthesized
+v5.5.0,playbook/07_MOTION_ENGINE.md,1582,copied_to_deep_library_and_synthesized
+v5.5.0,playbook/08_REFINEMENT_ENGINE.md,1757,copied_to_deep_library_and_synthesized
+v5.5.0,playbook/09_CRITIQUE_LOOP.md,2269,copied_to_deep_library_and_synthesized
+v5.5.0,playbook/10_COMPONENT_FOUNDATION_CHOOSER.md,955,read_and_synthesized; archived_in_original_zip
+v5.5.0,playbook/11_REFERENCE_TRIANGULATION.md,672,read_and_synthesized; archived_in_original_zip
+v5.5.0,playbook/12_PATTERN_SELECTION_BY_TASK.md,2207,read_and_synthesized; archived_in_original_zip
+v5.5.0,playbook/13_PRODUCT_VS_MARKETING_MODE.md,1729,read_and_synthesized; archived_in_original_zip
+v5.5.0,playbook/14_REFERENCE_OBSERVATION_PROTOCOL.md,1521,copied_to_deep_library_and_synthesized
+v5.5.0,playbook/15_DESIGN_DIRECTION_DECISION_MATRIX.md,505,read_and_synthesized; archived_in_original_zip
+v5.5.0,playbook/16_REFERENCE_TO_TOKENS.md,1721,read_and_synthesized; archived_in_original_zip
+v5.5.0,playbook/17_INTERFACE_ARCHETYPE_ATLAS.md,2609,read_and_synthesized; archived_in_original_zip
+v5.5.0,playbook/18_REFERENCE_PACK_WORKFLOW.md,979,read_and_synthesized; archived_in_original_zip
+v5.5.0,playbook/19_LOW_MODEL_DECISION_TREE.md,735,read_and_synthesized; archived_in_original_zip
+v5.5.0,playbook/20_DIFFERENTIATION_WITHOUT_GIMMICKS.md,1025,copied_to_deep_library_and_synthesized
+v5.5.0,playbook/21_CJK_TYPE_DECISION_TREE.md,942,read_and_synthesized; archived_in_original_zip
+v5.5.0,playbook/22_REDESIGN_TRIAGE.md,1895,read_and_synthesized; archived_in_original_zip
+v5.5.0,playbook/23_CONTENT_RESILIENCE_AND_VOCABULARY.md,2786,read_and_synthesized; archived_in_original_zip
+v5.5.0,playbook/24_FOCUSED_PASS_ROUTER.md,3131,read_and_synthesized; archived_in_original_zip
+v5.5.0,playbook/25_EXCELLENCE_LADDER.md,2205,copied_to_deep_library_and_synthesized
+v5.5.0,playbook/26_FLATNESS_TO_CONVICTION.md,2606,copied_to_deep_library_and_synthesized
+v5.5.0,playbook/27_FUNCTIONAL_FOCAL_MECHANISM.md,2201,copied_to_deep_library_and_synthesized
+v5.5.0,playbook/28_COMPOSITION_CONTRAST_BUDGET.md,1823,copied_to_deep_library_and_synthesized
+v5.5.0,playbook/29_RENDERED_CRITIQUE_LENSES.md,1487,copied_to_deep_library_and_synthesized
+v5.5.0,playbook/30_PRODUCT_CRAFT_ACCEPTANCE_BAR.md,2030,copied_to_deep_library_and_synthesized
+v5.5.0,playbook/31_RECTANGLE_DISCIPLINE.md,2893,copied_to_deep_library_and_synthesized
+v5.5.0,playbook/32_TYPOGRAPHY_AS_CHARACTER.md,2751,copied_to_deep_library_and_synthesized
+v5.5.0,playbook/33_ONE_BOLD_MOVE.md,1648,copied_to_deep_library_and_synthesized
+v5.5.0,playbook/34_READ_APPLY_VERIFY_LOOP.md,2562,copied_to_deep_library_and_synthesized
+v5.5.0,prompts/DESIGN_LEAD_PROMPT.md,3086,read_and_synthesized; archived_in_original_zip
+v5.5.0,prompts/INDEPENDENT_REVIEW_PROMPT.md,2415,read_and_synthesized; archived_in_original_zip
+v5.5.0,prompts/LOCAL_IMPLEMENTATION_PROMPT.md,4006,read_and_synthesized; archived_in_original_zip
+v5.5.0,prompts/LOW_CAPABILITY_CONSTRUCTION_PROMPT.md,741,read_and_synthesized; archived_in_original_zip
+v5.5.0,prompts/STANDALONE_FALLBACK_PROMPT.md,615,read_and_synthesized; archived_in_original_zip
+v5.5.0,research/CORPUS_SUMMARY.json,551,read_for_mechanism_or_validation; archived_in_original_zip
+v5.5.0,research/DEEP_AUDIT_CARDS.md,41573,parsed_and_integrated_into_reference_layer
+v5.5.0,research/FINDINGS_FROM_353_REFERENCES.md,4438,read_and_synthesized; archived_in_original_zip
+v5.5.0,research/GALLERY_UNIVERSE.md,1057,read_and_synthesized; archived_in_original_zip
+v5.5.0,research/GITHUB_INCREMENTAL_REVIEW_2026-09-02.md,3311,read_and_synthesized; archived_in_original_zip
+v5.5.0,research/LIMITATIONS.md,626,read_and_synthesized; archived_in_original_zip
+v5.5.0,research/METHODOLOGY_AND_LIMITATIONS.md,947,copied_to_deep_library_and_synthesized
+v5.5.0,research/POSITIVE_EXCELLENCE_RESEARCH_2026-09-02.md,4209,copied_to_deep_library_and_synthesized
+v5.5.0,research/REFERENCE_CATALOG_ARCHIVE.csv,152661,read_for_mechanism_or_validation; archived_in_original_zip
+v5.5.0,research/REFERENCE_CATALOG_ARCHIVE.json,270953,read_for_mechanism_or_validation; archived_in_original_zip
+v5.5.0,research/REFERENCE_CORPUS.csv,193594,parsed_and_integrated_into_reference_layer
+v5.5.0,research/REFERENCE_CORPUS.json,339132,parsed_and_integrated_into_reference_layer
+v5.5.0,research/REFERENCE_CORPUS_CORE.csv,36469,parsed_and_integrated_into_reference_layer
+v5.5.0,research/REFERENCE_CORPUS_CORE.json,60166,parsed_and_integrated_into_reference_layer
+v5.5.0,research/REFERENCE_CORPUS_EXPRESSION.csv,4948,parsed_and_integrated_into_reference_layer
+v5.5.0,research/REFERENCE_CORPUS_EXPRESSION.json,8019,parsed_and_integrated_into_reference_layer
+v5.5.0,research/RESEARCH_SYNTHESIS.md,873,read_and_synthesized; archived_in_original_zip
+v5.5.0,research/SOURCE_REGISTER.md,2559,read_and_synthesized; archived_in_original_zip
+v5.5.0,skill/SKILL.md,5668,read_and_synthesized; archived_in_original_zip
+v5.5.0,templates/CLOUD_TO_LOCAL_HANDOFF.template.md,2022,read_and_synthesized; archived_in_original_zip
+v5.5.0,templates/DESIGN_BRIEF.template.md,653,read_and_synthesized; archived_in_original_zip
+v5.5.0,templates/DESIGN_DECISION_LOG.template.md,279,read_and_synthesized; archived_in_original_zip
+v5.5.0,templates/DESIGN_DIRECTION.template.md,406,read_and_synthesized; archived_in_original_zip
+v5.5.0,templates/DESIGN_SPEC.template.json,4676,read_for_mechanism_or_validation; archived_in_original_zip
+v5.5.0,templates/EXCELLENCE_NOTE.template.md,1095,read_and_synthesized; archived_in_original_zip
+v5.5.0,templates/IMPLEMENTATION_RECEIPT.template.md,919,read_and_synthesized; archived_in_original_zip
+v5.5.0,templates/INDEPENDENT_REVIEW.template.md,925,read_and_synthesized; archived_in_original_zip
+v5.5.0,templates/REDESIGN_AUDIT.template.md,571,read_and_synthesized; archived_in_original_zip
+v5.5.0,templates/REFERENCE_TRIAD.template.md,793,read_and_synthesized; archived_in_original_zip
+v5.5.0,templates/TARGETED_DESIGN_NOTE.template.md,1141,read_and_synthesized; archived_in_original_zip
+v5.5.0,templates/TYPOGRAPHY_TRIAL.template.md,533,read_and_synthesized; archived_in_original_zip
+v5.5.0,templates/USAGE_FEEDBACK.template.md,872,read_and_synthesized; archived_in_original_zip
+v5.5.0,templates/WEBSITE_OBSERVATION_CARD.template.md,543,read_and_synthesized; archived_in_original_zip
+v5.5.0,tests/JIUAN_REFERENCE_PACK_REGRESSION.json,10225,read_for_mechanism_or_validation; archived_in_original_zip
+v5.5.0,tests/JIUAN_REFERENCE_PACK_REGRESSION.md,2880,read_and_synthesized; archived_in_original_zip
+v5.5.0,tests/TEST_RESULTS.txt,6904,read_and_synthesized; archived_in_original_zip
+v5.5.0,tests/fixtures/bad_spec.json,6936,read_for_mechanism_or_validation; archived_in_original_zip
+v5.5.0,tests/fixtures/good_spec.json,7508,read_for_mechanism_or_validation; archived_in_original_zip
+v5.5.0,tests/fixtures/static_bad/page.html,347,read_and_synthesized; archived_in_original_zip
+v5.5.0,tests/fixtures/static_clean/page.html,243,read_and_synthesized; archived_in_original_zip
+v5.5.0,tests/test_tools.py,1034,read_for_mechanism_or_validation; archived_in_original_zip
+v5.5.0,tests/test_v53.py,1627,read_for_mechanism_or_validation; archived_in_original_zip
+v5.5.0,tests/test_v54.py,10706,read_for_mechanism_or_validation; archived_in_original_zip
+v5.5.0,tests/test_v541.py,6839,read_for_mechanism_or_validation; archived_in_original_zip
+v5.5.0,tests/test_v55.py,13769,read_for_mechanism_or_validation; archived_in_original_zip
+v5.5.0,tools/DESIGN_SPEC.schema.json,21983,read_for_mechanism_or_validation; archived_in_original_zip
+v5.5.0,tools/DESIGN_SPEC.v5.3.schema.json,17215,read_for_mechanism_or_validation; archived_in_original_zip
+v5.5.0,tools/README.md,3345,read_and_synthesized; archived_in_original_zip
+v5.5.0,tools/REFERENCE_CAPABILITIES.json,12781,read_for_mechanism_or_validation; archived_in_original_zip
+v5.5.0,tools/RISK_REGISTRY.json,17045,read_for_mechanism_or_validation; archived_in_original_zip
+v5.5.0,tools/compile_implementation_brief.py,10949,read_for_mechanism_or_validation; archived_in_original_zip
+v5.5.0,tools/corpus_query.py,2014,read_for_mechanism_or_validation; archived_in_original_zip
+v5.5.0,tools/design_spec_diff.py,4672,read_for_mechanism_or_validation; archived_in_original_zip
+v5.5.0,tools/design_spec_lint.py,14640,read_for_mechanism_or_validation; archived_in_original_zip
+v5.5.0,tools/excellence_lint.py,10641,read_for_mechanism_or_validation; archived_in_original_zip
+v5.5.0,tools/fingerprint_compare.py,2699,read_for_mechanism_or_validation; archived_in_original_zip
+v5.5.0,tools/implementation_receipt_lint.py,9727,read_for_mechanism_or_validation; archived_in_original_zip
+v5.5.0,tools/migrate_v53_spec.py,5375,read_for_mechanism_or_validation; archived_in_original_zip
+v5.5.0,tools/reference_balance_lint.py,8694,read_for_mechanism_or_validation; archived_in_original_zip
+v5.5.0,tools/reference_pack.py,19557,read_for_mechanism_or_validation; archived_in_original_zip
+v5.5.0,tools/rendered_surface_audit.js,6033,read_for_mechanism_or_validation; archived_in_original_zip
+v5.5.0,tools/requirements.txt,20,read_and_synthesized; archived_in_original_zip
+v5.5.0,tools/start_task.py,4133,read_for_mechanism_or_validation; archived_in_original_zip
+v5.5.0,tools/static_ai_tell_scan.py,14833,read_for_mechanism_or_validation; archived_in_original_zip
+v5.5.0,tools/studio_doctor.py,8805,read_for_mechanism_or_validation; archived_in_original_zip
+v5.5.0,tools/validate_corpus.py,6628,read_for_mechanism_or_validation; archived_in_original_zip
+v2.3,README_包说明.md,5266,copied_to_deep_library_and_synthesized
+v2.3,五轴抽签法_视觉身份预设卡库_v1.2.md,10525,copied_to_deep_library_and_synthesized
+v2.3,反AI前端_勘误与修订说明v2.3.html,32191,copied_to_deep_library_and_synthesized
+v2.3,反AI前端_增补附录A_AI味特征库60条.html,38444,copied_to_deep_library_and_synthesized
+v2.3,反AI前端_增补附录B_可判定约束与冲突裁决表.html,31056,copied_to_deep_library_and_synthesized
+v2.3,反AI前端_失效诊断与替代方案_终版报告.html,62922,copied_to_deep_library_and_synthesized
+v2.3,反AI前端工作包_教训档案_实战首案.md,8821,copied_to_deep_library_and_synthesized
+v2.3,实战案例/实战演示_企业所得税测算底稿_v1反面教材.html,13215,copied_to_deep_library_and_synthesized
+v2.3,实战案例/实战演示_企业所得税测算底稿_v2.html,12388,copied_to_deep_library_and_synthesized
+v2.3,实战案例/实战演示_卡4_Stripe叙事_工作包诞生记_v1反面教材.html,11791,copied_to_deep_library_and_synthesized
+v2.3,实战案例/实战演示_卡4_Stripe叙事_工作包诞生记_v3.html,12983,copied_to_deep_library_and_synthesized
+v2.3,实战案例/宪法v2实战执行日志.md,17231,copied_to_deep_library_and_synthesized
+v2.3,示范_AI味显影对照.html,9323,copied_to_deep_library_and_synthesized
+v2.3,设计宪法v2.3_可直接粘贴给ChatGPT.md,5331,copied_to_deep_library_and_synthesized

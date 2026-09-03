@@ -1,0 +1,430 @@
+{
+  "package_version": "6.0.0-rc2",
+  "generated_at": "2026-09-03（当前 HEAD 重新生成）",
+  "effectiveness_proven": false,
+  "next_gate": "contextless multi-model blind test and real-project feedback",
+  "commands": [
+    {
+      "command": "/opt/pyvenv/bin/python （云端临时路径，已脱敏）/anti-ai-frontend-studio-v6.0.0-rc2/tools/package_doctor.py",
+      "exit_code": 0,
+      "stdout": "{\n  \"version\": \"6.0.0-rc2\",\n  \"required_files_missing\": [],\n  \"unbalanced_markdown_fences\": [],\n  \"invalid_json\": [],\n  \"font_binaries\": [],\n  \"status\": \"PASS\",\n  \"note\": \"This validates package structure only, not design quality or cold-start model performance.\"\n}",
+      "stderr": "Spreadsheet runtime warmup failed during python startup\nTraceback (most recent call last):\n  File \"/tmp/tmp.L2TH2Y5coc/artifact_tool_v2-2.8.22/artifact_tool/patches/warm_spreadsheet_runtime_on_startup.py\", line 26, in warm_spreadsheet_runtime_on_startup\n  File \"/tmp/tmp.L2TH2Y5coc/artifact_tool_v2-2.8.22/artifact_tool/spreadsheet_warmup.py\", line 785, in warm_spreadsheet_runtime\n  File \"/tmp/tmp.L2TH2Y5coc/artifact_tool_v2-2.8.22/artifact_tool/spreadsheet_warmup.py\", line 720, in _warm_feature_flows\n  File \"/tmp/tmp.L2TH2Y5coc/artifact_tool_v2-2.8.22/artifact_tool/spreadsheet_warmup.py\", line 704, in _warm_collaboration_flows\n  File \"/tmp/tmp.L2TH2Y5coc/artifact_tool_v2-2.8.22/artifact_tool/generated/interface/models.py\", line 32317, in hydrate_crdt_from_proto\n  File \"/tmp/tmp.L2TH2Y5coc/artifact_tool_v2-2.8.22/artifact_tool/rpc/remote.py\", line 749, in __call__\n  File \"/tmp/tmp.L2TH2Y5coc/artifact_tool_v2-2.8.22/artifact_tool/rpc/client.py\", line 150, in call\nartifact_tool.rpc.client.RemoteError: hydrateCrdtFromProto requires an empty collaborative document."
+    },
+    {
+      "command": "node --check （云端临时路径，已脱敏）/anti-ai-frontend-studio-v6.0.0-rc2/tools/slop_detector.mjs",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": "node --check （云端临时路径，已脱敏）/anti-ai-frontend-studio-v6.0.0-rc2/tools/test_slop_detector.mjs",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": "node （云端临时路径，已脱敏）/anti-ai-frontend-studio-v6.0.0-rc2/tools/test_slop_detector.mjs",
+      "exit_code": 0,
+      "stdout": "slop_detector tests: 4/4 PASS",
+      "stderr": ""
+    }
+  ],
+  "python_compile": {
+    "tools/package_doctor.py": {
+      "ok": true,
+      "stderr": "Spreadsheet runtime warmup failed during python startup\nTraceback (most recent call last):\n  File \"/tmp/tmp.L2TH2Y5coc/artifact_tool_v2-2.8.22/artifact_tool/patches/warm_spreadsheet_runtime_on_startup.py\", line 26, in warm_spreadsheet_runtime_on_startup\n  File \"/tmp/tmp.L2TH2Y5coc/artifact_tool_v2-2.8.22/artifact_tool/spreadsheet_warmup.py\", line 785, in warm_spreadsheet_runtime\n  File \"/tmp/tmp.L2TH2Y5coc/artifact_tool_v2-2.8.22/artifact_tool/spreadsheet_warmup.py\", line 720, in _warm_feature_flows\n  File \"/tmp/tmp.L2TH2Y5coc/artifact_tool_v2-2.8.22/artifact_tool/spreadsheet_warmup.py\", line 704, in _warm_collaboration_flows\n  File \"/tmp/tmp.L2TH2Y5coc/artifact_tool_v2-2.8.22/artifact_tool/generated/interface/models.py\", line 32317, in hydrate_crdt_from_proto\n  File \"/tmp/tmp.L2TH2Y5coc/artifact_tool_v2-2.8.22/artifact_tool/rpc/remote.py\", line 749, in __call__\n  File \"/tmp/tmp.L2TH2Y5coc/artifact_tool_v2-2.8.22/artifact_tool/rpc/client.py\", line 150, in call\nartifact_tool.rpc.client.RemoteError: hydrateCrdtFromProto requires an empty collaborative document."
+    }
+  },
+  "json_parse": {
+    "PACKAGE_INFO.json": {
+      "ok": true
+    },
+    "VALIDATION_REPORT.json": {
+      "ok": true
+    }
+  },
+  "markdown_fences": {
+    "00_READ_FIRST.md": {
+      "ok": true,
+      "fence_count": 6
+    },
+    "CHANGELOG_RC2.md": {
+      "ok": true,
+      "fence_count": 2
+    },
+    "DESIGN_VERBS.md": {
+      "ok": true,
+      "fence_count": 4
+    },
+    "FILE_INDEX.md": {
+      "ok": true,
+      "fence_count": 0
+    },
+    "ONE_FILE_MODE.md": {
+      "ok": true,
+      "fence_count": 40
+    },
+    "POST_RENDER_EVIDENCE_AND_REVISE.md": {
+      "ok": true,
+      "fence_count": 16
+    },
+    "POST_RENDER_REVIEW.md": {
+      "ok": true,
+      "fence_count": 8
+    },
+    "README.md": {
+      "ok": true,
+      "fence_count": 2
+    },
+    "archive/SOURCE_LINEAGE.md": {
+      "ok": true,
+      "fence_count": 2
+    },
+    "archive/external_reviews/PRIMARY_SOURCE_AUDIT_2026-09-03.md": {
+      "ok": true,
+      "fence_count": 2
+    },
+    "archive/external_reviews/头部项目借鉴吸收报告_2026-09-03.md": {
+      "ok": true,
+      "fence_count": 0
+    },
+    "blind_test/00_PROTOCOL.md": {
+      "ok": true,
+      "fence_count": 4
+    },
+    "blind_test/02_EVALUATION_RUBRIC.md": {
+      "ok": true,
+      "fence_count": 2
+    },
+    "blind_test/briefs/brief_01_tax_workpaper.md": {
+      "ok": true,
+      "fence_count": 0
+    },
+    "blind_test/briefs/brief_02_audit_learning.md": {
+      "ok": true,
+      "fence_count": 0
+    },
+    "blind_test/briefs/brief_03_statistical_result.md": {
+      "ok": true,
+      "fence_count": 0
+    },
+    "blind_test/briefs/brief_04_public_service.md": {
+      "ok": true,
+      "fence_count": 0
+    },
+    "blind_test/briefs/brief_05_cultural_event.md": {
+      "ok": true,
+      "fence_count": 0
+    },
+    "blind_test/briefs/brief_06_inventory_operations.md": {
+      "ok": true,
+      "fence_count": 0
+    },
+    "cases/CASEBOOK.md": {
+      "ok": true,
+      "fence_count": 0
+    },
+    "core/01_DESIGN_DIRECTOR_CORE.md": {
+      "ok": true,
+      "fence_count": 24
+    },
+    "core/02_RENDER_REVIEW_REVISE.md": {
+      "ok": true,
+      "fence_count": 10
+    },
+    "core/03_CRAFT_AND_DELIVERY.md": {
+      "ok": true,
+      "fence_count": 10
+    },
+    "core/04_ROUTING_INDEX.md": {
+      "ok": true,
+      "fence_count": 2
+    },
+    "deep_library/v2.3/README_包说明.md": {
+      "ok": true,
+      "fence_count": 0
+    },
+    "deep_library/v2.3/五轴抽签法_视觉身份预设卡库_v1.2.md": {
+      "ok": true,
+      "fence_count": 22
+    },
+    "deep_library/v2.3/反AI前端工作包_教训档案_实战首案.md": {
+      "ok": true,
+      "fence_count": 0
+    },
+    "deep_library/v2.3/实战案例/宪法v2实战执行日志.md": {
+      "ok": true,
+      "fence_count": 0
+    },
+    "deep_library/v2.3/设计宪法v2.3_可直接粘贴给ChatGPT.md": {
+      "ok": true,
+      "fence_count": 0
+    },
+    "deep_library/v5.5.0/SELF_CRITIQUE_V5.5.md": {
+      "ok": true,
+      "fence_count": 0
+    },
+    "deep_library/v5.5.0/governance/EXECUTION_COMPLIANCE_PROTOCOL.md": {
+      "ok": true,
+      "fence_count": 4
+    },
+    "deep_library/v5.5.0/governance/GPT_DEFAULT_RECIPES.md": {
+      "ok": true,
+      "fence_count": 6
+    },
+    "deep_library/v5.5.0/playbook/01_DOMAIN_TO_FORM.md": {
+      "ok": true,
+      "fence_count": 0
+    },
+    "deep_library/v5.5.0/playbook/02_COMPOSITION_GRAMMAR.md": {
+      "ok": true,
+      "fence_count": 0
+    },
+    "deep_library/v5.5.0/playbook/03_ART_DIRECTION_ENGINE.md": {
+      "ok": true,
+      "fence_count": 2
+    },
+    "deep_library/v5.5.0/playbook/04_TYPOGRAPHY_ENGINE_ZH.md": {
+      "ok": true,
+      "fence_count": 2
+    },
+    "deep_library/v5.5.0/playbook/05_COLOR_SURFACE_ENGINE.md": {
+      "ok": true,
+      "fence_count": 0
+    },
+    "deep_library/v5.5.0/playbook/06_COMPONENT_STATE_ENGINE.md": {
+      "ok": true,
+      "fence_count": 0
+    },
+    "deep_library/v5.5.0/playbook/07_MOTION_ENGINE.md": {
+      "ok": true,
+      "fence_count": 0
+    },
+    "deep_library/v5.5.0/playbook/08_REFINEMENT_ENGINE.md": {
+      "ok": true,
+      "fence_count": 0
+    },
+    "deep_library/v5.5.0/playbook/09_CRITIQUE_LOOP.md": {
+      "ok": true,
+      "fence_count": 0
+    },
+    "deep_library/v5.5.0/playbook/14_REFERENCE_OBSERVATION_PROTOCOL.md": {
+      "ok": true,
+      "fence_count": 0
+    },
+    "deep_library/v5.5.0/playbook/20_DIFFERENTIATION_WITHOUT_GIMMICKS.md": {
+      "ok": true,
+      "fence_count": 0
+    },
+    "deep_library/v5.5.0/playbook/25_EXCELLENCE_LADDER.md": {
+      "ok": true,
+      "fence_count": 2
+    },
+    "deep_library/v5.5.0/playbook/26_FLATNESS_TO_CONVICTION.md": {
+      "ok": true,
+      "fence_count": 0
+    },
+    "deep_library/v5.5.0/playbook/27_FUNCTIONAL_FOCAL_MECHANISM.md": {
+      "ok": true,
+      "fence_count": 2
+    },
+    "deep_library/v5.5.0/playbook/28_COMPOSITION_CONTRAST_BUDGET.md": {
+      "ok": true,
+      "fence_count": 4
+    },
+    "deep_library/v5.5.0/playbook/29_RENDERED_CRITIQUE_LENSES.md": {
+      "ok": true,
+      "fence_count": 0
+    },
+    "deep_library/v5.5.0/playbook/30_PRODUCT_CRAFT_ACCEPTANCE_BAR.md": {
+      "ok": true,
+      "fence_count": 0
+    },
+    "deep_library/v5.5.0/playbook/31_RECTANGLE_DISCIPLINE.md": {
+      "ok": true,
+      "fence_count": 4
+    },
+    "deep_library/v5.5.0/playbook/32_TYPOGRAPHY_AS_CHARACTER.md": {
+      "ok": true,
+      "fence_count": 0
+    },
+    "deep_library/v5.5.0/playbook/33_ONE_BOLD_MOVE.md": {
+      "ok": true,
+      "fence_count": 4
+    },
+    "deep_library/v5.5.0/playbook/34_READ_APPLY_VERIFY_LOOP.md": {
+      "ok": true,
+      "fence_count": 6
+    },
+    "deep_library/v5.5.0/research/METHODOLOGY_AND_LIMITATIONS.md": {
+      "ok": true,
+      "fence_count": 0
+    },
+    "deep_library/v5.5.0/research/POSITIVE_EXCELLENCE_RESEARCH_2026-09-02.md": {
+      "ok": true,
+      "fence_count": 2
+    },
+    "knowledge/01_RELATION_TO_FORM.md": {
+      "ok": true,
+      "fence_count": 2
+    },
+    "knowledge/02_COMPOSITION_HIERARCHY_SPACE.md": {
+      "ok": true,
+      "fence_count": 2
+    },
+    "knowledge/03_SURFACE_RECTANGLE_DISCIPLINE.md": {
+      "ok": true,
+      "fence_count": 0
+    },
+    "knowledge/04_TYPOGRAPHY_CJK_DATA.md": {
+      "ok": true,
+      "fence_count": 4
+    },
+    "knowledge/05_COLOR_MATERIAL_ICON.md": {
+      "ok": true,
+      "fence_count": 0
+    },
+    "knowledge/06_MOTION_STATE_RESPONSIVE.md": {
+      "ok": true,
+      "fence_count": 0
+    },
+    "knowledge/07_REFERENCE_METHOD.md": {
+      "ok": true,
+      "fence_count": 2
+    },
+    "knowledge/08_EXCELLENCE_AND_CONVICTION.md": {
+      "ok": true,
+      "fence_count": 0
+    },
+    "knowledge/09_COGNITIVE_LOAD_LENS.md": {
+      "ok": true,
+      "fence_count": 2
+    },
+    "optional/LIVE_VARIANT_LOOP.md": {
+      "ok": true,
+      "fence_count": 2
+    },
+    "platform/PLATFORM_ENTRYPOINTS.md": {
+      "ok": true,
+      "fence_count": 4
+    },
+    "references/DEEP_AUDIT_CARDS.md": {
+      "ok": true,
+      "fence_count": 0
+    },
+    "references/FINDINGS_FROM_353_REFERENCES.md": {
+      "ok": true,
+      "fence_count": 0
+    },
+    "references/REFERENCE_ATLAS.md": {
+      "ok": true,
+      "fence_count": 0
+    },
+    "review_after_first_render/00A_UNANCHORED_DESIGN_REVIEW.md": {
+      "ok": true,
+      "fence_count": 4
+    },
+    "review_after_first_render/00B_DETERMINISTIC_EVIDENCE.md": {
+      "ok": true,
+      "fence_count": 4
+    },
+    "review_after_first_render/00C_SYNTHESIS_AND_REVISION.md": {
+      "ok": true,
+      "fence_count": 6
+    },
+    "review_after_first_render/00_READ_AFTER_FIRST_RENDER.md": {
+      "ok": true,
+      "fence_count": 8
+    },
+    "review_after_first_render/01_MA_MB_MC_FAILURES.md": {
+      "ok": true,
+      "fence_count": 0
+    },
+    "review_after_first_render/02_GPT_DEFAULT_RECIPES.md": {
+      "ok": true,
+      "fence_count": 6
+    },
+    "review_after_first_render/03_AI_TELLS_DISTILLED.md": {
+      "ok": true,
+      "fence_count": 0
+    },
+    "review_after_first_render/04_REVIEW_LENSES.md": {
+      "ok": true,
+      "fence_count": 0
+    },
+    "skill/SKILL.md": {
+      "ok": true,
+      "fence_count": 0
+    },
+    "templates/CLOUD_DESIGN_DEGENERATION_CHECKLIST.md": {
+      "ok": true,
+      "fence_count": 4
+    },
+    "templates/LESSON_LOG.template.md": {
+      "ok": true,
+      "fence_count": 0
+    },
+    "templates/LOCAL_IMPLEMENTATION_TASK.template.md": {
+      "ok": true,
+      "fence_count": 10
+    },
+    "templates/PRODUCT_CONTEXT.template.md": {
+      "ok": true,
+      "fence_count": 0
+    },
+    "templates/PROJECT_DESIGN.template.md": {
+      "ok": true,
+      "fence_count": 0
+    },
+    "templates/PROJECT_INPUT.template.md": {
+      "ok": true,
+      "fence_count": 0
+    },
+    "templates/RENDER_REVIEW_A.template.md": {
+      "ok": true,
+      "fence_count": 2
+    },
+    "templates/TASTE_INDEX.template.md": {
+      "ok": true,
+      "fence_count": 0
+    },
+    "templates/VISUAL_CONTRACT_TEST.template.md": {
+      "ok": true,
+      "fence_count": 18
+    },
+    "tools/README.md": {
+      "ok": true,
+      "fence_count": 6
+    }
+  },
+  "original_archive_integrity": {
+    "archive/original/anti-ai-design-studio-v5.5.0.zip": {
+      "ok": true,
+      "members": 160,
+      "bad_member": null
+    },
+    "archive/original/反AI前端工作包_v2.3.zip": {
+      "ok": true,
+      "members": 14,
+      "bad_member": null
+    }
+  },
+  "active_markdown_missing_references": [],
+  "file_count": 123,
+  "font_binaries": [],
+  "cache_artifacts": [],
+  "status": "PASS",
+  "final_archive": {
+    "members": 123,
+    "zip_test": "PASS",
+    "bad_member": null,
+    "size_note": "Archive byte size is intentionally omitted because embedding the report changes the final archive size."
+  },
+  "public_hygiene": {
+    "internal_reviews_removed": true,
+    "personal_aliases_masked": true,
+    "private_screenshot_removed": true,
+    "nested_original_zips": "已删除（内部归档不随公共发行，deep_library 保留整理版）",
+    "note": "本报告基于当前 HEAD 重新生成；PASS 仅代表结构与卫生检查，不证明设计效果"
+  }
+}

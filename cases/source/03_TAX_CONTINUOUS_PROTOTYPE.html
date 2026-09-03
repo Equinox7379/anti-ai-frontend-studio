@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>企业所得税测算底稿 · 连续工作底稿</title>
+<style>
+:root {
+  --canvas: #fcfcfb;
+  --ink: #17211d;
+  --ink-2: #56615c;
+  --ink-3: #7b8580;
+  --rule: #d8ddda;
+  --rule-strong: #828c87;
+  --accent: #08644f;
+  --accent-dark: #07503f;
+  --danger: #8d3f38;
+  --page: 1216px;
+  --ui: "Noto Sans CJK SC", "Source Han Sans SC", "Microsoft YaHei", "PingFang SC", sans-serif;
+}
+* { box-sizing: border-box; }
+html { color-scheme: light; background: var(--canvas); }
+body {
+  margin: 0;
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: var(--ui);
+  font-size: 14px;
+  line-height: 1.58;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+button, select { font: inherit; }
+button, a, select { -webkit-tap-highlight-color: transparent; }
+a { color: var(--accent); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+button:focus-visible, select:focus-visible, a:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--accent) 28%, transparent);
+  outline-offset: 3px;
+}
+.num { font-variant-numeric: tabular-nums lining-nums; font-feature-settings: "tnum" 1, "lnum" 1; }
+.site-header { height: 58px; border-bottom: 1px solid var(--rule); position: sticky; top: 0; z-index: 10; background: var(--canvas); }
+.site-header__inner { width: min(var(--page), calc(100% - 48px)); height: 100%; margin: 0 auto; display: flex; align-items: center; gap: 38px; }
+.brand { font-size: 18px; font-weight: 800; letter-spacing: -.02em; white-space: nowrap; }
+.main-nav { display: flex; height: 100%; gap: 26px; }
+.main-nav a { display: grid; place-items: center; color: var(--ink-2); text-decoration: none; position: relative; font-size: 13px; }
+.main-nav a[aria-current="page"] { color: var(--accent); font-weight: 720; }
+.main-nav a[aria-current="page"]::after { content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 2px; background: var(--accent); }
+.account { margin-left: auto; color: var(--ink-2); font-size: 12px; }
+.page { width: min(var(--page), calc(100% - 48px)); margin: 0 auto; padding: 34px 0 80px; }
+.page-head { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 32px; align-items: start; }
+.context-line { margin: 0 0 2px; color: var(--ink-2); font-size: 12px; }
+h1 { margin: 0; font-size: clamp(28px, 2.25vw, 36px); line-height: 1.16; letter-spacing: -.024em; font-weight: 760; }
+h1 span { font-weight: 470; color: #35413c; }
+.subtitle { margin: 8px 0 0; color: var(--ink-2); max-width: 680px; }
+.page-actions { display: flex; align-items: center; gap: 10px; padding-top: 4px; }
+.save-state { color: var(--ink-2); font-size: 12px; margin-right: 4px; white-space: nowrap; }
+.save-state::before { content: ""; display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); margin-right: 7px; vertical-align: 1px; }
+.btn { min-height: 40px; padding: 8px 15px; border: 1px solid #a9b2ad; border-radius: 3px; background: transparent; color: var(--ink); cursor: pointer; transition: border-color 140ms ease, color 140ms ease, background-color 140ms ease, transform 80ms ease; }
+.btn:hover { border-color: #68716d; background: #f5f6f4; }
+.btn:active { transform: translateY(1px); }
+.btn--primary { border-color: var(--accent); background: var(--accent); color: #fff; font-weight: 720; }
+.btn--primary:hover { border-color: var(--accent-dark); background: var(--accent-dark); }
+.context-controls { margin-top: 28px; display: grid; grid-template-columns: minmax(300px,1.35fr) 90px auto minmax(210px,.75fr); gap: 24px; align-items: end; }
+.field label, .context-label { display: block; color: var(--ink-2); font-size: 11px; margin-bottom: 5px; }
+.field select { width: 100%; height: 39px; border: 1px solid #abb4af; border-radius: 2px; background: #fff; color: var(--ink); padding: 0 34px 0 11px; }
+.year { font-size: 16px; line-height: 39px; }
+.plan-tabs { height: 39px; display: flex; align-items: stretch; gap: 20px; }
+.plan-tabs button { border: 0; background: transparent; padding: 0; color: var(--ink-2); cursor: pointer; border-bottom: 2px solid transparent; }
+.plan-tabs button[aria-selected="true"] { color: var(--accent); font-weight: 740; border-bottom-color: var(--accent); }
+.context-note { margin: 0; color: var(--ink-2); font-size: 12px; padding-bottom: 7px; text-align: right; }
+.system-message { margin: 22px 0 -12px; padding: 10px 0 9px; border-top: 1px solid color-mix(in srgb, var(--danger) 48%, var(--rule)); border-bottom: 1px solid color-mix(in srgb, var(--danger) 32%, var(--rule)); color: var(--danger); font-size: 12px; }
+.system-message strong { font-weight: 760; }
+.system-message[hidden] { display: none; }
+.formula-section { margin-top: 46px; }
+.section-label { margin: 0 0 10px; color: var(--ink-2); font-size: 11px; letter-spacing: .06em; }
+.formula { display: grid; grid-template-columns: minmax(145px,1.1fr) 32px minmax(125px,.95fr) 32px minmax(125px,.95fr) 32px minmax(155px,1.15fr) 32px 78px 32px minmax(178px,1.35fr); align-items: end; padding-bottom: 18px; border-bottom: 1px solid var(--rule-strong); }
+.term {
+  min-width: 0;
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  padding: 0;
+  text-align: left;
+  cursor: pointer;
+}
+.term:hover .term-label { color: var(--accent); }
+.term:focus-visible { outline: 2px solid color-mix(in srgb, var(--accent) 45%, transparent); outline-offset: 5px; }
+.term:focus-visible .term-label { color: var(--accent); }
+.term-label { color: var(--ink-2); font-size: 11px; margin-bottom: 4px; white-space: nowrap; }
+.term-value { font-size: clamp(18px,1.65vw,24px); line-height: 1.15; letter-spacing: -.036em; font-weight: 520; white-space: nowrap; }
+.operator { color: var(--ink-3); font-size: 20px; line-height: 1.15; padding-bottom: 1px; text-align: center; }
+.formula-result { position: relative; padding-left: 10px; }
+.formula-result::after { content: ""; position: absolute; left: 10px; right: 0; bottom: -19px; border-bottom: 4px double var(--ink); }
+.formula-result .term-label { color: var(--accent); font-weight: 680; }
+.formula-result .term-value { color: var(--accent-dark); font-size: clamp(25px,2.25vw,34px); font-weight: 800; }
+.formula-meta { margin: 10px 0 0; display: flex; justify-content: space-between; gap: 24px; color: var(--ink-3); font-size: 11px; }
+.workpaper { margin-top: 46px; }
+.workpaper-head { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 17px; }
+.workpaper h2 { margin: 0; font-size: 18px; letter-spacing: -.025em; font-weight: 760; }
+.workpaper-intro { margin: 4px 0 0; color: var(--ink-2); font-size: 12px; }
+.column-label { color: var(--ink-2); font-size: 11px; padding-right: 2px; }
+.ledger-line { display: grid; grid-template-columns: 30px minmax(0,1fr) 190px; align-items: baseline; min-height: 58px; padding: 14px 0 13px; border-top: 1px solid var(--rule); scroll-margin-top: 78px; }
+.ledger-line[data-located="true"] .line-title strong, .ledger-line[data-located="true"] .amount { color: var(--accent); }
+.ledger-line:first-of-type { border-top-color: var(--rule-strong); }
+.sign { color: var(--ink-2); font-size: 17px; }
+.line-copy { min-width: 0; }
+.line-title { display: flex; align-items: baseline; gap: 9px; min-width: 0; }
+.line-title strong { font-size: 14px; font-weight: 650; }
+.line-note { margin-top: 2px; color: var(--ink-3); font-size: 11px; }
+.amount { text-align: right; white-space: nowrap; font-size: 16px; letter-spacing: -.028em; }
+.amount--group { font-size: 21px; }
+.group-line { padding-top: 18px; }
+.group-line .line-title strong { font-size: 15px; }
+.adjustment { border-top: 1px solid var(--rule); }
+.adjustment-toggle { width: 100%; display: grid; grid-template-columns: 30px minmax(0,1fr) 190px; align-items: baseline; min-height: 52px; padding: 13px 0 12px 18px; border: 0; background: transparent; color: inherit; text-align: left; cursor: pointer; }
+.adjustment-toggle:hover strong, .adjustment-toggle[aria-expanded="true"] strong { color: var(--accent); }
+.adjustment-toggle[aria-expanded="true"] .amount { color: var(--accent-dark); font-weight: 700; }
+.adjustment-label { min-width: 0; display: flex; align-items: baseline; gap: 9px; }
+.adjustment-label strong { font-size: 14px; font-weight: 650; }
+.leader { flex: 1 1 80px; min-width: 30px; border-bottom: 1px dotted #bac3be; transform: translateY(-4px); }
+.view-evidence { color: var(--accent); font-size: 11px; text-decoration: underline; text-underline-offset: 3px; }
+.detail-breakdown { display: none; margin-left: 48px; padding: 4px 0 24px; grid-template-columns: minmax(0,.9fr) minmax(0,1.3fr) minmax(190px,.72fr); gap: 36px; animation: reveal 160ms cubic-bezier(.2,.75,.25,1); }
+.adjustment[data-open="true"] .detail-breakdown { display: grid; }
+@keyframes reveal { from { opacity: .01; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
+.detail-block h3 { margin: 0 0 8px; color: var(--ink-2); font-size: 11px; font-weight: 680; }
+.calc-line { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 18px; padding: 3px 0; color: var(--ink-2); font-size: 11px; }
+.calc-line span:last-child { color: var(--ink); }
+.calc-line--result { margin-top: 7px; padding-top: 7px; border-top: 1px solid var(--rule); font-weight: 680; color: var(--ink); }
+.detail-copy { margin: 0; color: #414b46; font-size: 12px; line-height: 1.78; }
+.rule-id { display: block; margin-top: 8px; color: var(--ink-3); font-size: 10px; }
+.trace { margin: 0; padding: 0; list-style: none; counter-reset: trace; }
+.trace li { counter-increment: trace; position: relative; padding: 0 0 7px 21px; color: var(--ink-2); font-size: 11px; }
+.trace li::before { content: counter(trace); position: absolute; left: 0; top: 0; color: var(--accent); font-weight: 700; }
+.derived-line { border-top-color: var(--rule-strong); }
+.derived-line .line-title strong { font-weight: 760; }
+.final-line { min-height: 86px; border-top: 4px double var(--rule-strong); align-items: center; }
+.final-line .line-title strong { font-size: 18px; font-weight: 820; }
+.final-line .amount { color: var(--accent-dark); font-size: 32px; font-weight: 820; }
+.meta-footer { margin-top: 30px; display: flex; flex-wrap: wrap; gap: 18px; color: var(--ink-3); font-size: 10px; }
+@media (max-width: 1040px) {
+  .formula { grid-template-columns: 1fr 28px 1fr 28px 1fr 28px 1.1fr; row-gap: 20px; }
+  .formula .operator:nth-of-type(n+4), .formula .term:nth-of-type(n+5) { }
+  .formula-result { grid-column: 5 / 8; }
+  .context-controls { grid-template-columns: minmax(280px,1.3fr) 90px 1fr; }
+  .context-note { display: none; }
+}
+@media (max-width: 720px) {
+  body { font-size: 14px; }
+  .site-header { height: auto; position: static; }
+  .site-header__inner { width: calc(100% - 32px); min-height: 94px; padding: 12px 0 8px; display: grid; grid-template-columns: 1fr auto; gap: 6px 16px; }
+  .brand { align-self: end; }
+  .main-nav { grid-column: 1 / 3; grid-row: 2; height: 34px; gap: 26px; }
+  .main-nav a { display: flex; align-items: center; }
+  .account { margin: 0; align-self: end; }
+  .page { width: calc(100% - 32px); padding: 22px 0 48px; }
+  .page-head { display: block; }
+  h1 { font-size: 28px; letter-spacing: -.018em; }
+  .subtitle { line-height: 1.65; }
+  .page-actions { margin-top: 14px; flex-wrap: wrap; }
+  .save-state { flex-basis: 100%; }
+  .btn { min-height: 44px; }
+  .context-controls { margin-top: 22px; display: grid; grid-template-columns: 70px minmax(0,1fr); gap: 14px 18px; }
+  .field { grid-column: 1 / 3; }
+  .plan-block { grid-column: 2; }
+  .plan-tabs { gap: 18px; }
+  .system-message { margin: 18px 0 -6px; }
+  .formula-section { margin-top: 30px; }
+  .formula { display: block; padding-bottom: 0; border-bottom: 0; }
+  .operator { display: none; }
+  .term { width: 100%; display: grid; grid-template-columns: 22px minmax(0,1fr) auto; align-items: baseline; padding: 5px 0; }
+  .term::before { content: attr(data-op); grid-column: 1; color: var(--ink-3); font-size: 16px; }
+  .term-label { grid-column: 2; margin: 0; font-size: 12px; }
+  .term-value { grid-column: 3; font-size: 17px; letter-spacing: -.025em; }
+  .formula-result { margin-top: 7px; padding: 16px 0 14px; border-top: 1px solid var(--rule-strong); }
+  .formula-result::before { color: var(--accent); }
+  .formula-result::after { left: 22px; bottom: 0; }
+  .formula-result .term-value { font-size: 27px; }
+  .formula-meta { display: block; margin-top: 12px; }
+  .formula-meta span:last-child { display: block; margin-top: 3px; }
+  .workpaper { margin-top: 40px; }
+  .ledger-line, .adjustment-toggle { grid-template-columns: 22px minmax(0,1fr) 118px; }
+  .adjustment-toggle { padding-left: 0; min-height: 58px; }
+  .line-title strong, .adjustment-label strong { font-size: 13px; }
+  .amount { font-size: 13px; }
+  .amount--group { font-size: 17px; }
+  .leader { display: none; }
+  .view-evidence { display: block; }
+  .detail-breakdown { margin-left: 22px; padding: 2px 0 22px; display: none; grid-template-columns: 1fr; gap: 17px; }
+  .adjustment[data-open="true"] .detail-breakdown { display: grid; }
+  .final-line { min-height: 82px; }
+  .final-line .amount { font-size: 22px; }
+  .meta-footer { margin-top: 22px; gap: 9px 15px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header__inner">
+    <div class="brand">企税测算</div>
+    <nav class="main-nav" aria-label="主导航"><a href="#">项目</a><a href="#" aria-current="page">测算</a><a href="#">政策</a><a href="#">总览</a></nav>
+    <div class="account">林会计 · 测算员</div>
+  </div>
+</header>
+<main class="page">
+  <section class="page-head">
+    <div>
+      <p class="context-line">华启智能制造有限公司 · 2025 年度汇算清缴</p>
+      <h1>企业所得税测算底稿</h1>
+      <p class="subtitle">从会计利润到最终税额，调整、计算与政策依据保持同一条追溯路径。</p>
+    </div>
+    <div class="page-actions">
+      <span class="save-state">方案 A 已保存 · 10:42</span>
+      <button class="btn">保存草稿</button>
+      <button class="btn btn--primary">预览计算</button>
+    </div>
+  </section>
+
+  <section class="context-controls" aria-label="测算上下文">
+    <div class="field"><label for="project">测算项目</label><select id="project"><option>华启智能制造 2025 汇算</option></select></div>
+    <div><span class="context-label">纳税年度</span><div class="year num">2025</div></div>
+    <div class="plan-block"><span class="context-label">方案</span><div class="plan-tabs" role="tablist"><button role="tab" aria-selected="true">方案 A</button><button role="tab" aria-selected="false">方案 B</button><button role="tab" aria-selected="false">差异比较</button></div></div>
+    <p class="context-note">预览不写入结果历史；生成快照后才可复核。</p>
+  </section>
+
+  <p class="system-message" id="policy-error" role="alert" hidden><strong>政策版本暂不可用。</strong> 当前草稿已保留；重新加载政策后再预览计算。</p>
+
+  <section class="formula-section" aria-labelledby="formula-title">
+    <p class="section-label" id="formula-title">税额形成</p>
+    <div class="formula" aria-label="会计利润加纳税调增减纳税调减等于应纳税所得额乘税率等于应纳所得税额">
+      <button type="button" class="term" data-op="" data-target="#row-profit"><span class="term-label">会计利润</span><span class="term-value num">30,000,000.00</span></button><div class="operator">＋</div>
+      <button type="button" class="term" data-op="＋" data-target="#row-add"><span class="term-label">纳税调增</span><span class="term-value num">2,000,000.00</span></button><div class="operator">−</div>
+      <button type="button" class="term" data-op="−" data-target="#row-sub"><span class="term-label">纳税调减</span><span class="term-value num">8,600,000.00</span></button><div class="operator">＝</div>
+      <button type="button" class="term" data-op="＝" data-target="#row-income"><span class="term-label">应纳税所得额</span><span class="term-value num">23,400,000.00</span></button><div class="operator">×</div>
+      <button type="button" class="term" data-op="×" data-target="#row-rate"><span class="term-label">适用税率</span><span class="term-value num">25%</span></button><div class="operator">＝</div>
+      <button type="button" class="term formula-result" data-op="＝" data-target="#row-tax"><span class="term-label">预计应纳所得税额</span><span class="term-value num">5,850,000.00</span></button>
+    </div>
+    <p class="formula-meta"><span>方案 A · 3 项调整已关联依据</span><span>选择下方事项，计算和政策在原位置展开</span></p>
+  </section>
+
+  <section class="workpaper" aria-labelledby="workpaper-title">
+    <div class="workpaper-head"><div><h2 id="workpaper-title">税额调节底稿</h2><p class="workpaper-intro">金额采用同一小数位；调整项展开后显示形成过程与政策来源。</p></div><span class="column-label">金额（元）</span></div>
+
+    <div class="ledger-line" id="row-profit"><div class="sign"></div><div class="line-copy"><div class="line-title"><strong>会计利润</strong></div><div class="line-note">方案 A 已保存输入</div></div><div class="amount amount--group num">30,000,000.00</div></div>
+    <div class="ledger-line group-line" id="row-add"><div class="sign">＋</div><div class="line-copy"><div class="line-title"><strong>纳税调整增加额</strong></div><div class="line-note">1 项调整形成</div></div><div class="amount amount--group num">2,000,000.00</div></div>
+
+    <article class="adjustment" data-open="true">
+      <button class="adjustment-toggle" aria-expanded="true" data-key="entertainment">
+        <span class="sign"></span><span class="adjustment-label"><strong>业务招待费限额扣除</strong><span class="leader"></span><span class="view-evidence">收起依据</span></span><span class="amount num">＋2,000,000.00</span>
+      </button>
+      <div class="detail-breakdown">
+        <section class="detail-block"><h3>计算过程</h3><div class="calc-line"><span>发生额 × 60%</span><span class="num">1,800,000.00</span></div><div class="calc-line"><span>营业收入 × 5‰</span><span class="num">1,000,000.00</span></div><div class="calc-line calc-line--result"><span>取较低值后调增</span><span class="num">2,000,000.00</span></div></section>
+        <section class="detail-block"><h3>为什么形成这笔调增</h3><p class="detail-copy">业务招待费按发生额 60% 扣除，同时不得超过当年销售（营业）收入的 5‰；本项目取较低值。</p><small class="rule-id">《企业所得税法实施条例》第四十三条 · Policy P-2025-81989f47c1f7718a</small></section>
+        <section class="detail-block"><h3>追溯路径</h3><ol class="trace"><li>项目输入</li><li>限额计算</li><li>形成调增</li><li>进入所得额</li></ol></section>
+      </div>
+    </article>
+
+    <div class="ledger-line group-line" id="row-sub"><div class="sign">−</div><div class="line-copy"><div class="line-title"><strong>纳税调整减少额</strong></div><div class="line-note">2 项调整形成</div></div><div class="amount amount--group num">8,600,000.00</div></div>
+
+    <article class="adjustment" data-open="false">
+      <button class="adjustment-toggle" aria-expanded="false" data-key="rd"><span class="sign"></span><span class="adjustment-label"><strong>研发费用加计扣除</strong><span class="leader"></span><span class="view-evidence">查看依据</span></span><span class="amount num">−5,000,000.00</span></button>
+      <div class="detail-breakdown"><section class="detail-block"><h3>计算过程</h3><div class="calc-line"><span>符合条件研发费用</span><span class="num">5,000,000.00</span></div><div class="calc-line"><span>加计扣除比例</span><span class="num">100%</span></div><div class="calc-line calc-line--result"><span>形成调减</span><span class="num">5,000,000.00</span></div></section><section class="detail-block"><h3>判断前提</h3><p class="detail-copy">以研发活动、费用归集和项目资格校验结果为前提，当前方案按现行政策形成调减。</p><small class="rule-id">规则 R_AND_D · Policy P-2025-44c10b</small></section><section class="detail-block"><h3>追溯路径</h3><ol class="trace"><li>费用归集</li><li>资格校验</li><li>形成调减</li><li>进入所得额</li></ol></section></div>
+    </article>
+
+    <article class="adjustment" data-open="false">
+      <button class="adjustment-toggle" aria-expanded="false" data-key="depr"><span class="sign"></span><span class="adjustment-label"><strong>设备器具一次性扣除</strong><span class="leader"></span><span class="view-evidence">查看依据</span></span><span class="amount num">−3,600,000.00</span></button>
+      <div class="detail-breakdown"><section class="detail-block"><h3>计算过程</h3><div class="calc-line"><span>符合条件设备原值</span><span class="num">3,600,000.00</span></div><div class="calc-line"><span>本期税前扣除</span><span class="num">3,600,000.00</span></div><div class="calc-line calc-line--result"><span>形成调减</span><span class="num">3,600,000.00</span></div></section><section class="detail-block"><h3>后续跟踪</h3><p class="detail-copy">一次性扣除后仍需持续跟踪会计账面价值与计税基础差异，避免后续期间重复扣除。</p><small class="rule-id">规则 EQUIPMENT · Policy P-2025-cc08f3</small></section><section class="detail-block"><h3>追溯路径</h3><ol class="trace"><li>设备清单</li><li>资格判断</li><li>形成调减</li><li>后续差异</li></ol></section></div>
+    </article>
+
+    <div class="ledger-line derived-line" id="row-income"><div class="sign">＝</div><div class="line-copy"><div class="line-title"><strong>应纳税所得额</strong></div><div class="line-note">亏损弥补引擎返回；适用税率 25%</div></div><div class="amount amount--group num">23,400,000.00</div></div>
+    <div class="ledger-line" id="row-rate"><div class="sign">×</div><div class="line-copy"><div class="line-title"><strong>适用税率</strong></div><div class="line-note">2025 年度企业所得税适用税率</div></div><div class="amount amount--group num">25%</div></div>
+    <div class="ledger-line final-line" id="row-tax"><div class="sign">＝</div><div class="line-copy"><div class="line-title"><strong>应纳所得税额</strong></div><div class="line-note">23,400,000.00 × 25% · 预览未归档</div></div><div class="amount num">5,850,000.00</div></div>
+  </section>
+  <footer class="meta-footer"><span>Policy P-2025-81989f47c1f7718a</span><span>Engine v4</span><span>Result Snapshot 尚未生成</span></footer>
+</main>
+<script>
+for (const toggle of document.querySelectorAll('.adjustment-toggle')) {
+  toggle.addEventListener('click', () => {
+    const item = toggle.closest('.adjustment');
+    const opening = item.dataset.open !== 'true';
+    document.querySelectorAll('.adjustment').forEach((other) => {
+      other.dataset.open = 'false';
+      const button = other.querySelector('.adjustment-toggle');
+      button.setAttribute('aria-expanded', 'false');
+      button.querySelector('.view-evidence').textContent = '查看依据';
+    });
+    if (opening) {
+      item.dataset.open = 'true';
+      toggle.setAttribute('aria-expanded', 'true');
+      toggle.querySelector('.view-evidence').textContent = '收起依据';
+    }
+  });
+}
+
+for (const term of document.querySelectorAll('.term[data-target]')) {
+  term.addEventListener('click', () => {
+    const target = document.querySelector(term.dataset.target);
+    if (!target) return;
+    document.querySelectorAll('.ledger-line[data-located="true"]').forEach((row) => row.removeAttribute('data-located'));
+    target.setAttribute('data-located', 'true');
+    target.scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'center'});
+    window.setTimeout(() => target.removeAttribute('data-located'), 1400);
+  });
+}
+
+for (const tab of document.querySelectorAll('[role="tab"]')) {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('[role="tab"]').forEach((x) => x.setAttribute('aria-selected','false'));
+    tab.setAttribute('aria-selected','true');
+  });
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>勘误与修订说明 v2 · 回应外部评审</title>
+<style>
+  :root{
+    --ink:#1e293b; --ink-2:#475569; --ink-3:#64748b; --line:#e2e8f0;
+    --bg:#f5f7fa; --card:#ffffff; --accent:#1d4ed8; --accent-soft:#eff4ff;
+    --green:#059669; --green-soft:#ecfdf5; --blue:#2563eb; --blue-soft:#eff6ff;
+    --amber:#b45309; --amber-soft:#fffbeb; --red:#b91c1c; --red-soft:#fef2f2; --gray-soft:#f1f5f9;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:-apple-system,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+       background:var(--bg);color:var(--ink);line-height:1.78;font-size:15px;}
+  .wrap{max-width:980px;margin:0 auto;padding:44px 28px 60px;}
+  .hero{background:linear-gradient(135deg,#0f2a6b 0%,#1d4ed8 70%,#2563eb 100%);color:#fff;
+        border-radius:16px;padding:36px 38px 30px;margin-bottom:26px;}
+  .hero .kicker{font-size:12px;letter-spacing:.18em;opacity:.85;font-weight:600;}
+  .hero h1{font-size:26px;margin:10px 0 8px;font-weight:800;}
+  .hero p{font-size:13.5px;opacity:.92;max-width:760px;}
+  .verdict{display:flex;gap:14px;flex-wrap:wrap;margin-top:18px;}
+  .vd{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);
+      border-radius:12px;padding:12px 18px;min-width:150px;}
+  .vd .n{font-size:24px;font-weight:800;}
+  .vd .k{font-size:12px;opacity:.85;}
+  h2{font-size:20px;font-weight:800;margin:38px 0 14px;padding-left:12px;border-left:4px solid var(--accent);}
+  h2 .en{font-size:11px;color:var(--ink-3);letter-spacing:.16em;margin-left:10px;font-weight:600;}
+  h3{font-size:16px;font-weight:700;margin:22px 0 10px;color:var(--accent);}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-bottom:16px;}
+  table{width:100%;border-collapse:collapse;font-size:13.5px;margin:8px 0;}
+  th{background:var(--gray-soft);text-align:left;padding:9px 11px;font-size:12.5px;color:var(--ink-2);
+     border:1px solid var(--line);white-space:nowrap;}
+  td{padding:9px 11px;border:1px solid var(--line);vertical-align:top;}
+  tr:nth-child(even) td{background:#fafbfd;}
+  .mono{font-family:ui-monospace,"SF Mono",Consolas,monospace;font-size:12.5px;}
+  .chip{display:inline-block;font-size:11px;font-weight:700;padding:2px 9px;border-radius:20px;white-space:nowrap;}
+  .c-true{background:var(--red-soft);color:var(--red);}
+  .c-part{background:var(--amber-soft);color:var(--amber);}
+  .c-done{background:var(--green-soft);color:var(--green);}
+  .c-hold{background:var(--amber-soft);color:var(--amber);}
+  .note{background:var(--accent-soft);border-left:4px solid var(--accent);border-radius:0 10px 10px 0;
+        padding:13px 16px;font-size:13.5px;color:#1e3a8a;margin:12px 0;}
+  .warn{background:var(--amber-soft);border-left:4px solid var(--amber);border-radius:0 10px 10px 0;
+        padding:13px 16px;font-size:13.5px;color:#78350f;margin:12px 0;}
+  pre{background:#0f172a;color:#e2e8f0;border-radius:12px;padding:20px 22px;font-size:12.8px;
+      line-height:1.72;overflow-x:auto;font-family:ui-monospace,"SF Mono",Consolas,monospace;white-space:pre-wrap;}
+  .foot{font-size:12px;color:var(--ink-3);border-top:1px solid var(--line);margin-top:36px;padding-top:16px;line-height:1.8;}
+  b.q{color:var(--red);}
+  .rosetta td:first-child{font-family:ui-monospace,monospace;font-weight:800;color:var(--accent);}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <div class="kicker">REVIEW RESPONSE · V2 ERRATUM</div>
+    <h1>勘误与修订说明 v2 —— 回应外部评审</h1>
+    <p>评审对象：《反AI前端_失效诊断与替代方案_终版报告》+《增补附录A_AI味特征库60条》（+ 附录B 联动）。评审方结论"上乘的调研，C 级的处方"——<b>诊断部分（评审认定应保留）一字未动；处方部分的全部属实指控已逐条修复</b>。逐项核对结果如下。</p>
+    <div class="verdict">
+      <div class="vd"><div class="n">7</div><div class="k">项硬伤指控</div></div>
+      <div class="vd"><div class="n">6</div><div class="k">项核实属实 · 已修复</div></div>
+      <div class="vd"><div class="n">1</div><div class="k">项部分属实 · 已修正</div></div>
+      <div class="vd"><div class="n">1</div><div class="k">项数据挂起 · 复核中</div></div>
+    </div>
+  </div>
+
+  <!-- ============ §一 ============ -->
+  <h2>一、七项硬伤逐条核对 <span class="en">VERIFICATION</span></h2>
+  <div class="card">
+    <table>
+      <tr><th style="width:26%">评审指控</th><th style="width:9%">核对结论</th><th>关键证据（本席独立复核）</th><th style="width:26%">处置</th></tr>
+      <tr>
+        <td><b>①</b> 宪法禁令数与 15px 白名单自相矛盾</td>
+        <td><span class="chip c-true">属实</span></td>
+        <td>v1 两处声明"≤9 条硬禁令"（§0 / §4.1），实际逐条清点 §5.1 含 <b>11–14 条</b>"禁止"类条款（字体1 + 形状1 + 布局铁律禁止类约7 + 工作方式1）；【字阶】白名单 {12,14,16,20,28,40} 不含正文 15px——模型遇两条款冲突将随机选边</td>
+        <td><span class="chip c-done">已修复</span> 宪法 v2：白名单收编 15px（7 档）；行为类"禁止"条款归零，全部改写为正向数值锁定</td>
+      </tr>
+      <tr>
+        <td><b>②</b> 色板 #FAFAF7 + #0D5C3F 命中我方 C02</td>
+        <td><span class="chip c-true">属实</span></td>
+        <td>C02"假高级编辑式"= 奶油底 / 低饱和绿 / 发丝线；impeccable 原文 rule-cream-palette（示例 #f5efe2）确认奶油底为 2026 第 3 代特征；附录A #19 同证。宪法示例色板 #FAFAF7 + #0D5C3F 自命中 2/5，边框 #E2E5DF 亦属发丝线族</td>
+        <td><span class="chip c-done">已修复</span> v2 色板降级为"每项目可换层"+ 内置自命中警示 + 默认值供述环节强制替换。并行搜索员C 补证（19:15）：用户 18:39 的 GPT 新产出即"墨绿+米白"——收敛正于该用户身上实时发生，自警非理论推演</td>
+      </tr>
+      <tr>
+        <td><b>③</b> 宪法与 60 条库缺排版层</td>
+        <td><span class="chip c-true">属实</span></td>
+        <td>v1【字阶】仅 6 档白名单 + 行高两值；无字距规则、无行长限制、无等宽数字、无字号比；铁律6"密度对比"无数值不可判定。60 条库字体排印区 10 条全为否定式症状，无正向数值层</td>
+        <td><span class="chip c-done">已修复</span> v2 新增 A 排版层 6 条数值条款（字距/行高分档/行长/tabular-nums/字号比/密度数值化）</td>
+      </tr>
+      <tr>
+        <td><b>④</b> #28"压缩字距"判反</td>
+        <td><span class="chip c-part">部分属实</span></td>
+        <td>impeccable 原文（Crushed letter spacing 条目）完整表述："Letter spacing pulled tighter than the point where characters keep their own shapes costs legibility. <b>Tighten display type optically, not destructively.</b>"——v1 引用无损但只录"压到变形"一半，缺"显示字级应光学校准收紧"的另一半；作为清单条目会被误读为"负字距 = AI 味"</td>
+        <td><span class="chip c-done">已定稿</span> 附录A #28 按 B2 核验报告升为"三域"表述：展示域该紧不紧（-0.01~-0.03em 惯例带，USWDS 官方 could 分档）/破坏性紧缩（&lt;-0.05em）/正文域负字距或 &gt;0.05em 加宽（规范值 0）；B2 深读 impeccable.style 原文证实其立场本为双向（"Tighten display type optically, not destructively"+正文宽字距判病），评审所批为 v1 条目残缺转述之误读风险（非 impeccable 原文立场），双方结论一致；附录B T1 数值带同步由 -0.02~-0.04em 修正为 -0.01~-0.03em、"必须"降格"宜"（USWDS 措辞 could，Material 2/3 反例已在案，禁标注为权威规范钉死数值）；#29 补域限定（短大写标签加宽属规范做法）</td>
+      </tr>
+      <tr>
+        <td><b>⑤</b> 五轴抽签抽的是流派名</td>
+        <td><span class="chip c-true">属实</span></td>
+        <td>v1 §4 第 3 步"每轴预置 6–8 个流派选项"——"瑞士风/编辑风"这类流派名本身是模型见过的统计众数，抽它等于没抽</td>
+        <td><span class="chip c-done">已修复</span> 改为"具体实例选项"（学某真实产品的某局部 + CSS 变量块/截图）；实例库已就绪无需用户填充（见 §五）。<b>归属澄清（搜索员C grep 取证，汇总员核实）</b>：C 原版交付的选项本为具体值、零流派名——"瑞士风/编辑风"表述系终版合并改写时引入，评审批评对象应为合并稿而非 C 原设计；C 原版 25 条具体值签文已回收为补充库，未弃用</td>
+      </tr>
+      <tr>
+        <td><b>⑥</b> 反馈回写无淘汰机制</td>
+        <td><span class="chip c-true">属实</span></td>
+        <td>v1 第 4 步"归纳成设计规则，追加进设计宪法"为纯增量；§5.1 工作方式"输出 v(n+1)"无上限无替换——半年后必然膨胀回根因 1（指令过载）</td>
+        <td><span class="chip c-done">已修复</span> v2 元规则 E1：A–D 层合计 ≤20 条（当前 19 条）+ 每新增 1 条必须合并/淘汰 1 条旧条款 + 回写输出变更日志；20:04 回填搜索员C 原版上限设计为组成性护栏——表述纪律（新条款一律正向数值式、硬禁令恒为 0）+ 1500 字体量闸（超限时下轮回写先合并压缩、后增补，当前正文约 1900 字为存量、不受追溯）</td>
+      </tr>
+      <tr>
+        <td><b>⑦</b> §5.4 模型自评与 §4 第 5 步冲突</td>
+        <td><span class="chip c-true">属实</span></td>
+        <td>v1 §4.5 明言"不要问 GPT'这版还有没有 AI 味'——它会表演性地说已全面优化"，§5.4 却要求 GPT 对照 10 簇自评"命中/未命中"——同为模型审美自评，冲突成立</td>
+        <td><span class="chip c-done">已修复</span> §5.4 改造：人工 3 秒并排对照为验收主体；GPT 降级为"描述式预筛器"（只报条款号/要求值/实际值/位置 + 结构事实枚举，只描述不评价、禁止判断好坏）；C01–C10 清单仅作人工参考。20:08 按搜索员C 分层论证补全：明确"描述式（可验证）≠评估式（会表演）"框架，比对项增补第 8 项结构枚举（分栏/卡片/强调色位置 → B1/B4/C1），出处注明沿承 C 原版 §E 自查设计；人工对照保持第一步（防被 GPT 报告锚定）</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- ============ §二 ============ -->
+  <h2>二、核心勘误明细 <span class="en">ERRATA</span></h2>
+
+  <div class="card">
+    <h3>2.1 ✅ NN/g "56% / 70% / 152%" —— 评审"数据造假"指控证伪，图表已恢复（搜索员B 原文取证）</h3>
+    <p>搜索员B 于 19:15–19:35 独立抓取 NN/g 原文逐字比对（报告《搜索员B_NNg数据与字距规范核验报告.md》），结论：<b>评审三项硬指控全部证伪</b>。① 56%/70%/152% 三个数字逐字存在于 NN/g 文章《Parallel &amp; Iterative Design + Competitive Testing = High Usability》（Therese Fessenden，nngroup.com/articles/parallel-and-iterative-design/），且为文章自己的三场景结论；② +152% 出处即原话 "After one iteration, measured usability was 152% higher…"，是百分比而非索引分——NN/g 官方自己就以 2.52/1.70 直接做比率运算；③ 56% 原文 "This approach resulted in measured usability 56% higher…" 逐字命中。</p>
+    <div class="warn">评审的核验方法缺陷（B1 判定）：只抓取了 1996 年论文页（nngroup.com/articles/parallel-design/，Nielsen &amp; Faber《Improving System Usability Through Parallel Design》），漏查了我方报告实际引用的 NN/g 文章——而我方来源行明确标注的篇名正是后者。评审在错误对象上得出"数据无原文支撑"结论；且其"索引分≠百分比"标准若成立，将同时否定 NN/g 官方摘要口径，自相矛盾。</div>
+    <p><b>处置（已执行）：</b>§4 图表已按 B1 两处修正恢复——场景一标签改为"4 个并行版本中挑最佳并迭代一轮"（NN/g 的 56% 含一轮迭代，纯挑选仅 +36%）、场景二为"合并各版本最佳创意"、场景三"合并设计后再迭代一轮"；来源行补齐作者+篇名+直链。引用链（本报告→alexlavaee→NN/g 文章）闭合。原 1996 论文页的 18% 数据与本案无关，不混用。</p>
+    <p class="mono" style="color:var(--ink-3);">教训入档：转引级复核不得当作原文级结论使用；后续所有数字引用统一标注取证层级（原文级 / 转引级 / 搜索级）。</p>
+  </div>
+
+  <div class="card">
+    <h3>2.2 WCAG 对比度勘误（附录B A5，落实搜索员C 实测）</h3>
+    <table>
+      <tr><th>组合</th><th>外部文档（经验估算）</th><th>实测（搜索员C 测定 + 本席 WCAG 公式复算，两法一致）</th><th>WCAG AA 判定</th></tr>
+      <tr><td class="mono">gray-400 (#9CA3AF) / 白</td><td class="mono">2.8:1</td><td class="mono"><b>2.54:1</b></td><td><span class="chip c-true">不达标</span>（差 4.5:1 甚远）</td></tr>
+      <tr><td class="mono">gray-500 (#6B7280) / gray-50 (#F9FAFB)</td><td class="mono">3.5:1</td><td class="mono"><b>4.63:1</b></td><td><span class="chip c-done">压线达标</span>（≥4.5:1）</td></tr>
+    </table>
+    <div class="note"><b>结论修正：</b>外部文档将 gray-500/gray-50 误判为"不达标"，实测为压线达标——"灰字病"检测线应收敛为：<b>gray-400 级及以下、或彩底灰字</b>才命中。附录B A5 行已改，宪法 v2 C1 启用水线（次文字对背景实测 ≥4.5:1，示例值 5.38:1）已同步校准。</div>
+  </div>
+
+  <div class="card">
+    <h3>2.3 #28"压缩字距"三域定稿（部分属实项，按 B2 核验报告收敛）</h3>
+    <p>B2 深读 impeccable.style 原文（作者 Paul Bakaus）证实其立场本为<b>双向</b>：①"Crushed letter spacing"条只反对破坏性过紧（字-form 变形），同句明确要求 display 大字<b>应当</b>光学收紧；②"Wide letter spacing on body text"条判正文 &gt;0.05em 宽字距为病。评审 T1 转述的"≥32px 也不收紧"与原文不符。<b>附录A #28 已定稿为三域表述</b>（展示域该紧不紧 -0.01~-0.03em 惯例带〔USWDS 官方 could 分档〕/ 破坏性紧缩 &lt;-0.05em / 正文域负字距或 &gt;0.05em 加宽〔规范值 0〕）；附录B T1 数值带由 -0.02~-0.04em 修正为 -0.01~-0.03em、"必须"降格"宜"；#29 补域限定。搜索员C 的"两种失效模式"判断方向正确，域归属按 B2 深读精化归档。</p>
+  </div>
+
+  <div class="card">
+    <h3>2.4 C3 圆角"禁 12–24px"证伪（外部文档过严）</h3>
+    <p>impeccable 原文：<i>"Cards top out around 12 to 16px; reserve full-pill for tags and buttons"</i>——12–16px 属正常容器档位。外部症状学文档 C3"圆角 ≤8px、禁 12–24px"与之直接冲突，且硬值禁令有"下一个众数"风险（don't-use-cream 悖论）。<b>宪法 v2 采用：控件 4px / 容器 12px 两档 + 胶囊仅限标签按钮</b>；附录B C3 降级注已补 impeccable 原文证据。</p>
+  </div>
+
+  <!-- ============ §三 ============ -->
+  <h2>三、统一词汇主表（一套词汇，四方通用） <span class="en">ROSETTA</span></h2>
+  <div class="card">
+    <p style="margin-bottom:10px;">此前三套词汇并存（评审方 L/C/T/P/M/W/E 七层 / 搜索员A 自查清单 8 维度 / 60 条库 7 大类）。即日起全部交付物统一以下表 8 码；"图像与装饰"升为独立码 I（60 条库原并入"交互动效与图像"，现拆分对齐 8 维度）：</p>
+    <table class="rosetta">
+      <tr><th>统一码</th><th>统一名</th><th>搜索员A 8维度清单</th><th>60 条库（附录A）</th><th>附录B 原层码</th></tr>
+      <tr><td>L</td><td>布局与结构</td><td>布局与结构</td><td>一 · 布局与结构（12条）</td><td>L 布局</td></tr>
+      <tr><td>T</td><td>字体排印</td><td>字体排印</td><td>三 · 字体排印（10条）</td><td>T 排版</td></tr>
+      <tr><td>P</td><td>色彩与对比</td><td>色彩与对比</td><td>二 · 色彩与对比（9条）</td><td>P 色彩</td></tr>
+      <tr><td>C</td><td>组件与细节</td><td>组件与细节</td><td>四 · 组件与视觉细节（9条）</td><td>C 组件</td></tr>
+      <tr><td>W</td><td>文案与语气</td><td>文案与语气</td><td>五 · 文案（6条）</td><td>W 文案</td></tr>
+      <tr><td>M</td><td>交互动效</td><td>交互动效</td><td>六 · 交互动效与图像（动效部分）</td><td>M 动效</td></tr>
+      <tr><td>I</td><td>图像与装饰</td><td>图像与装饰</td><td>六 · 交互动效与图像（图像部分）</td><td>（新增，原并入 C/M）</td></tr>
+      <tr><td>E</td><td>工程与质量</td><td>工程与质量</td><td>七 · 通用质量缺陷（5条）</td><td>E 工程</td></tr>
+    </table>
+    <p class="mono" style="color:var(--ink-3);">记忆口诀：L 布局 → T 排印 → P 色彩 → C 组件 → W 文案 → M 动效 → I 图像 → E 工程（LT-P-CW-MIE）。宪法 v2 的 A–D 五层为"生成端"分层（A 排版 / B 布局 / C 组件色彩 / D 内容姿态），与本表"验收端" 8 码通过附录B T1/L4 等条款号互相索引。</p>
+  </div>
+
+  <!-- ============ §四 ============ -->
+  <h2>四、设计宪法 v2（修订版全文） <span class="en">CONSTITUTION V2</span></h2>
+  <div class="note">修订思路 = 评审 §4.2：排版/布局数值硬约束优先 → 组件色彩设为每项目可换层 → 补内容姿态层 → 元规则含条款上限与等量替换。另按既定口径：<b>行为类负面禁令一律留在人工自检表（§5.4 / 附录A），不进模型指令。</b>纯文本粘贴版见群文件《设计宪法v2_可直接粘贴给ChatGPT.md》。</div>
+  <pre>你是一名资深产品界面设计师，负责为「财税核算工具」设计界面。以下是设计宪法 v2，全部条款由可判定的数值与正向要求构成；条款冲突按各层标注的优先级裁决，与宪法冲突的旧习惯一律作废。
+
+【A · 排版层｜优先级最高，数值跨项目通用】
+A1 字阶只允许 12 / 14 / 15 / 16 / 20 / 28 / 40px 共 7 档；正文固定 15px。
+A2 行高分档：≥28px 文字行高 1.2；20px 行高 1.4；≤16px 行高 1.7。
+A3 字距分档：≥28px 文字 letter-spacing 取 -0.01em ~ -0.03em（光学校准）；≤16px 文字一律 0，短大写标签的适度加宽除外（+0.025em ~ +0.12em，对应自检 T2/#29 口径）。
+A4 正文段落区行宽 34–45 个中文字符；表格区不设行宽限制。
+A5 全部数字（表格、合计、日期、进度）使用等宽数字：font-variant-numeric: tabular-nums。
+A6 同一视口内字号档位 ≤4 种；最大字号 ÷ 最小正文字号 ≥2.5（工具型界面取值；营销页建议 ≥3）。
+
+【B · 布局层｜数值硬约束】
+B1 信息优先用表格、列表、分隔线承载；容器嵌套最多 1 层（面板内不再放卡片）。发丝分隔线与序号步骤为合法结构元素——C02 反模式指"奶油底+衬线+低饱和绿+发丝线+01编号+零圆角"整包仿静奢，单品不连坐；序号仅用于真实操作序列，解释性卡片不得贴序号标签（D2）。分隔方式须多样化且有语义：同一数据区块内分隔手段 ≥2 种（粗线 / 细线 / 留白 / 背景色差 / 缩进）；连续细线密度 ≤ 每 4 行数据 1 条，分组线与区块边界线线宽分档（分组 1px、区块边界 2px），禁止全行统一 1px 铺满；合计行用背景色差承载，不加线。
+B2 间距只允许 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64px；同一内容组内相邻间距 ≤8px，不同组之间 ≥24px（组内密、组间疏）。
+B3 每页至少一处密度对比：一个区块间距用足下限（4–8px），一个区块留白用足上限（48–64px），两者同在首屏可见。
+B4 每页至少一处非模板结构：非对称分栏 / 跨列表头 / 行内展开 / 无容器直排内容，四选一。
+
+【C · 组件与色彩层｜数值锁定，本层随项目整体更换】
+说明：以下为示例起点。开工前的"默认值供述"环节必须逐项确认或替换本层全部数值；替换后本层整体生效。正式项目不得沿用示例色板——示例色板（奶油底+低饱和绿）本身处于第 3 代"假高级编辑式"风格边缘，仅作占位演示。
+C1 色板 6 色：背景 #FAFAF7、表面 #FFFFFF、主文字 #1A2E22、次文字 #5C6B62、边框 #E2E5DF、强调 #0D5C3F。启用水线：次文字对背景对比度实测 ≥4.5:1（示例值实测 5.38:1）；强调色每屏 ≤3 次；字体固定两族：标题思源黑体 Bold、数字与代码 IBM Plex Sans。
+C2 圆角两个档位：控件 4px、容器 12px；胶囊形仅用于标签与按钮。全站圆角值 ∈ {4px, 12px, 9999px}。
+C3 立体感只用一样：边框。浅阴影至多 1 处且限于浮层（0 1px 2px rgba(0,0,0,.05) 级）；同一元素上阴影与粗边框二选一。
+C4 深色模式重新生成而非反色：背景 #0F1512–#141414，正文 #E5E5E5，强调色降饱和 10–20%，用 1px 边框替代阴影。
+C5 图标一律线性图标库（如 Lucide），尺寸 16 / 20px 两档。
+C6 动效：过渡仅限 opacity 与 transform，duration 单档 ≤200ms；同一屏内带入场动画的元素 ≤1 个；全部动画必须包裹 prefers-reduced-motion 判定。
+
+【D · 内容姿态层】
+D1 界面只显示与用户当前任务直接相关的状态；过程性确认（"已保存""已关联"）进单一状态栏或可折叠日志，不占用主版面。
+D2 解释性内容默认折叠，点"查看依据"才展开；首屏只保留任务本体。
+D3 按钮与链接一律动词短语开头（查看 / 核对 / 导出 / 调整），描述用户要做的事。
+D4 占位数据用本领域真实格式的样例（真实税目名格式、真实金额格式）。
+
+【E · 元规则】
+E1 A–D 层条款合计 ≤20（当前 20 条）；每新增 1 条必须合并或淘汰 1 条旧条款，回写时输出变更日志"新增 X / 合并 Y / 淘汰 Z"。表述纪律：新条款一律正向数值式，硬禁令恒为 0；正文超 1500 字时，下一轮回写先合并压缩、后增补。
+E2 每条条款必须含数值或可判定检查方式；写不出判定方式的提案不收入。
+E3 冲突裁决：A > B > C > D；同层内冲突或宪法未覆盖的情形，停下来问我，不得自行取舍。
+
+【工作方式】
+- 我给出内容需求后，你先输出该页的信息层级（什么最重要→什么最次要），经我确认后再写代码。
+- 开工前先输出默认值供述表（主色/背景/字体栈/圆角/阴影/间距刻度/布局骨架），我逐项确认或替换后才允许写代码；C 层项目化替换在此环节完成。
+- 一次只做一个区块；每完成一个区块停下来等我人工修改反馈。
+- 我每次给修改意见时，你把修改点归纳成候选条款（含数值与判定方式），输出"设计宪法 v(n+1) + 变更日志"，遵守 E1 等量交换。
+- 全部样式值引用宪法数值；宪法未覆盖的值，先问我再写。
+- 交付自检的对照物是渲染后的产出页面，不是设计意图陈述；逐条对照产出物判定。</pre>
+
+  <div class="card" style="margin-top:16px;">
+    <h3>v1 → v2 变更日志（9 条，含 v2.1 增补）</h3>
+    <table>
+      <tr><th style="width:6%">#</th><th>变更</th><th style="width:38%">对应指控 / 依据</th></tr>
+      <tr><td>1</td><td>字阶白名单收编 15px（12/14/15/16/20/28/40 七档）</td><td>硬伤① 白名单自相矛盾</td></tr>
+      <tr><td>2</td><td>新增 A 排版层 6 条数值条款；铁律6 密度对比数值化（B3）</td><td>硬伤③ 缺排版层</td></tr>
+      <tr><td>3</td><td>行为类"禁止"条款全部清零（11–14 条 → 0 条），改写为正向数值锁定；黑名单类移入人工自检</td><td>硬伤① 禁令超标 + 粉红大象机理</td></tr>
+      <tr><td>4</td><td>色板降级为"每项目可换层"+ 自命中警示 + 默认值供述环节强制替换</td><td>硬伤② 色板命中 C02</td></tr>
+      <tr><td>5</td><td>圆角改"控件 4px / 容器 12px"两档；阴影限"至多 1 处浅影限浮层"</td><td>impeccable 原文（Cards top out 12–16px）</td></tr>
+      <tr><td>6</td><td>新增 D 内容姿态层 4 条（过程性状态/解释欲/动词短语/真实占位）</td><td>评审 §4.2 建议层；源自报告 §3.2 病灶正向化</td></tr>
+      <tr><td>7</td><td>新增 E 元规则：≤20 条上限 + 等量交换 + 判定方式必填 + 同层冲突问人</td><td>硬伤⑥ 回写无淘汰机制</td></tr>
+      <tr><td>8</td><td>工作方式：供述表兼做 C 层项目化替换；回写输出变更日志</td><td>评审 §4.3 操作修补</td></tr>
+      <tr><td>9</td><td><strong>v2.1（19:48）</strong>：B1 追加"放行"判定——发丝分隔线与序号步骤为合法结构元素（C02 指"奶油底+衬线+低饱和绿+发丝线+01编号+零圆角"整包仿静奢，单品不连坐；序号仅限真实操作序列，解释性卡片不得贴序号标签，衔接 D2）</td><td>评审 §2.3 两个"放行"项（发丝分隔线、01 编号步骤）须明确表态，不留未判定灰区</td></tr>
+      <tr><td>10</td><td><strong>v2.2（22:30）</strong>：A3 补短大写标签豁免（+0.025em ~ +0.12em，对应自检 T2/#29 口径）——消除“≤16px 一律 0”与 #29 的冲突</td><td>外部评审终审残留 1</td></tr>
+      <tr><td>11</td><td><strong>v2.2（22:30）</strong>：新增 C6 动效条款（过渡仅限 opacity/transform、duration ≤200ms 单档、一屏入场动画 ≤1、必包 prefers-reduced-motion），E1 计数 19→20</td><td>外部评审终审残留 2 · 实战执行日志 §3.2 实证</td></tr>
+      <tr><td>12</td><td><strong>v2.3（22:45）</strong>：B1 追加分隔多样化与线密度定量上限（≥2 种分隔手段、连续细线 ≤ 每 4 行 1 条、线宽分档、合计用底色）；工作方式追加自检对照物铁律；卡库 v1.2 已锁轴映射规则（气质参数强制）</td><td>实战首案终审（用户判定"经典 AI 风格"）· 教训档案立案</td></tr>
+    </table>
+  </div>
+
+    <p style="border:1.5px solid #2E5B7D;padding:14px 18px;margin:24px 0;font-size:13.5px;"><b>v2.2 增补（2026-09-02 22:30，执行外部终审残留项）：</b>① 宪法 A3 补短大写标签豁免（+0.025em ~ +0.12em，对应自检 T2/#29 口径），消除“≤16px 一律 0”与 #29 的冲突（终审残留 1）；② 宪法新增 C6 动效条款（过渡仅限 opacity/transform、duration ≤200ms 单档、一屏入场动画 ≤1、必包 prefers-reduced-motion），E1 计数 19→20（终审残留 2，实战执行日志 §3.2 实证：写展开动画时宪法无可引动效条款）；③ 附录A #28 归因句修正：评审所批对象为 v1 条目仅录半句的残缺转述（勘误表④同认定“作为清单条目会被误读”），并非 impeccable 原文立场，双方结论一致（终审残留 3）。三处已同步《设计宪法v2》《终版报告》《附录A》。</p>
+<p style="border:1.5px solid #2E5B7D;padding:14px 18px;margin:24px 0;font-size:13.5px;">'
+            '<b>v2.3 增补（2026-09-02 22:45，实战首案教训固化，用户终审判定产出为"经典 AI 风格"）：</b>'
+            '① 宪法 B1 追加分隔多样化与线密度定量上限——实战首案实测"合规最大化病"：B1 表格合法被执行成唯一容器、发丝线放行被执行成每行一条（Tailwind divide-y 路径依赖）；'
+            '② 宪法工作方式追加"自检对照物是渲染后产出页，不是设计意图陈述"——首案自检拿设计意图对照，C02 组合签名（米白+宋体标题+满页细线）漏检，人工终审命中 3/5 触发阻断线；'
+            '③ 卡库 v1.2 增已锁轴映射规则：气质参数（字重/对比度/x-height）强制携带——首案 Canela→宋体映射只搬"衬线"皮肤丢了 Light 骨架，字重选 600 不选 300 系渲染安全偏置第三次发作。'
+            '完整案件档案见《反AI前端工作包_教训档案_实战首案.md》。维护职责已移交（原研究团队关闭，由本执行方接替），维护纪律继承：E1 等量交换、条款数值化、每次修订带变更日志。</p>
+
+
+<!-- ============ §五 ============ -->
+  <h2>五、未尽事项 <span class="en">PENDING</span></h2>
+  <div class="card">
+    <ol>
+      <li><b>NN/g 数据终改</b>——<b>已闭环</b>：搜索员B 原文取证证实三项指控全为证伪（核验对象错位），图表已按 B1 修正恢复（标签+来源行），详见 §2.1。评审修订全流程至此 100% 关闭。</li>
+      <li><b>五轴实例选项库</b>——<strong>已就绪（A 库 v1.2 + C 库补充，共 57 条）</strong>：①搜索员A《五轴抽签法·具体可执行实例库 v1.3.1》32 条（真实 URL + computed-style 证据 + 可复制 token + 逐条"锚定理由"句；v1.2 增量：锚定理由补齐、11 个站点/文档页 URL 免登录实测直开、flaskandfield.com 实采使 F6 由转述升级为直接证据；v1.3.1 增量：F7-F10 单轴签名卡条目入列（pudding/nymag/thecut 生产环境直采）；内含规划师 MECE 4 处增量——轴二补 F6/F7 破无衬线扎堆、F1–F4 字族性格谱系定位、轴四"决策层/基建层"正交口径、轴五 A1/A4 以是否引入新色相为分割线）。②搜索员C 原版具体值签文《补充库》25 条——<b>归属澄清</b>：C 原版选项本为具体值、零流派名（grep 实证），"瑞士风/编辑风"系终版合并改写引入；C 原设计回收为"具体值直配式"补充池，补 A 库缺位：全直角+细边框、中文配对（思源宋体+系统黑体等）、暗色板、表格式布局等，中文页面字体轴建议抽 C 库。抽签规则：两库分池（站点锚定式/具体值直配式各 50%）+ 定期轮换防库固化。<b>抽签单元双路线（回应 C 的 §2.4 升级建议，20:00）</b>：默认整卡抽——《五轴抽签法_视觉身份预设卡库》10 张已组（Linear/Vercel/GitHub/Stripe/Tailwind/Flask & Field/IBM Carbon/pudding/nymag/thecut，整卡+单轴签名卡混合〔Open Props 出池转卡内基建引用〕，同站锚定+完整 CSS 变量块+真实 URL；已锁值全部来自 A 库实测，未覆盖轴标"待落纸槽位"由人工补选，零虚构）——零残值防众数回滑；进阶跨站五轴混抽（组合空间更大，人工补残值）。两路线终点均为宪法落纸闸门。汇总员核验：A 库逐条实读+结构清点，C 库 grep 实证零流派名；用户可直接抽签选用或增删品牌，无需再自制签文。抽中签文经确认后写入宪法 C 层（每项目可换层）。</li>
+      <li><b>示例色板项目化</b>——C 层 #FAFAF7 系示例占位（自命中 C02 已警示），正式启用前须走默认值供述流程：项目色 → 实测对比度 ≥4.5:1 → 确认写入宪法 v(n)。</li>
+    </ol>
+  </div>
+
+  <div class="foot">
+    验证与分工声明：七项指控核对由汇总员对终版报告/附录A/附录B 原文逐条复核完成（含"≤9 条"声明处清点、15px 白名单比对、C02 特征比对、§5.4 与 §4.5 原文比对）；#28 与 C3 的裁定证据取自 impeccable.style 原文（搜索员A 抓取存档 r8_impeccable_slop.json）；WCAG 数值由搜索员C 实测、汇总员按 WCAG 相对亮度公式独立复算，两法一致；NN/g 挂起项已由搜索员B 原文取证闭环（三项指控证伪、图表恢复，见 §2.1；B2 深读 impeccable 原文完成 #28 三域定稿）。修订已同步写入《终版报告》《附录A》《附录B》三份在库交付物。评审对诊断部分（§1.1 负面清单只约束审查行为等）的肯定意见已确认保留，未做任何改动。
+  </div>
+</div>
+</body>
+</html>

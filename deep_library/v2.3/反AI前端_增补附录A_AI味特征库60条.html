@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>增补附录 A · AI 生成 UI 特征库 60 条（可检验版）</title>
+<style>
+  :root{
+    --ink:#211E19; --sub:#6B655B; --bg:#FFFFFF; --panel:#F7F5F0; --panel2:#FAF9F5;
+    --line:#E6E2D9; --acc:#C2401D; --blue:#2E5B7D; --ok:#3E7A4E; --bad:#B03A2E;
+    --mono:ui-monospace,"SF Mono","Cascadia Mono",Consolas,"Courier New",monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    font-family:"PingFang SC","Hiragino Sans GB","Source Han Sans SC","Microsoft YaHei",sans-serif;
+    color:var(--ink); background:var(--bg); font-size:15.5px; line-height:1.75;
+  }
+  .wrap{max-width:1000px;margin:0 auto;padding:0 28px 90px;}
+
+  header{padding:64px 0 30px;border-bottom:3px solid var(--ink);}
+  .kicker{display:inline-block;font-size:12.5px;letter-spacing:.22em;color:var(--acc);font-weight:700;margin-bottom:16px;}
+  h1{font-size:37px;line-height:1.25;font-weight:800;letter-spacing:.01em;}
+  .subtitle{margin-top:12px;font-size:17px;color:var(--sub);font-weight:400;max-width:46em;}
+  .meta-strip{margin-top:26px;display:flex;flex-wrap:wrap;gap:8px 26px;font-size:13px;color:var(--sub);}
+  .meta-strip b{color:var(--ink);font-weight:600;}
+  .credit{margin-top:8px;font-size:13px;color:var(--sub);}
+  .credit b{color:var(--ink);}
+
+  section{padding-top:56px;}
+  .sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:10px;}
+  .sec-num{font-family:var(--mono);font-size:40px;font-weight:700;color:var(--acc);line-height:1;}
+  h2{font-size:24px;font-weight:800;line-height:1.35;}
+  .sec-lead{color:var(--sub);max-width:52em;margin-bottom:26px;}
+  h3{font-size:17.5px;font-weight:700;margin:34px 0 12px;}
+  h3 .tag{font-family:var(--mono);font-size:12px;color:var(--acc);font-weight:700;margin-right:8px;vertical-align:2px;}
+  p{margin:10px 0;}
+  strong{font-weight:700;}
+  em{font-style:normal;background:linear-gradient(transparent 62%, rgba(194,64,29,.16) 0);padding:0 1px;}
+  .muted{color:var(--sub);font-size:13.5px;}
+  .mono{font-family:var(--mono);font-size:.93em;}
+
+  .verdict{border:2px solid var(--ink); padding:26px 30px; margin:6px 0 30px; background:var(--panel2);}
+  .verdict .vlabel{font-size:12px;letter-spacing:.2em;font-weight:700;color:var(--acc);margin-bottom:10px;}
+  .verdict p{font-size:16.5px;line-height:1.9;margin:0;}
+
+  blockquote{border-left:3px solid var(--acc);background:var(--panel2);padding:16px 22px;margin:16px 0;font-size:14.5px;}
+  blockquote .src{display:block;margin-top:8px;font-size:12.5px;color:var(--sub);}
+  .inference{border:1.5px solid var(--ink);padding:20px 24px;margin:24px 0;background:var(--bg);}
+  .inference .vlabel{font-size:12px;letter-spacing:.2em;font-weight:700;color:var(--acc);margin-bottom:8px;}
+  .note{background:var(--panel);padding:14px 20px;margin:16px 0;font-size:13.5px;color:var(--sub);}
+  .note b{color:var(--ink);}
+
+  table{width:100%;border-collapse:collapse;margin:14px 0 8px;font-size:13.8px;}
+  th{font-size:12.5px;letter-spacing:.05em;color:var(--sub);font-weight:700;text-align:left;padding:8px 12px;border-top:2px solid var(--ink);border-bottom:1px solid var(--line);background:var(--panel2);}
+  td{padding:8px 12px;border-bottom:1px solid var(--line);vertical-align:top;}
+  tr:nth-child(even) td{background:var(--panel2);}
+  td .srcm{color:var(--sub);font-size:12.3px;}
+
+  .pill{display:inline-block;font-family:var(--mono);font-size:11.5px;font-weight:700;padding:1px 8px;border-radius:3px;}
+  .pill.hit{color:#8A5A00;background:#FBF0D9;}
+  .pill.new{color:var(--acc);background:#F9ECE5;}
+  .pill.ok{color:var(--ok);background:#EDF4EE;}
+
+  .stat-strip{display:flex;flex-wrap:wrap;gap:10px 0;border-top:2px solid var(--ink);border-bottom:1px solid var(--line);padding:18px 0;margin:8px 0 30px;}
+  .stat{flex:1 1 150px;padding:2px 20px;border-left:1px solid var(--line);}
+  .stat:first-child{border-left:none;padding-left:2px;}
+  .stat .v{font-family:var(--mono);font-size:23px;font-weight:700;letter-spacing:-.01em;}
+  .stat .v i{font-style:normal;font-size:13px;color:var(--sub);margin-left:2px;}
+  .stat .k{font-size:12.5px;color:var(--sub);margin-top:2px;line-height:1.5;}
+  .stat .v.red{color:var(--acc);}
+
+  .chart{margin:20px 0 6px;border:1px solid var(--line);padding:22px 24px 18px;}
+  .chart .ct{font-size:13px;font-weight:700;letter-spacing:.04em;margin-bottom:4px;}
+  .chart .cs{font-size:12.5px;color:var(--sub);margin-bottom:14px;}
+  .bar-row{display:flex;align-items:center;gap:12px;margin:7px 0;}
+  .bar-row .bl{flex:0 0 168px;font-size:12.8px;color:var(--sub);text-align:right;}
+  .bar-track{flex:1;background:var(--panel);height:20px;position:relative;}
+  .bar-fill{height:100%;background:var(--blue);position:relative;}
+  .bar-fill.top{background:var(--acc);}
+  .bar-row .bv{flex:0 0 64px;font-family:var(--mono);font-size:12.5px;font-weight:700;}
+  .chart .foot{margin-top:12px;padding-top:10px;border-top:1px dashed var(--line);font-size:12.5px;color:var(--sub);}
+  .chart .foot b{color:var(--acc);}
+
+  /* 三代演化时间带 */
+  .gen-band{display:flex;flex-wrap:wrap;margin:20px 0;border:1px solid var(--line);}
+  .gen{flex:1 1 280px;padding:20px 22px 22px;border-left:1px solid var(--line);position:relative;}
+  .gen:first-child{border-left:none;}
+  .gen .gtag{font-family:var(--mono);font-size:12px;font-weight:700;color:var(--acc);letter-spacing:.06em;}
+  .gen h4{font-size:16px;margin:4px 0 2px;}
+  .gen .win{font-family:var(--mono);font-size:12px;color:var(--sub);}
+  .gen ul{padding-left:18px;font-size:13.2px;color:var(--ink);margin:8px 0 0;}
+  .gen li{margin:3px 0;}
+  .gen .gsrc{margin-top:10px;font-size:12px;color:var(--sub);}
+  .gen.hot{background:#FBF6EE;border-top:3px solid var(--acc);}
+  .gen .crown{position:absolute;top:-11px;right:14px;background:var(--acc);color:#fff;font-size:11px;font-family:var(--mono);font-weight:700;padding:1px 9px;letter-spacing:.06em;}
+
+  .steps3{display:flex;flex-wrap:wrap;gap:14px;margin:18px 0;}
+  .steps3 .u{flex:1 1 280px;border:1px solid var(--line);padding:16px 18px;position:relative;}
+  .steps3 .u .lv{position:absolute;top:-11px;left:16px;background:var(--ink);color:#fff;font-family:var(--mono);font-size:11.5px;font-weight:700;padding:2px 10px;letter-spacing:.08em;}
+  .steps3 .u h4{font-size:15px;margin:8px 0 6px;}
+  .steps3 .u p{font-size:13.3px;color:var(--sub);margin:0;}
+
+  .hygiene{border:1px dashed var(--sub);padding:16px 20px;margin:18px 0;font-size:13.5px;color:var(--sub);}
+  .hygiene b{color:var(--ink);}
+  footer{margin-top:70px;border-top:3px solid var(--ink);padding-top:18px;font-size:12.8px;color:var(--sub);line-height:1.8;}
+  @media (max-width:720px){ h1{font-size:28px;} .sec-num{font-size:30px;} .bar-row .bl{flex-basis:118px;} .stat{flex:1 1 46%;} }
+  @media print{ .chart,.verdict,.inference,.gen-band{break-inside:avoid;} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="kicker">终版报告 · 增补附录 A · 与主报告配套使用</div>
+  <h1>AI 生成 UI 特征库（60 条可检验版）</h1>
+  <div class="subtitle">主报告交付后，搜索员 A 超额完成"特征库"任务（要求 ≥30 条，实交 60 条）。经交叉验证无误，整理为本增补附录——它是主报告 §3.3 特征清单与 §5.4 交付自检表的<strong>完整版条目池</strong>。</div>
+  <div class="meta-strip">
+    <span>配套文件：<b>《反AI前端_失效诊断与替代方案_终版报告.html》</b></span>
+    <span>特征条目：<b>60 条</b>（7 大类，每条含检测点与来源）</span>
+    <span>产出方：<b>并行搜索员 A</b>（任务A）· 整合核验：<b>报告汇总员</b></span>
+    <span>日期：<b>2026-09-02</b></span>
+  </div>
+  <div class="credit">信源：15 个可追溯来源（impeccable.style、The New Yorker、dev.to、prg.sh、知乎、925studios 等），全部经搜索员 A 标注、汇总员与主报告论据交叉核对。</div>
+</header>
+
+<!-- ================= 00 使用须知 ================= -->
+<section id="s0">
+  <div class="sec-head"><span class="sec-num">00</span><h2>使用须知：这是"审查工具"，不是"生成规则"</h2></div>
+  <div class="verdict">
+    <div class="vlabel">一句话定位</div>
+    <p>这 60 条用来<strong>检查与沟通</strong>（交付自检、双人评审、程序化检测），<strong>不要塞回 prompt 当禁令清单</strong>——主报告根因 4 已证明：负面清单只会让模型把固定色板在注意力里过一遍，管不住生成行为。生成端靠"设计宪法 + 真实参考 + 默认值审讯"（主报告 §4–§5），验收端才用本库。</p>
+  </div>
+  <div class="steps3">
+    <div class="u"><span class="lv">用法 ①</span><h4>日常快检（每次交付）</h4><p>只抽 12 条精选（§4 推荐清单），配合主报告 §5.4 交付自检表，2 分钟完成。</p></div>
+    <div class="u"><span class="lv">用法 ②</span><h4>全量体检（重大交付 / 月度）</h4><p>60 条逐项过，可人工核对，也可按 impeccable 的 <span class="mono">npx impeccable detect</span> 程序化辅助。</p></div>
+    <div class="u"><span class="lv">用法 ③</span><h4>预警更新（防清单过时）</h4><p>AI 味在快速代际演化（见 §1），每季度重审一次标 <span class="pill new">2026新</span> 的条目——死背清单没有出路，主报告 §3.3 已有此警告。</p></div>
+  </div>
+</section>
+
+<!-- ================= 01 三代演化 ================= -->
+<section id="s1">
+  <div class="sec-head"><span class="sec-num">01</span><h2>背景：AI 味的三代演化——你的截图属于第三代</h2></div>
+  <p class="sec-lead">这是本特征库最有价值的背景结论：AI 味不是静态清单，而是<strong>每 1–2 年换一套皮的全局循环</strong>。禁掉一代，模型跳到下一代。</p>
+
+  <div class="gen-band">
+    <div class="gen">
+      <div class="gtag">第一代</div>
+      <h4>「紫渐变」SaaS 风</h4>
+      <div class="win">2022 – 2024</div>
+      <ul>
+        <li>紫色渐变、玻璃拟态</li>
+        <li>霓虹发光、暗底青色</li>
+        <li>emoji 图标、渐变文字</li>
+      </ul>
+      <div class="gsrc">代表信源：Impeccable 官方时代对比图</div>
+    </div>
+    <div class="gen">
+      <div class="gtag">第二代</div>
+      <h4>「shadcn / Indigo」风</h4>
+      <div class="win">2025 – 2026 初</div>
+      <ul>
+        <li>Tailwind indigo-500 默认主色</li>
+        <li>Inter 字体、万物 16px 圆角</li>
+        <li>三卡片布局、卡片色条</li>
+      </ul>
+      <div class="gsrc">代表信源：dev.to/alanwest、freedesignmd</div>
+    </div>
+    <div class="gen hot">
+      <span class="crown">你的截图在这一代</span>
+      <div class="gtag">第三代</div>
+      <h4>「Claudian 米白」风</h4>
+      <div class="win">2026 至今</div>
+      <ul>
+        <li>燕麦 / 米白底、铁锈橙按钮</li>
+        <li>斜体衬线大标题、chips 泛滥</li>
+        <li>自动跑马灯、万物 dashboard</li>
+      </ul>
+      <div class="gsrc">代表信源：The New Yorker（Chayka 2026-06）、Medium/Valerie 2026-07</div>
+    </div>
+  </div>
+
+  <p><strong>对你的两个直接含义：</strong></p>
+  <p>① <em>命名即实锤</em>：《纽约客》专栏作家 Kyle Chayka 已将第三代定名为 <strong>"Claudian sameness"（Claude 式同质化）</strong>，Anthropic 官方文档承认 Claude "有强大设计直觉、有一致且持久的默认 house style"，且默认风格酷似 Anthropic 自家品牌（米白 + 衬线）——你的截图（奶油底 + 墨绿 + 发丝线）正是落入了这套第三代模板。</p>
+  <p>② <em>禁令悖论的第三方实测</em>：设计公司 Ström-Awn 的实验结论——<strong>"don't use cream" 这类泛化禁令只会让模型跳到另一个固定色板，而不是产生多样性</strong>。这是主报告根因 4（粉红大象效应）的又一独立实证，与 16x Eval、Anthropic 官方建议三方同源。</p>
+  <blockquote>"don't use cream" → 模型没有学会多样性，只是换了一身固定皮。你的包列出 C01–C10 十个"要避开"的簇，等于把所有固定色板在注意力里过了一遍。
+    <span class="src">—— Ström-Awn 实测，经 northeasttimes.com 2026-07-31 转述 The New Yorker；与主报告 §2 根因 4 互证</span>
+  </blockquote>
+</section>
+
+<!-- ================= 02 总览图 ================= -->
+<section id="s2">
+  <div class="sec-head"><span class="sec-num">02</span><h2>60 条特征的结构总览</h2></div>
+
+  <div class="stat-strip">
+    <div class="stat"><div class="v red">60<i>条</i></div><div class="k">可检验特征（任务要求 ≥30）</div></div>
+    <div class="stat"><div class="v">7<i>大类</i></div><div class="k">布局 / 色彩 / 字体 / 组件 / 文案 / 动效 / 质量</div></div>
+    <div class="stat"><div class="v">7<i>条</i></div><div class="k">第三代"2026 新"特征</div></div>
+    <div class="stat"><div class="v">15<i>个</i></div><div class="k">可追溯信源（附录 C）</div></div>
+    <div class="stat"><div class="v">66<i>条</i></div><div class="k">impeccable 外部检测库（互证）</div></div>
+  </div>
+
+  <div class="chart">
+    <div class="ct">特征条目的类别分布</div>
+    <div class="cs">数据来源：搜索员 A《AI 生成 UI 特征库（60 条）》逐条归类统计</div>
+    <div class="bar-row"><span class="bl">一 · 布局与结构</span><div class="bar-track"><div class="bar-fill top" style="width:100%"></div></div><span class="bv">12</span></div>
+    <div class="bar-row"><span class="bl">三 · 字体排印</span><div class="bar-track"><div class="bar-fill" style="width:83%"></div></div><span class="bv">10</span></div>
+    <div class="bar-row"><span class="bl">二 · 色彩与对比</span><div class="bar-track"><div class="bar-fill" style="width:75%"></div></div><span class="bv">9</span></div>
+    <div class="bar-row"><span class="bl">四 · 组件与视觉细节</span><div class="bar-track"><div class="bar-fill" style="width:75%"></div></div><span class="bv">9</span></div>
+    <div class="bar-row"><span class="bl">六 · 交互动效与图像</span><div class="bar-track"><div class="bar-fill" style="width:75%"></div></div><span class="bv">9</span></div>
+    <div class="bar-row"><span class="bl">五 · 文案</span><div class="bar-track"><div class="bar-fill" style="width:50%"></div></div><span class="bv">6</span></div>
+    <div class="bar-row"><span class="bl">七 · 通用质量缺陷</span><div class="bar-track"><div class="bar-fill" style="width:42%"></div></div><span class="bv">5</span></div>
+    <div class="foot">注意：<b>布局 + 字体 + 色彩三类占了全部条目的一半以上</b>——与主报告 §3.2 的病理分析一致：AI 味的主战场在骨架层，而非皮肤层。</div>
+  </div>
+</section>
+
+<!-- ================= 03 完整 60 条 ================= -->
+<section id="s3">
+  <div class="sec-head"><span class="sec-num">03</span><h2>特征库全文（60 条，含检测点与来源）</h2></div>
+  <p class="muted">图例：<span class="pill hit">截图同款</span> = 你上传截图中出现的特征（搜索员 A 标注，与主报告 §1、§3.2 判定一致）　<span class="pill new">2026新</span> = 第三代"Claudian 米白"新增特征。命中不等于必须修改，但<strong>命中 ≥3 项时必须逐项写出领域理由</strong>（借用水印包自身的阻断规则哲学，把它用在正途）。</p>
+
+  <h3><span class="tag">一</span>布局与结构（12 条）</h3>
+  <table>
+    <tr><th style="width:4%">#</th><th style="width:30%">特征</th><th>检测点</th></tr>
+    <tr><td class="mono">1</td><td>首屏居中大标题 + 单个 CTA 按钮</td><td>hero 区文字居中、垂直堆叠、下方一枚全宽按钮 <span class="srcm">（prg.sh；925studios）</span></td></tr>
+    <tr><td class="mono">2</td><td>三个等宽 feature 卡片并排，各带图标</td><td>3 列网格、图标+标题+两行描述完全同构 <span class="srcm">（prg.sh；dev.to/alanwest；知乎@鱼皮）</span></td></tr>
+    <tr><td class="mono">3</td><td>完全相同尺寸的卡片网格</td><td>同屏卡片宽高完全一致、内容结构雷同 <span class="srcm">（impeccable）</span></td></tr>
+    <tr><td class="mono">4</td><td>嵌套卡片（卡片套卡片）</td><td>Card 内部再放 Card、border 嵌套 <span class="srcm">（impeccable）</span></td></tr>
+    <tr><td class="mono">5</td><td>Hero 指标布局：超大数字 + 小标签 + 三个辅助数据 <span class="pill hit">截图同款</span></td><td>KPI 卡片链：大号等宽数字 + 灰色小标签 <span class="srcm">（impeccable；与主报告 §3.2 病灶 1 一致）</span></td></tr>
+    <tr><td class="mono">6</td><td>装饰性网格线背景</td><td>body/section 上叠加 grid 纹理背景 <span class="srcm">（impeccable）</span></td></tr>
+    <tr><td class="mono">7</td><td>单列拉伸占满首屏</td><td>首屏只有一列内容却被拉满宽度 <span class="srcm">（impeccable）</span></td></tr>
+    <tr><td class="mono">8</td><td>等距单调间距</td><td>所有 section 间距完全相同（如统一 py-16） <span class="srcm">（impeccable）</span></td></tr>
+    <tr><td class="mono">9</td><td>万物统一 16px 圆角</td><td>rounded-xl 用在按钮/卡片/图片/输入框一切元素上 <span class="srcm">（925studios；freedesignmd）</span></td></tr>
+    <tr><td class="mono">10</td><td>卡片紧贴滚动条边缘</td><td>卡片边缘与 viewport 零呼吸 <span class="srcm">（impeccable）</span></td></tr>
+    <tr><td class="mono">11</td><td>行长超长</td><td>单行文本 &gt;90 字符仍在通栏排 <span class="srcm">（impeccable）</span></td></tr>
+    <tr><td class="mono">12</td><td>仪表盘病：把一切页面做成 dashboard</td><td>落地页/作品集也排成 KPI 面板；The New Yorker 点名 Claude 高发 <span class="srcm">（northeasttimes；muz.li；截图的 C06 之骨）</span></td></tr>
+  </table>
+
+  <h3><span class="tag">二</span>色彩与对比（9 条）</h3>
+  <table>
+    <tr><th style="width:4%">#</th><th style="width:30%">特征</th><th>检测点</th></tr>
+    <tr><td class="mono">13</td><td>紫罗兰渐变 + 暗底青色</td><td>purple/violet gradient、cyan-on-dark 是"最可识别的 AI 生成信号" <span class="srcm">（impeccable）</span></td></tr>
+    <tr><td class="mono">14</td><td>Tailwind indigo-500 默认主色</td><td>bg-indigo-500 / #6366F1 直接出现（2025-08 Wathan 公开道歉，推文 100 万+ 浏览） <span class="srcm">（dev.to/alanwest；prg.sh）</span></td></tr>
+    <tr><td class="mono">15</td><td>深色模式 + 发光强调色</td><td>dark bg + neon glow 按钮/边框 <span class="srcm">（impeccable；prg.sh）</span></td></tr>
+    <tr><td class="mono">16</td><td>径向渐变光晕背景</td><td>暗页面上饱和 radial glow "光斑" <span class="srcm">（impeccable）</span></td></tr>
+    <tr><td class="mono">17</td><td>渐变文字</td><td>bg-clip-text 彩虹渐变标题 <span class="srcm">（impeccable；dev.to）</span></td></tr>
+    <tr><td class="mono">18</td><td>彩色背景上的灰字</td><td>低对比标签不可读 <span class="srcm">（impeccable）</span></td></tr>
+    <tr><td class="mono">19</td><td>米白 / 奶油 / 燕麦色背景 <span class="pill new">2026新</span> <span class="pill hit">截图同款</span></td><td>#F7F4EF 类奶油底；Impeccable 已把 cream palette 列为规则："已成为 AI 反射性抓取的'有品味'默认表面" <span class="srcm">（impeccable；medium/Valerie）</span></td></tr>
+    <tr><td class="mono">20</td><td>铁锈橙强调色 <span class="pill new">2026新</span></td><td>"One rusty-orange button trying very hard to be the brand" <span class="srcm">（medium/Valerie；northeasttimes）</span></td></tr>
+    <tr><td class="mono">21</td><td>装饰性用色而非语义用色</td><td>颜色不携带功能含义、纯为"好看"；对照 Notion（黄=高亮/蓝=链接/红=警告） <span class="srcm">（925studios）</span></td></tr>
+  </table>
+
+  <h3><span class="tag">三</span>字体排印（10 条）</h3>
+  <table>
+    <tr><th style="width:4%">#</th><th style="width:30%">特征</th><th>检测点</th></tr>
+    <tr><td class="mono">22</td><td>Inter / Geist / Space Grotesk 过用</td><td>全站无衬线=Inter；"每一波 AI 生成 UI 都收敛到同一把字体" <span class="srcm">（impeccable；prg.sh）</span></td></tr>
+    <tr><td class="mono">23</td><td>Instrument Serif 反射性使用 <span class="pill new">2026新</span></td><td>"最新反射"是 Instrument Serif 做大标题 <span class="srcm">（impeccable）</span></td></tr>
+    <tr><td class="mono">24</td><td>全站单一字体</td><td>标题正文同一字族、无对比、扁平 <span class="srcm">（impeccable）</span></td></tr>
+    <tr><td class="mono">25</td><td>眉标 + 超大 hero 标题组合</td><td>大写小字 kicker 悬在 72px+ 标题上 <span class="srcm">（impeccable）</span></td></tr>
+    <tr><td class="mono">26</td><td>斜体衬线大标题 <span class="pill new">2026新</span></td><td>italic serif display headline <span class="srcm">（impeccable；northeasttimes）</span></td></tr>
+    <tr><td class="mono">27</td><td>扁平字阶</td><td>标题与正文仅靠大小区分、无字族/字重对比 <span class="srcm">（impeccable）</span></td></tr>
+    <tr><td class="mono">28</td><td>字距失准（三域） <span class="pill new">v2 勘误·B2 定稿</span></td><td>病灶是三个域的三个极端：① <strong>展示域</strong>（宪法口径 ≥28px；USWDS 官方自 22px 起分档）该收紧时不收紧——AI 默认 display 字距 0，缺 -0.01~-0.03em 级光学校准（USWDS 官方 "could" 分档：≥22px→-0.01em、≥32px→-0.02em、≥64px→-0.03em；TypographyMaster 32px+ 同带；Tailwind tracking-tight -0.025em；特大 display 可至 -0.05em，Refactoring UI）；② letter-spacing 压过字符变形阈值（&lt; -0.05em 级破坏性紧缩）；③ <strong>正文域</strong>（≤16px）负字距或 &gt;0.05em 加宽——正文规范值为 0（TypographyMaster "Never track body text"；Kevin Powell 小字宜松；impeccable "Wide letter spacing on body text" 条；WCAG 1.4.12 要求正文可容忍 +0.12em 用户调节）。impeccable 原文 "Tighten display type optically, not destructively"——负字距本身是专业排版必修项，<strong>不是</strong> AI 味；v1 误读为"紧=AI味"已废；B2 深读证实 impeccable 立场本为双向（display 应光学收紧、正文勿加宽），评审所批对象为 v1 条目仅录"压到变形"半句的残缺转述（勘误表④同认定"作为清单条目会被误读"），并非 impeccable 原文立场——双方结论一致：展示域该紧不紧为病 <span class="srcm">（impeccable·Crushed letter spacing / Wide letter spacing on body text；USWDS Typography+官方 token 表；B2 字距核验报告 2026-09-02）</span></td></tr>
+    <tr><td class="mono">29</td><td>宽字距大写副标题 <span class="pill new">2026新·域限定</span></td><td>tracking 宽的大写小字副标——<strong>判病域限定</strong>（B2 补）：短大写标签适度加宽是规范做法（USWDS：按钮类大写 +0.025em 起、长段全大写 +0.1~0.15em；TypographyMaster 全大写 +0.05~+0.1em；impeccable：宽字距仅限短大写标签）；判病域 = 长段大写滥用或正文级小字装饰性加宽（impeccable 判正文 &gt;0.05em 为病） <span class="srcm">（northeasttimes；B2 字距核验报告 2026-09-02）</span></td></tr>
+    <tr><td class="mono">30</td><td>图标块堆叠在标题上方</td><td>圆角方块 icon tile 悬在每张卡标题顶上 <span class="srcm">（impeccable）</span></td></tr>
+    <tr><td class="mono">31</td><td>大写正文</td><td>长段 all-caps（英文场景） <span class="srcm">（impeccable）</span></td></tr>
+  </table>
+
+  <h3><span class="tag">四</span>组件与视觉细节（9 条）</h3>
+  <table>
+    <tr><th style="width:4%">#</th><th style="width:30%">特征</th><th>检测点</th></tr>
+    <tr><td class="mono">32</td><td>玻璃拟态泛滥</td><td>backdrop-blur + 半透明卡片到处都是 <span class="srcm">（impeccable）</span></td></tr>
+    <tr><td class="mono">33</td><td>发丝边框 + 大阴影组合</td><td>1px slate-200 border + 大 blur shadow <span class="srcm">（impeccable；freedesignmd；截图发丝分隔线的近亲）</span></td></tr>
+    <tr><td class="mono">34</td><td>超大圆角卡片</td><td>卡片 rounded-3xl 而非有意义的选择 <span class="srcm">（impeccable）</span></td></tr>
+    <tr><td class="mono">35</td><td>侧边 accent 色条</td><td>卡片左侧 4px 彩色边条 <span class="srcm">（impeccable）</span></td></tr>
+    <tr><td class="mono">36</td><td>重复渐变条纹</td><td>repeating-linear-gradient 装饰条 <span class="srcm">（impeccable）</span></td></tr>
+    <tr><td class="mono">37</td><td>业余手绘 SVG 装饰</td><td>线条粗糙的箭头/波浪 SVG <span class="srcm">（impeccable）</span></td></tr>
+    <tr><td class="mono">38</td><td>巨型图标容器</td><td>图标容器比其介绍的内容还大 <span class="srcm">（impeccable）</span></td></tr>
+    <tr><td class="mono">39</td><td>chips / pill 标签泛滥 <span class="pill new">2026新</span></td><td>到处是圆角小标签、"polite rounded cards + chips everywhere" <span class="srcm">（medium/Valerie）</span></td></tr>
+    <tr><td class="mono">40</td><td>shadcn 指纹</td><td>slate/zinc 中性色阶 + 默认 primary 按钮 + 与官方文档一模一样的 DataTable/Dialog；"注塑塑料上的接缝" <span class="srcm">（freedesignmd；designsystemscollective）</span></td></tr>
+  </table>
+
+  <h3><span class="tag">五</span>文案（6 条）</h3>
+  <table>
+    <tr><th style="width:4%">#</th><th style="width:30%">特征</th><th>检测点</th></tr>
+    <tr><td class="mono">41</td><td>空洞宏大标语</td><td>"Build the future" / "Supercharge your workflow" 类无信息标题 <span class="srcm">（925studios；prg.sh）</span></td></tr>
+    <tr><td class="mono">42</td><td>SaaS 营销黑话</td><td>streamline / empower / supercharge / world-class / enterprise-grade / next-generation <span class="srcm">（impeccable；对应主报告 §5.1 红线 7）</span></td></tr>
+    <tr><td class="mono">43</td><td>em-dash 滥用</td><td>正文破折号 &gt;2 处 <span class="srcm">（impeccable）</span></td></tr>
+    <tr><td class="mono">44</td><td>格言式对仗文案</td><td>每节结尾 "Not a feature. A platform." 式人造警句 <span class="srcm">（impeccable）</span></td></tr>
+    <tr><td class="mono">45</td><td>同一容器文本重复</td><td>卡片内 label/sublabel/hint 全在说同一件事 <span class="srcm">（impeccable）</span></td></tr>
+    <tr><td class="mono">46</td><td>Emoji 泛滥</td><td>标题/列表用 emoji 当序号 <span class="srcm">（知乎@鱼皮）</span></td></tr>
+  </table>
+
+  <h3><span class="tag">六</span>交互动效与图像（9 条）</h3>
+  <table>
+    <tr><th style="width:4%">#</th><th style="width:30%">特征</th><th>检测点</th></tr>
+    <tr><td class="mono">47</td><td>脉冲状态点</td><td>绿点 pulse 动画放页头 <span class="srcm">（impeccable）</span></td></tr>
+    <tr><td class="mono">48</td><td>装饰性闪烁光标</td><td>终端风闪烁光标纯装饰 <span class="srcm">（impeccable）</span></td></tr>
+    <tr><td class="mono">49</td><td>自动滚动跑马灯 <span class="pill new">2026新</span></td><td>logo wall / 口号 ticker 无限滚动 <span class="srcm">（impeccable；northeasttimes）</span></td></tr>
+    <tr><td class="mono">50</td><td>弹跳 / 弹性缓动</td><td>对话框 overshoot 弹入、"过时且廉价" <span class="srcm">（impeccable）</span></td></tr>
+    <tr><td class="mono">51</td><td>图片 hover 缩放</td><td>transform: scale(1.05) 万能 hover <span class="srcm">（impeccable）</span></td></tr>
+    <tr><td class="mono">52</td><td>布局属性动画</td><td>动画 width/height/padding 造成 jank <span class="srcm">（impeccable）</span></td></tr>
+    <tr><td class="mono">53</td><td>形状拼贴插画替代真实图像</td><td>blob + 几何形状拼的"抽象插画"、无真实照片 <span class="srcm">（impeccable；prg.sh；知乎）</span></td></tr>
+    <tr><td class="mono">54</td><td>照片上盖彩色蒙层</td><td>渐变 wash 压在图片上 <span class="srcm">（impeccable）</span></td></tr>
+    <tr><td class="mono">55</td><td>破图 / 占位图上线</td><td>占位符直接进生产 <span class="srcm">（impeccable）</span></td></tr>
+  </table>
+
+  <h3><span class="tag">七</span>通用质量缺陷（5 条）</h3>
+  <table>
+    <tr><th style="width:4%">#</th><th style="width:30%">特征</th><th>检测点</th></tr>
+    <tr><td class="mono">56</td><td>首屏内容不可见</td><td>元素 opacity:0 等入场动画，JS 失败就白屏 <span class="srcm">（impeccable）</span></td></tr>
+    <tr><td class="mono">57</td><td>无障碍缺失</td><td>无 ARIA 标签、无键盘导航 <span class="srcm">（prg.sh）</span></td></tr>
+    <tr><td class="mono">58</td><td>表单无必填指示 / 无验证</td><td>输入框无 label 关联、无错误提示 <span class="srcm">（prg.sh）</span></td></tr>
+    <tr><td class="mono">59</td><td>微交互缺失</td><td>按钮无反馈、无 hover/focus 态 <span class="srcm">（925studios）</span></td></tr>
+    <tr><td class="mono">60</td><td>统一组件尺寸无节奏</td><td>所有 section/卡片尺寸完全一致，无视觉节奏 <span class="srcm">（925studios）</span></td></tr>
+  </table>
+
+  <div class="note"><b>关于截图判定的口径说明：</b>搜索员 A 标注的"截图同款"为 #5（Hero 指标布局）与 #19（米白底）；搜索员 B 取证补充的另外两个 C02 信号——<strong>墨绿主色与 01 编号步骤</strong>——属于包内 <span class="mono">AI_STYLE_CLUSTER_REGISTRY.md</span> 的簇定义，本 60 条库未单列对应条目（发丝线见 #33 近亲）。两份材料判定完全兼容，合并后你的截图共命中 <strong>4 项库内特征 + 2 项簇定义特征</strong>。</div>
+</section>
+
+<!-- ================= 04 快检清单与量化数据 ================= -->
+<section id="s4">
+  <div class="sec-head"><span class="sec-num">04</span><h2>落地：12 条快检清单 + 量化数据</h2></div>
+
+  <h3><span class="tag">§4.1</span>日常快检 12 条（每次交付后 2 分钟过一遍）</h3>
+  <p>从 60 条中按类别与命中率精选，覆盖骨架层与第三代新特征：<span class="mono">#1</span> 居中hero　<span class="mono">#2</span> 三卡等宽　<span class="mono">#5</span> 指标卡链　<span class="mono">#9</span> 万物16px圆角　<span class="mono">#12</span> 仪表盘病　<span class="mono">#19</span> 米白底　<span class="mono">#22</span> Inter过用　<span class="mono">#26</span> 斜体衬线　<span class="mono">#33</span> 发丝边框　<span class="mono">#39</span> chips泛滥　<span class="mono">#41</span> 空洞标语　<span class="mono">#49</span> 跑马灯。<span class="muted">命中 ≥3 项 → 逐项写领域理由，写不出就按主报告 §4 第 4 步回写规则。</span></p>
+
+  <h3><span class="tag">§4.2</span>可引用的量化数据（含出处）</h3>
+  <table>
+    <tr><th style="width:52%">数据</th><th>出处</th></tr>
+    <tr><td>Impeccable（jQuery UI 之父 Paul Bakaus）已积累 <strong>66 条 AI 味模式 + 61 条确定性检测规则</strong>，<span class="mono">npx impeccable detect</span> 可直接运行</td><td>impeccable.style/slop；腾讯云开发者社区 2026-08-26</td></tr>
+    <tr><td>Tailwind 创始人 Adam Wathan 2025-08 公开道歉"5 年前把 Tailwind UI 所有按钮设为 bg-indigo-500"，道歉推文 <strong>100 万+ 浏览</strong>——"默认色 → 训练数据 → 再默认"反馈循环的标志性事件</td><td>prg.sh（2025-10）；dev.to/alanwest 2026-03</td></tr>
+    <tr><td>AI 建站市场 2026 年预计 <strong>$6.3B</strong>；<strong>38%</strong> 访客因糟糕设计/内容离开</td><td>925studios（引 Arctic Leaf；引 Figma 2026）</td></tr>
+    <tr><td>人写内容胜过 AI 内容的比例 <strong>94.12%</strong></td><td>925studios（引 Neil Patel 2025）</td></tr>
+    <tr><td><strong>40–62%</strong> 的 AI 生成代码含安全/设计缺陷，总问题密度 1.7×，可维护性 1.64×</td><td>925studios（引 Second Talent 2026）</td></tr>
+    <tr><td>中文圈对照特征库：配色死板 / 布局死板 / 字体死板 / Emoji 泛滥 / 内容空洞 五大类（11.8 万粉技术博主）</td><td>知乎@程序员鱼皮 2026-01-30</td></tr>
+  </table>
+  <div class="note"><b>数据可信度分层：</b>Wathan 道歉、66 条检测规则等机制类数据经双源核验；市场规模、94.12% 等营销类数字为二手转引，仅作背景参考，不影响任何核心结论。</div>
+</section>
+
+<!-- ================= 05 与主报告的衔接 ================= -->
+<section id="s5">
+  <div class="sec-head"><span class="sec-num">05</span><h2>与主报告的衔接：五处增强，零处冲突</h2></div>
+  <p class="sec-lead">本附录所有论据已与主报告及搜索员 B 的取证交叉核对，结论同向、互为印证，主报告正文无需修改。</p>
+  <table>
+    <tr><th style="width:38%">增补证据</th><th style="width:40%">对主报告的影响</th><th>落点</th></tr>
+    <tr><td>第三代"Claudian sameness"定名（The New Yorker 2026-06）</td><td>为根因 4 补上时代注脚：你的截图不是偶然，是第三代模板的标配产物</td><td>§2 根因 4</td></tr>
+    <tr><td>Ström-Awn 实测："don't use cream" 只会跳到另一个固定色板</td><td>根因 4 的第三方行为学实证（与 16x Eval、Anthropic 官方建议三方同源）</td><td>§2 根因 4 / §5.1 使用说明</td></tr>
+    <tr><td>Wathan 公开道歉 + 训练数据反馈循环</td><td>根因 5 的生态史证据：默认色板如何自我强化</td><td>§2 根因 5</td></tr>
+    <tr><td>60 条可检验特征库</td><td>§3.3 六大特征清单的完整版；§5.4 交付自检表的条目池（本附录 §4.1 给出精选 12 条）</td><td>§3.3 / §5.4</td></tr>
+    <tr><td>"清单在 1–2 年内代际演化"</td><td>强化主报告总路线：生成端靠正面值锁定，清单只做验收端工具且需定期重审</td><td>§4 全章</td></tr>
+  </table>
+
+  <div class="hygiene">
+    <b>汇总员交叉验证记录：</b>① A 库中"66 条模式 / 61 条检测规则"与主报告 §4 第 5 步、搜索员 B 信源清单三处一致；② "米白底为 2026 反射性默认表面"在 impeccable 规则、Valerie 口语描述、northeasttimes 转述三个独立来源一致；③ A 标注的两处"截图同款"（#5、#19）与主报告 §1.2（C02 四信号）、§3.2（病灶 1）判定完全兼容，无冲突条目；④ 市场规模与胜率类二手数据已按"背景参考"降级标注；⑤ 全部 15 个信源原文存于共享目录 <span class="mono">搜索员A_原始资料/</span>，可追溯。
+  </div>
+</section>
+
+<!-- ================= 附录 C 信源 ================= -->
+<section id="sc">
+  <div class="sec-head"><span class="sec-num">C</span><h2>信源清单（15 个，可追溯）</h2></div>
+  <table>
+    <tr><th style="width:56%">信源</th><th>性质</th></tr>
+    <tr><td class="mono">impeccable.style/slop</td><td>核心：66 模式 + 61 检测规则</td></tr>
+    <tr><td class="mono">prg.sh/ramblings/Why-Your-AI-Keeps-Building-the-Same-Purple-Gradient-Website</td><td>indigo-500 起源 + Anthropic Cookbook 原文（2025-10）</td></tr>
+    <tr><td class="mono">dev.to/alanwest/why-every-ai-built-website-looks-the-same-blame-tailwinds-indigo-500-3h2p</td><td>反馈循环机制（2026-03）</td></tr>
+    <tr><td class="mono">925studios.co/blog/ai-slop-web-design-guide</td><td>完整指南 + 量化数据（2026-03）</td></tr>
+    <tr><td class="mono">northeasttimes.com/2026/07/31/ai-design-tools-are-making-every-website-look-the-same</td><td>转述 The New Yorker 第三代完整细节（2026-07-31）</td></tr>
+    <tr><td class="mono">newyorker.com/culture/infinite-scroll/the-ai-design-aesthetic-thats-taking-over-the-internet</td><td>Kyle Chayka 原文（付费墙；标题/作者/日期已核实，2026-06-24）</td></tr>
+    <tr><td class="mono">medium.com/dare-to-be-better/breaking-claude-design-has-a-recognizable-look-5697f60af439</td><td>第三代特征口语文本（2026-07-18）</td></tr>
+    <tr><td class="mono">freedesignmd.com/blog/shadcn-looks-generic</td><td>shadcn 指纹 + 5 步 token 修复（2026-04-28）</td></tr>
+    <tr><td class="mono">zhuanlan.zhihu.com/p/2000512359450550590</td><td>中文圈 7 方法 + AGENTS.md 模板（知乎@程序员鱼皮，2026-01-30）</td></tr>
+    <tr><td class="mono">cnblogs.com/MrChuJiu/p/19494209</td><td>ACP Skills 无/有对比实验（2026-01）</td></tr>
+    <tr><td class="mono">cloud.tencent.com/developer/article/2732322</td><td>中文圈对 Impeccable 的背书（2026-08-26）</td></tr>
+    <tr><td class="mono">reddit.com/r/vibecoding/comments/1rr0dwy/</td><td>"slop = mean best design pattern"（快照引用，直抓被风控）</td></tr>
+    <tr><td class="mono">joshuaseiden.substack.com/p/how-claude-is-undermining-you-with</td><td>Claude 设计批判（2026-07-13，标题级）</td></tr>
+    <tr><td class="mono">reddit.com/r/webdesign/comments/1u1579w/</td><td>"So many websites look like this now"（2026-06-09，标题级）</td></tr>
+    <tr><td class="mono">michalmalewicz.medium.com/the-end-of-dashboards-and-design-systems-5d98ec9de627</td><td>dashboard 之死（搜索级，未深读）</td></tr>
+  </table>
+  <p class="muted">注：标注"标题级 / 搜索级"的信源未做全文深读，仅用于佐证趋势存在性；所有承载核心结论的信源均已深读或双源交叉。</p>
+
+  <footer>
+    增补附录 A 完 —— 由报告汇总员整合并行搜索员 A《AI 生成 UI 特征库（60 条）》交叉验证后成稿，与《反AI前端_失效诊断与替代方案_终版报告.html》配套使用。<br>
+    主报告管"怎么生成"，本附录管"怎么验收"：先 §0 用法 → 再 §4.1 快检 12 条 → 重大交付跑全量 60 条。
+  </footer>
+</section>
+
+</div>
+</body>
+</html>

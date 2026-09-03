@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>增补附录B · 可判定约束与冲突裁决表</title>
+<style>
+  :root{
+    --ink:#1e293b; --ink-2:#475569; --ink-3:#64748b; --line:#e2e8f0;
+    --bg:#f5f7fa; --card:#ffffff; --accent:#1d4ed8; --accent-soft:#eff4ff;
+    --green:#059669; --green-soft:#ecfdf5; --blue:#2563eb; --blue-soft:#eff6ff;
+    --amber:#b45309; --amber-soft:#fffbeb; --gray-soft:#f1f5f9;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:-apple-system,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+       background:var(--bg);color:var(--ink);line-height:1.75;font-size:15px;}
+  .wrap{max-width:960px;margin:0 auto;padding:48px 28px 64px;}
+  /* ---------- header ---------- */
+  .hero{background:linear-gradient(135deg,#0f2a6b 0%,#1d4ed8 70%,#2563eb 100%);
+        color:#fff;border-radius:16px;padding:40px 40px 34px;margin-bottom:28px;}
+  .hero .kicker{font-size:12px;letter-spacing:.18em;opacity:.85;margin-bottom:10px;}
+  .hero h1{font-size:26px;font-weight:700;letter-spacing:.01em;margin-bottom:12px;line-height:1.35;}
+  .hero p{font-size:13.5px;opacity:.92;max-width:720px;}
+  .hero .meta{margin-top:18px;display:flex;flex-wrap:wrap;gap:8px;}
+  .hero .meta span{font-size:11.5px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);
+        border-radius:999px;padding:3px 12px;}
+  /* ---------- sections ---------- */
+  h2{font-size:19px;font-weight:700;margin:36px 0 6px;padding-left:12px;border-left:4px solid var(--accent);}
+  h2 .en{font-size:11px;color:var(--ink-3);font-weight:500;letter-spacing:.12em;margin-left:8px;}
+  .sub{color:var(--ink-3);font-size:13px;margin:0 0 14px 16px;}
+  h3{font-size:15.5px;font-weight:700;margin:22px 0 8px;color:var(--ink);}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:22px 24px;margin-bottom:16px;
+        box-shadow:0 1px 2px rgba(15,23,42,.04);}
+  /* ---------- verdict strip ---------- */
+  .verdict{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:8px;}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;text-align:left;}
+  .stat .num{font-size:24px;font-weight:800;line-height:1.2;}
+  .stat .lbl{font-size:12px;color:var(--ink-3);margin-top:2px;}
+  .num.blue{color:var(--blue);} .num.green{color:var(--green);} .num.amber{color:var(--amber);} .num.ink{color:var(--ink);}
+  .banner{background:var(--green-soft);border:1px solid #a7f3d0;border-radius:12px;padding:14px 20px;
+          color:#065f46;font-size:14px;margin-bottom:20px;}
+  .banner b{font-weight:700;}
+  /* ---------- chips ---------- */
+  .chip{display:inline-block;font-size:11px;font-weight:600;border-radius:999px;padding:1px 9px;white-space:nowrap;}
+  .c-new{background:var(--green-soft);color:var(--green);border:1px solid #a7f3d0;}
+  .c-ext{background:var(--blue-soft);color:var(--blue);border:1px solid #bfdbfe;}
+  .c-same{background:var(--gray-soft);color:var(--ink-2);border:1px solid var(--line);}
+  .c-warn{background:var(--amber-soft);color:var(--amber);border:1px solid #fde68a;}
+  .mono{font-family:"SF Mono",Consolas,"JetBrains Mono",monospace;font-size:12.5px;}
+  /* ---------- tables ---------- */
+  table{width:100%;border-collapse:collapse;font-size:13px;margin:10px 0 6px;}
+  th{background:#f8fafc;color:var(--ink-2);font-weight:600;text-align:left;padding:9px 10px;
+     border-bottom:2px solid var(--line);white-space:nowrap;}
+  td{padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top;}
+  tr:last-child td{border-bottom:none;}
+  td .mono{color:var(--ink-2);}
+  .tbl-note{font-size:12px;color:var(--ink-3);margin-top:6px;}
+  /* ---------- meta rules ---------- */
+  .rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin:12px 0 4px;}
+  .rule{border:1px solid var(--line);border-radius:12px;padding:18px;background:linear-gradient(180deg,#fbfdff,#f5f8fc);}
+  .rule .no{font-size:11px;font-weight:700;color:var(--accent);letter-spacing:.14em;margin-bottom:6px;}
+  .rule .name{font-size:15px;font-weight:700;margin-bottom:6px;}
+  .rule p{font-size:12.5px;color:var(--ink-2);}
+  /* ---------- chart ---------- */
+  .chart{padding:6px 0;}
+  .row{display:flex;align-items:center;gap:12px;margin:10px 0;}
+  .row .name{width:56px;font-size:12.5px;font-weight:600;color:var(--ink-2);text-align:right;flex-shrink:0;}
+  .track{flex:1;height:26px;background:#eef2f7;border-radius:6px;overflow:hidden;display:flex;}
+  .seg{height:100%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;min-width:0;}
+  .seg.same{background:#94a3b8;} .seg.ext{background:#2563eb;} .seg.new{background:#059669;}
+  .legend{display:flex;gap:18px;font-size:12px;color:var(--ink-2);margin-top:12px;flex-wrap:wrap;}
+  .legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px;}
+  /* ---------- quote / warn ---------- */
+  blockquote{border-left:4px solid var(--accent);background:var(--accent-soft);padding:12px 18px;border-radius:0 10px 10px 0;
+             font-size:13.5px;color:#1e3a8a;margin:12px 0;}
+  .warn{border-left:4px solid var(--amber);background:var(--amber-soft);padding:12px 18px;border-radius:0 10px 10px 0;
+        font-size:13.5px;color:#78350f;margin:12px 0;}
+  ol,ul{padding-left:22px;} li{margin:5px 0;}
+  .foot{margin-top:36px;padding-top:16px;border-top:1px solid var(--line);font-size:12px;color:var(--ink-3);}
+  .step{display:flex;gap:14px;margin:12px 0;align-items:flex-start;}
+  .step .n{flex-shrink:0;width:26px;height:26px;border-radius:50%;background:var(--accent);color:#fff;
+           font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:2px;}
+  .step p{font-size:13.5px;}
+  .step b{color:var(--accent);}
+  code{background:var(--gray-soft);border-radius:4px;padding:1px 6px;font-family:"SF Mono",Consolas,monospace;font-size:12px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ================= HEADER ================= -->
+  <div class="hero">
+    <div class="kicker">反AI味前端工程包 · 增补附录 B</div>
+    <h1>可判定约束与冲突裁决表<br><span style="font-size:15px;font-weight:500;opacity:.9;">—— 外部《AI味前端症状学（GPT特化版）》交叉验证与吸收报告</span></h1>
+    <p>对用户委托外部 AI 撰写的症状学文档（447 行 / 十大章节）进行逐条交叉验证后的整合结论。验证链路：本席独立通读复核 × 搜索员A逐条比对报告 × 我方既有交付物（终版报告 + 增补附录A 60条特征库）三方对碰。</p>
+    <div class="meta">
+      <span>编制：报告汇总员</span><span>比对输入：搜索员A《外部分类法差异比对报告》</span><span>2026-09-02</span>
+    </div>
+  </div>
+
+  <!-- ================= VERDICT ================= -->
+  <div class="banner"><b>总体判定：值得吸收，互补而非替代。</b>我方强在「是什么 + 为什么」（60条特征全部带真实信源、三代演化时间线、根因机制与实证数据）；它强在「怎么判 + 怎么修」（量化阈值、冲突裁决、快筛元规则）。两者拼合后，规则包从"形容词清单"升级为"可执行量尺"。</div>
+
+  <div class="verdict">
+    <div class="stat"><div class="num ink">40</div><div class="lbl">可判定约束（§九全量清点）</div></div>
+    <div class="stat"><div class="num green">23</div><div class="lbl">全新 · 我方盲区，直接吸收</div></div>
+    <div class="stat"><div class="num blue">14</div><div class="lbl">扩展 · 为我方症状补上量尺</div></div>
+    <div class="stat"><div class="num" style="color:#94a3b8">3</div><div class="lbl">重合 · 无需重复吸收</div></div>
+    <div class="stat"><div class="num amber">6 + 3</div><div class="lbl">冲突裁决对 + 快筛元规则</div></div>
+  </div>
+
+  <!-- ================= 1 印证 ================= -->
+  <h2>一、独立印证 <span class="en">CORROBORATION</span></h2>
+  <p class="sub">外部文档的根因五机制与我方结论独立重合——两个互不知情的作者得出同一解释，显著提升置信度。</p>
+  <div class="card">
+    <table>
+      <tr><th style="width:34%">外部根因（§零）</th><th>与我方体系的对应</th><th style="width:16%">印证状态</th></tr>
+      <tr><td>训练分布众数回归（最大似然网页 = 所有模板的交集）</td><td>报告§2 模式坍缩 / 众数审美（B、C 信源同证）</td><td><span class="chip c-same">完全一致</span></td></tr>
+      <tr><td>无视觉反馈的单次生成 → 只会采样「可语言化安全配方」</td><td>报告§2 根因①「静态包无法感知审美结果」，即 §3 工作流重构的立论基础</td><td><span class="chip c-same">完全一致</span></td></tr>
+      <tr><td>结构先验强于审美先验（代码挑不出毛病，页面一眼假）</td><td>报告§0「结构满分、审美零分」表述同构</td><td><span class="chip c-same">完全一致</span></td></tr>
+      <tr><td><b>RLHF 安全偏置</b>（「大胆」有风险、「干净专业」永远安全）</td><td>我方四大根因<b>未含此条</b> → 建议增补为第五机制</td><td><span class="chip c-new">补全</span></td></tr>
+    </table>
+    <p class="tbl-note">核心指纹特征（紫蓝渐变、Inter 指纹、Tailwind 默认色板、三等宽卡片、SaaS 黑话、em-dash 滥用、玻璃拟态等）双方重合约 40%，维持附录A信源体系即可，不再重复收录。</p>
+  </div>
+
+  <!-- ================= 2 S级增量 ================= -->
+  <h2>二、S 级增量 <span class="en">MUST-ABSORB</span></h2>
+
+  <h3>2.1 约束冲突裁决表（§十）—— 全场最高价值，我方完全空白</h3>
+  <div class="card">
+    <p style="font-size:13.5px;">我方 60 条与用户 v5.4.2 规则包只回答「要什么 / 禁什么」，从未回答「<b>规则打架听谁的</b>」。外部作者点破机制：</p>
+    <blockquote>「规则之间会打架，必须写明优先级，否则模型遇到冲突时会随机选一边。」——这与我方「禁令悖论」共同构成规则包失效的完整解释：<b>禁令堆叠导致色板漂移 + 无优先级导致执行随机化。</b></blockquote>
+    <table>
+      <tr><th style="width:38%">冲突对</th><th>裁决</th></tr>
+      <tr><td>T3 字号比 ≥3 vs 移动端不溢出</td><td>移动端优先，但须用 <code>clamp()</code> 而非断点硬切</td></tr>
+      <tr><td>L4 间距双峰 vs 移动端空间不足</td><td>移动端允许中间档，桌面端必须双峰</td></tr>
+      <tr><td>L5 必须破格 vs 无障碍可读性</td><td>破格不得影响文本可读（禁竖排正文、禁负字距过头）</td></tr>
+      <tr><td>C3 圆角 ≤8px vs 触摸目标友好度</td><td>圆角约束只作用于容器，按钮 / 输入框不受限</td></tr>
+      <tr><td>P3 强调色 ≤2 处 vs E4 点击反馈</td><td>反馈可用形状 / 位移表达，不必用色彩</td></tr>
+      <tr><td>W4 feature ≠3 vs 内容真实需要 3 条</td><td>内容优先，但须改为非等宽、非同构排布</td></tr>
+    </table>
+  </div>
+
+  <h3>2.2 三条快筛元规则（§八）—— 检测成本最低、命中率最高</h3>
+  <div class="rules">
+    <div class="rule"><div class="no">RULE 01 · 众数检测</div><div class="name">模板库翻得到吗？</div><p>页面上有任何一个元素，是主流模板库里翻不到的吗？如果没有 → AI 味。</p></div>
+    <div class="rule"><div class="no">RULE 02 · 可替换性检测</div><div class="name">换竞品名还有区别吗？</div><p>把品牌名和文案换成任意同类竞品，视觉上无区别 → AI 味。（视觉版；与 W3「换名仍通顺 = 空话」的文案版同构）</p></div>
+    <div class="rule"><div class="no">RULE 03 · 破格检测</div><div class="name">有人打破网格吗？</div><p>至少一个元素不在网格上、或打破对齐吗？没有 → AI 味。正面要求，与报告§4「正面锁定」哲学同构。</p></div>
+  </div>
+  <p class="sub" style="margin-left:0;">定位：置于使用方法开篇作快筛入口 —— 三条元规则 → 附录A快检 12 条 → 60 条全库，逐层下钻。</p>
+
+  <h3>2.3 可判定约束总表（§九 40 条全量 · 含处置标注）</h3>
+  <div class="card">
+    <table>
+      <tr><th style="width:7%">ID</th><th style="width:44%">约束（阈值）</th><th style="width:20%">判定方式</th><th style="width:16%">处置</th><th>备注</th></tr>
+      <!-- 布局 -->
+      <tr><td colspan="5" style="background:#f8fafc;font-weight:700;color:var(--accent);">布局层</td></tr>
+      <tr><td class="mono">L1</td><td>禁止 ≥3 个等宽同级卡片</td><td>计数</td><td><span class="chip c-same">重合</span></td><td>60条#2 已有</td></tr>
+      <tr><td class="mono">L2</td><td>section 序列与标准模板（Hero→Trust bar→3卡→3步→3评价→3档价→FAQ→CTA→4列Footer）重合 &gt;60% 即中招</td><td>序列比对</td><td><span class="chip c-new">全新</span></td><td>段落序列锁死的直接判据</td></tr>
+      <tr><td class="mono">L3</td><td><code>text-center</code> ≤2 次，且须有左/右对齐形成对照</td><td>计数</td><td><span class="chip c-ext">扩展#1</span></td><td>我们只判 hero 居中</td></tr>
+      <tr><td class="mono">L4</td><td>相邻纵向间距比 ≤1:1.5 或 ≥1:4，禁用中间档（双峰留白）</td><td>数值计算</td><td><span class="chip c-ext">扩展#8</span></td><td>为症状补上正向量尺</td></tr>
+      <tr><td class="mono">L5</td><td>全页至少 1 处破格（跨列 / 负边距 / 出血 / 竖排）</td><td>存在性</td><td><span class="chip c-new">全新</span></td><td>其自称「布局层最关键单一判据」</td></tr>
+      <tr><td class="mono">L6</td><td>全页不同间距值 ≥4 种</td><td>去重计数</td><td><span class="chip c-new">全新</span></td><td>与 L4 配套</td></tr>
+      <!-- 组件 -->
+      <tr><td colspan="5" style="background:#f8fafc;font-weight:700;color:var(--accent);">组件层</td></tr>
+      <tr><td class="mono">C1</td><td>禁止 emoji 充当图标（🚀⚡✨）</td><td>字符扫描</td><td><span class="chip c-new">全新</span></td><td><span class="chip c-warn">GPT特异</span> 直接判负</td></tr>
+      <tr><td class="mono">C2</td><td>视觉同构卡片 ≤2 个</td><td>计数</td><td><span class="chip c-ext">扩展</span></td><td>L1 的组件层量化</td></tr>
+      <tr><td class="mono">C3</td><td>圆角 ≤8px 或 =9999px，禁 12–24px 中间值</td><td>数值</td><td><span class="chip c-ext">扩展#9</span></td><td><span class="chip c-warn">降级使用</span> 见 §4-2</td></tr>
+      <tr><td class="mono">C4</td><td>禁止蓝紫 / 紫粉渐变</td><td>类名扫描</td><td><span class="chip c-same">重合</span></td><td>报告§1 铁证已有</td></tr>
+      <tr><td class="mono">C5</td><td>主 CTA 与次级操作视觉重量比 ≥2:1</td><td>尺寸/填充比对</td><td><span class="chip c-ext">扩展#60</span></td><td>—</td></tr>
+      <tr><td class="mono">C6</td><td>禁止 <code>rounded-full</code> + <code>text-xs</code> 组合 badge</td><td>类名扫描</td><td><span class="chip c-new">全新</span></td><td>—</td></tr>
+      <!-- 排版 -->
+      <tr><td colspan="5" style="background:#f8fafc;font-weight:700;color:var(--accent);">排版层</td></tr>
+      <tr><td class="mono">T1</td><td>展示域大字（≥32px；USWDS 自 22px 起分档）宜适度负字间距 -0.01em~-0.03em（USWDS 官方 "could" 分档：≥22px→-0.01em、≥32px→-0.02em、≥64px→-0.03em；Tailwind -0.025em、pimpmytype -0.02em 落带内；Material 2/3 与 Butterick 不背书该带——<strong>禁标注为"权威规范钉死数值"</strong>）</td><td>数值检查</td><td><span class="chip c-ext">互补#28</span></td><td>#28 判「紧过头/正文域误用」，T1 判「该紧不紧」，一正一反；原"必须 -0.02~-0.04em"已按搜索员B 核验降格（USWDS 措辞为 could，无规范级数值带；评审 T1 转述的"≥32px 也不收紧"经 B2 深读与 impeccable 原文不符——原文 "Tighten display type optically, not destructively" 立场相反）</td></tr>
+      <tr><td class="mono">T2</td><td>字号 ≤13px 且全大写必须正字间距（+0.08em ~ +0.12em）</td><td>数值检查</td><td><span class="chip c-ext">扩展#29</span></td><td>—</td></tr>
+      <tr><td class="mono">T3</td><td>最大标题 / 正文字号比 ≥3:1</td><td>比值</td><td><span class="chip c-ext">量化#27</span></td><td>修复底线，见 §4-3</td></tr>
+      <tr><td class="mono">T4</td><td>全页不同字号 ≤4 种</td><td>去重计数</td><td><span class="chip c-new">全新</span></td><td><span class="chip c-warn">需澄清</span> 见 §4-3</td></tr>
+      <tr><td class="mono">T5</td><td>最大字号元素 <code>line-height</code> ≤1.2（字号越大行高越紧）</td><td>数值</td><td><span class="chip c-new">全新</span></td><td>—</td></tr>
+      <tr><td class="mono">T6</td><td>正文行宽 ≤75 字符（中文 ≤45 字）</td><td>容器宽度</td><td><span class="chip c-ext">量化#11</span></td><td>补齐我们「&gt;90字符」的单边判定</td></tr>
+      <tr><td class="mono">T7</td><td>禁止 Inter / Roboto / Arial / <code>system-ui</code> 作正文字体</td><td>字体名扫描</td><td><span class="chip c-ext">扩展</span></td><td>把 §1 指纹转化为修复规则</td></tr>
+      <tr><td class="mono">T8</td><td>数字启用 <code>tabular-nums</code> 且字号 ≥ 正文 2 倍</td><td>属性检查</td><td><span class="chip c-new">全新</span></td><td>数字=天然视觉锚点</td></tr>
+      <!-- 色彩 -->
+      <tr><td colspan="5" style="background:#f8fafc;font-weight:700;color:var(--accent);">色彩层</td></tr>
+      <tr><td class="mono">P1</td><td>主色不得为 Tailwind 默认色号</td><td>类名扫描</td><td><span class="chip c-same">重合</span></td><td>B 技法「抹色板 build 报错」已有</td></tr>
+      <tr><td class="mono">P2</td><td>中性色须带色温（饱和度 ≥2%），禁纯灰</td><td>HSL 检查</td><td><span class="chip c-new">全新</span></td><td>—</td></tr>
+      <tr><td class="mono">P3</td><td>70-20-10 分配，一屏内强调色 ≤2 处</td><td>计数</td><td><span class="chip c-new">全新</span></td><td>—</td></tr>
+      <tr><td class="mono">P4</td><td>正文对比度 ≥4.5:1，大字 ≥3:1，UI 边界 ≥3:1</td><td>计算</td><td><span class="chip c-ext">量化#18</span></td><td><b>唯一有行业标准背书的阈值</b>（WCAG）</td></tr>
+      <tr><td class="mono">P5</td><td>暗色模式须「重做」：背景 #0a0a0a–#141414 非纯黑、强调色降饱和 10–20%、去阴影改 1px 边框、正文 #e5e5e5</td><td>存在性检查</td><td><span class="chip c-new">全新</span></td><td>我方 #15 只判「暗底发光」症状</td></tr>
+      <!-- 动效 -->
+      <tr><td colspan="5" style="background:#f8fafc;font-weight:700;color:var(--accent);">动效层</td></tr>
+      <tr><td class="mono">M1</td><td>禁止 <code>transition-all</code>，须写具体属性</td><td>类名扫描</td><td><span class="chip c-new">全新</span></td><td>极易检测</td></tr>
+      <tr><td class="mono">M2</td><td>一屏内带入场动画元素 ≤1（<code>delay:index*0.1</code> stagger 是重灾区）</td><td>计数</td><td><span class="chip c-new">全新</span></td><td>具体到代码模式</td></tr>
+      <tr><td class="mono">M3</td><td>非必要动效须包裹 <code>prefers-reduced-motion: no-preference</code></td><td>存在性检查</td><td><span class="chip c-new">全新</span></td><td>—</td></tr>
+      <tr><td class="mono">M4</td><td>duration 至少两档（≤200ms 与 ≥500ms），出场比入场快</td><td>去重计数</td><td><span class="chip c-new">全新</span></td><td>—</td></tr>
+      <tr><td class="mono">M5</td><td>hover + active + focus-visible + disabled 四态齐全</td><td>状态计数</td><td><span class="chip c-ext">量化#59</span></td><td>—</td></tr>
+      <!-- 文案 -->
+      <tr><td colspan="5" style="background:#f8fafc;font-weight:700;color:var(--accent);">文案层</td></tr>
+      <tr><td class="mono">W1</td><td>高频词黑名单 ≤1 个（unleash / seamless / empower / next level… 动词10 + 形容词10 + 名词8 + 短语7）</td><td>词表匹配</td><td><span class="chip c-ext">扩展</span></td><td>与我方中文黑名单（§5.1红线7）<b>双语合并</b>；英文语料，中文项目需本土映射，见 §4-4</td></tr>
+      <tr><td class="mono">W2</td><td>标题禁止「 — 」/「:」分隔的口号句式</td><td>字符扫描</td><td><span class="chip c-ext">扩展#43</span></td><td>#43 判正文 em-dash，W2 判标题口号</td></tr>
+      <tr><td class="mono">W3</td><td>须说明「不适合谁」或含 ≥1 个具体数字</td><td>存在性检查</td><td><span class="chip c-new">全新</span></td><td>真实文案会做取舍</td></tr>
+      <tr><td class="mono">W4</td><td>feature 列表条数 ≠3</td><td>计数</td><td><span class="chip c-new">全新</span></td><td>作者已在 §十自洽：内容优先 + 非等宽排布</td></tr>
+      <!-- 工程 -->
+      <tr><td colspan="5" style="background:#f8fafc;font-weight:700;color:var(--accent);">工程层（我方近乎空白）</td></tr>
+      <tr><td class="mono">E1</td><td>单文件 ≤200 行，section 级组件必须拆分（800行 page.tsx = GPT「单次补全」倾向产物）</td><td>行数</td><td><span class="chip c-new">全新</span></td><td><span class="chip c-warn">GPT特异</span></td></tr>
+      <tr><td class="mono">E2</td><td>单行 className ≤6 个工具类，超出提取组件 / CVA</td><td>token 计数</td><td><span class="chip c-new">全新</span></td><td>—</td></tr>
+      <tr><td class="mono">E3</td><td>图标按钮须有 <code>aria-label</code></td><td>属性检查</td><td><span class="chip c-new">全新</span></td><td>无障碍维度补全</td></tr>
+      <tr><td class="mono">E4</td><td>点击目标 ≥44×44px，间距 ≥8px</td><td>尺寸检查</td><td><span class="chip c-new">全新</span></td><td>—</td></tr>
+      <tr><td class="mono">E5</td><td>每个异步区域 loading / error / empty 三态；出错保留用户输入</td><td>存在性检查</td><td><span class="chip c-new">全新</span></td><td>—</td></tr>
+      <tr><td class="mono">E6</td><td>图片须有 width/height 或 aspect-ratio（防 CLS）</td><td>属性检查</td><td><span class="chip c-new">全新</span></td><td>—</td></tr>
+    </table>
+  </div>
+
+  <h3>2.4 增量分布图</h3>
+  <div class="card chart">
+    <div class="row"><div class="name">布局</div><div class="track" style="max-width:75%;"><div class="seg same" style="width:16.7%">1</div><div class="seg ext" style="width:33.3%">2</div><div class="seg new" style="width:50%">3</div></div></div>
+    <div class="row"><div class="name">组件</div><div class="track" style="max-width:75%;"><div class="seg same" style="width:16.7%">1</div><div class="seg ext" style="width:50%">3</div><div class="seg new" style="width:33.3%">2</div></div></div>
+    <div class="row"><div class="name">排版</div><div class="track"><div class="seg ext" style="width:62.5%">5</div><div class="seg new" style="width:37.5%">3</div></div></div>
+    <div class="row"><div class="name">色彩</div><div class="track" style="max-width:62.5%;"><div class="seg same" style="width:20%">1</div><div class="seg ext" style="width:20%">1</div><div class="seg new" style="width:60%">3</div></div></div>
+    <div class="row"><div class="name">动效</div><div class="track" style="max-width:62.5%;"><div class="seg ext" style="width:20%">1</div><div class="seg new" style="width:80%">4</div></div></div>
+    <div class="row"><div class="name">文案</div><div class="track" style="max-width:50%;"><div class="seg ext" style="width:50%">2</div><div class="seg new" style="width:50%">2</div></div></div>
+    <div class="row"><div class="name">工程</div><div class="track" style="max-width:75%;"><div class="seg new" style="width:100%">6</div></div></div>
+    <div class="legend">
+      <span><i style="background:#94a3b8"></i>重合（双方已有）</span>
+      <span><i style="background:#2563eb"></i>扩展（为我方症状补量尺）</span>
+      <span><i style="background:#059669"></i>全新（我方盲区，直接吸收）</span>
+      <span style="color:var(--ink-3)">｜条宽按各层条数等比（排版 8 条 = 满宽）</span>
+    </div>
+  </div>
+
+  <!-- ================= 3 A级增量 ================= -->
+  <h2>三、A 级增量 <span class="en">SUPPLEMENT</span></h2>
+  <p class="sub">不构成单条约束、但补齐我方维度的 7 处增量，均已复核。</p>
+  <div class="card">
+    <table>
+      <tr><th style="width:8%">#</th><th style="width:40%">内容</th><th style="width:36%">说明</th><th>验证</th></tr>
+      <tr><td class="mono">A1</td><td><b>根因第五机制：RLHF 安全偏置</b> + 「结构先验强于审美先验」+「段落序列锁死」</td><td>并入报告根因章，与「禁令悖论」并列解释 v5.4.2 包失效</td><td><span class="chip c-new">采纳</span></td></tr>
+      <tr><td class="mono">A2</td><td><b>排印细节 = 手工证据</b>：弯引号“”替代直引号、…替代...、大小写策略</td><td>作者定位准确：「反AI味成本最低的一档」</td><td><span class="chip c-new">采纳</span></td></tr>
+      <tr><td class="mono">A3</td><td><b>GPT 模型特异性标注</b>：emoji 图标、标题破折号口号、单文件巨石</td><td>与 60 条库的「代际」维度正交，可合并为 <b>代际 × 模型品牌</b> 二维视图</td><td><span class="chip c-new">采纳</span></td></tr>
+      <tr><td class="mono">A4</td><td>占位内容进生产：John Doe / Lorem ipsum / Acme Inc / 灰块头像</td><td>扩展 #55（我方只列破图）</td><td><span class="chip c-ext">扩展</span></td></tr>
+      <tr><td class="mono">A5</td><td>对比度实测值（v2 勘误）：gray-400 白底 <strong>2.54:1 不达标</strong>；gray-500 on gray-50 <strong>4.63:1 压线达标</strong>（WCAG AA 正文线 4.5:1）</td><td>量化 #18 的具体示例。实测经搜索员C 独立测定、汇总员按 WCAG 公式复算，两法一致；外部文档原列 2.8:1 / 3.5:1 为经验估算值——修正后 gray-500/gray-50 由"不达标"翻案为"压线达标"，"灰字病"判定线应收敛为：<strong>gray-400 级及以下、或彩底灰字</strong>才命中</td><td><span class="chip c-ext">扩展</span></td></tr>
+      <tr><td class="mono">A6</td><td><b>移动端只做堆叠</b>：无内容裁剪 / 表格转卡片 / 导航转抽屉</td><td>我方完全未覆盖<b>响应式维度</b></td><td><span class="chip c-new">采纳</span></td></tr>
+      <tr><td class="mono">A7</td><td>视觉重心：上下 padding 相等 = 无重心（标题区上留白 &gt; 下 = 内容被「托住」）</td><td>补充 #8 的元素级视角</td><td><span class="chip c-ext">扩展</span></td></tr>
+    </table>
+  </div>
+
+  <!-- ================= 4 审慎 ================= -->
+  <h2>四、审慎提示与勘误 <span class="en">CAVEATS</span></h2>
+  <div class="card">
+    <ol>
+      <li><b>全文无信源标注。</b>其事实层（Inter 指纹、紫渐变等）与我方 15 信源多源吻合，可信；但<b>数值阈值多为作者经验值，唯一例外是 WCAG 对比度标准（P4）</b>。并入规则包时统一标注「经验阈值 · 起步值可调」，避免用户误以为有权威出处。</li>
+      <li><b>C3（圆角 ≤8px）降级为软约束。</b>硬性单一值禁令有形成「下一个众数」的风险——这正是我方「don't use cream 悖论」的教训（禁令只会换来下一个固定色板）。建议改写为「圆角值须成体系且有明确理由，禁无意识混用」，其 §十 冲突行（容器限、控件豁免）保留。（v2 补证：impeccable 原文明确 <i>"Cards top out around 12 to 16px; reserve full-pill for tags and buttons"</i>，证明 12–16px 属正常容器档位，外部「禁 12–24px」过严；宪法 v2 已采用控件 4px / 容器 12px 两档。）</li>
+      <li><b>澄清 T3 / T4 与外部 §3.1 的张力。</b>外部 §3.1 说「字号 ≥5 种但最大/最小比 &lt;5 → 层级模糊」，§九 T3 只要求 ≥3:1、T4 要求 ≤4 种。合并时明确关系为：<b>T3 的 3:1 是修复底线，T4 的 4 种是字号预算，§3.1 的 5 种比值 &lt;5 是同质化预警线</b>——三层含义不同，避免规则包又多一对无裁决的冲突。</li>
+      <li><b>W1 黑名单为英文语料。</b>直接照抄对中文项目无效，应与我方 §5.1 红线 7 的中文黑名单（赋能/解锁/助力/一站式/极致体验…）<b>双语合并使用</b>，并各自维护本土化映射。</li>
+      <li><b>勘误一处：</b>搜索员A 比对报告将 §九 清点为「34 条」，经本席逐条清点实为 <b>40 条</b>（L6 + C6 + T8 + P5 + M5 + W4 + E6），本附录按 40 条收录。</li>
+    </ol>
+  </div>
+
+  <!-- ================= 5 落地 ================= -->
+  <h2>五、落地指引 <span class="en">INTEGRATION</span></h2>
+  <div class="card">
+    <div class="step"><div class="n">1</div><p><b>三条元规则</b> → 置于报告「使用方法」开篇作快筛层：元规则 3 条 → 快检 12 条 → 60 条全库，逐层下钻。</p></div>
+    <div class="step"><div class="n">2</div><p><b>40 条约束表</b> → 整体并入 §5.3 自查清单（按七层分组），与附录A 60 条做交叉引用（映射关系见 §2.3 处置列）；粘贴宪法后按「约束 → 判定方式」逐条自检。</p></div>
+    <div class="step"><div class="n">3</div><p><b>6 对冲突裁决</b> → 作为 §5.1 宪法附注并入，声明「遇冲突按下表裁决，不得随机选边」——封堵执行随机化。</p></div>
+    <div class="step"><div class="n">4</div><p><b>RLHF 安全偏置</b> → 增补为根因第五机制；A3 的「代际 × 模型品牌」二维视图作为特征库的补充坐标系。</p></div>
+    <div class="step"><div class="n">5</div><p><b>60 条库本体不动</b>——其信源体系（15 信源可追溯）保持独立性，外部阈值以「经验值」身份挂载。</p></div>
+  </div>
+
+  <div class="foot">
+    来源与验证声明：外部文档《AI 味前端症状学（GPT 特化版）》（用户委托外部 AI 撰写，447 行 / 十大章节）；比对输入《搜索员A_外部分类法差异比对报告》（逐条通读两份文档全文）；基准《反AI前端_失效诊断与替代方案_终版报告》《增补附录A_AI味特征库60条》。处置分类（全新/扩展/重合）由汇总员独立复核后标注，与搜索员A 映射互为印证。未经用户许可，本附录内容仅用于反AI味前端工程包改进。
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>一份反 AI 味工作包的诞生 · 五个阶段</title>
+<link rel="icon" href="data:,">
+<style>
+:root{
+  --bg:#FBFBFC; --surface:#FFFFFF;
+  --ink:#0A2540; --ink-2:#4F566B;
+  --line:#E6E8EE; --accent:#3366CC; --accent-soft:#9DB8E0;
+  --quote-bg:#F5F8FC;
+  --sans:"IBM Plex Sans","Noto Sans SC","Source Han Sans SC","Microsoft YaHei",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,"Cascadia Mono",Consolas,monospace;
+  --r-m:12px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} }
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.7;}
+.skip-link{position:absolute;left:-9999px;}
+.skip-link:focus{left:12px;top:12px;background:var(--surface);color:var(--ink);padding:10px 16px;border:1px solid var(--ink);z-index:9;}
+
+.wrap{max-width:680px;margin:0 auto;padding:0 24px 120px;}
+
+header{padding:72px 0 0;}
+.kicker{font-family:var(--mono);font-size:12px;letter-spacing:.08em;color:var(--accent);font-weight:500;}
+h1{margin-top:14px;font-size:40px;font-weight:700;letter-spacing:-0.02em;line-height:1.2;}
+.lede{margin-top:18px;color:var(--ink-2);max-width:44em;}
+
+.bigfigure{margin-top:56px;display:flex;align-items:baseline;gap:18px;flex-wrap:wrap;}
+.bigfigure .n{font-family:var(--mono);font-size:40px;font-weight:600;letter-spacing:-0.02em;line-height:1.2;font-variant-numeric:tabular-nums;}
+.bigfigure .n i{font-style:normal;color:var(--ink-2);font-weight:400;padding:0 .1em;}
+.bigfigure .cap{font-size:12px;color:var(--ink-2);line-height:1.6;}
+
+.stage{padding-top:72px;}
+.stage-tag{font-family:var(--mono);font-size:12px;color:var(--ink-2);letter-spacing:.08em;}
+.stage-tag b{color:var(--accent);font-weight:500;}
+h2{margin-top:10px;font-size:28px;font-weight:600;letter-spacing:-0.01em;line-height:1.2;}
+.stage > p{margin-top:16px;max-width:44em;}
+.stage p b.num{font-family:var(--mono);font-weight:600;font-variant-numeric:tabular-nums;}
+
+blockquote{margin-top:24px;padding:0 0 0 24px;font-size:15px;font-weight:500;line-height:1.8;color:var(--ink);max-width:44em;border:none;background:none;}
+blockquote .who{display:block;margin-top:8px;font-family:var(--mono);font-size:12px;font-weight:400;color:var(--ink-2);}
+
+.result{margin-top:24px;font-family:var(--mono);font-size:14px;color:var(--accent);font-weight:600;font-variant-numeric:tabular-nums;letter-spacing:.01em;}
+.result::before{content:"⇥ ";color:var(--ink-2);font-weight:400;}
+
+.stage-02{padding-top:64px;}
+.stage-05{padding-top:88px;}
+
+.band{margin-top:96px;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);padding:64px calc(50vw - 50%) 80px;background:var(--ink);color:#FBFBFC;}
+.band .band-inner{max-width:680px;margin:0 auto;padding:0 24px;}
+.band .stage-tag{color:#B7C3D0;}
+.band .stage-tag b{color:var(--accent-soft);}
+.band h2{font-size:32px;letter-spacing:-0.02em;color:#FFFFFF;line-height:1.18;}
+.band > .band-inner > p, .band .band-inner > p{font-size:16px;color:#D6DEE9;line-height:1.7;}
+.band blockquote{margin-top:28px;padding:0 0 0 0;font-size:24px;font-weight:500;line-height:1.4;color:#FFFFFF;max-width:44em;}
+.band blockquote::before{content:"“";display:block;font-size:64px;line-height:.5;color:var(--accent-soft);margin-bottom:18px;font-family:var(--sans);font-weight:600;}
+.band blockquote .who{color:#8FA2B5;}
+.band .result{color:var(--accent-soft);font-size:15px;}
+.band .result::before{color:#8FA2B5;}
+.band p b.num{color:#FFFFFF;}
+
+.coda{padding-top:112px;max-width:44em;}
+.coda h2{font-size:20px;line-height:1.4;}
+.coda p{margin-top:14px;color:var(--ink-2);}
+.coda p strong{color:var(--ink);font-weight:600;}
+
+.trace{margin-top:88px;padding-top:28px;border-top:1px solid var(--line);}
+.trace h2{font-size:20px;line-height:1.4;}
+.trace .note{margin-top:8px;font-size:12px;color:var(--ink-2);}
+.trace .scroll{overflow-x:auto;margin-top:20px;-webkit-overflow-scrolling:touch;}
+table{border-collapse:collapse;width:100%;font-size:14px;line-height:1.6;}
+caption{text-align:left;font-size:12px;color:var(--ink-2);padding-bottom:12px;}
+th{font-size:12px;font-weight:500;color:var(--ink-2);text-align:left;padding:8px 18px 8px 0;letter-spacing:.02em;}
+td{padding:10px 18px 10px 0;vertical-align:top;font-variant-numeric:tabular-nums;}
+tbody tr:nth-child(odd) td{background:var(--quote-bg);}
+td.src,th.src{font-family:var(--mono);font-size:12px;color:var(--ink-2);white-space:nowrap;padding-right:0;}
+
+footer{margin-top:72px;padding-top:20px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:var(--mono);font-size:12px;color:var(--ink-2);}
+
+a{color:var(--accent);text-decoration:underline;text-underline-offset:3px;}
+a:hover{opacity:.7;}
+@media (prefers-reduced-motion: no-preference){
+  a{transition:opacity .15s ease;}
+}
+
+@media (max-width:640px){
+  .wrap{padding:0 18px 72px;}
+  header{padding-top:48px;}
+  h1{font-size:28px;letter-spacing:-0.01em;}
+  .bigfigure .n{font-size:28px;}
+  h2{font-size:20px;}
+  .stage{padding-top:56px;}
+  .band{padding:64px 0 72px;}
+  .band blockquote{font-size:16px;}
+  blockquote{padding-left:16px;}
+  th,td{padding-right:12px;}
+}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">跳到主要内容</a>
+
+<div class="wrap">
+
+<header>
+  <p class="kicker">CASE FILE · 2026-09-02</p>
+  <h1>一份反 AI 味工作包的诞生</h1>
+  <p class="lede">从晚上六点的一句「你好呀」，到两个 AI 互相校准对方的设计品味。五个阶段，全部真实发生，记录如下。</p>
+  <div class="bigfigure">
+    <span class="n">120 <i>→</i> 11</span>
+    <span class="cap">同一目标下的文件数变化：<br>旧规则包 v5.4.2 → 新工作包 v2.3</span>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="stage">
+  <p class="stage-tag">STAGE <b>01</b> · 18:19 · 症状学</p>
+  <h2>形容词约束是无效的</h2>
+  <p>起点是一个问题：为什么 GPT 生成的前端总是一个味。当天的第一份产出是一份症状学——七层症状，覆盖布局、组件、排版、色彩、动效、文案与工程。核心结论只有一句：<b class="num">「呼吸感」没有判定标准，模型不知道该输出 gap-6 还是 gap-24</b>。形容词治不了分布，只有尺子能。</p>
+  <p class="result">产出 30 条可判定约束（L/C/T/P/M/W/E 七组）</p>
+</section>
+
+<section class="stage stage-02">
+  <p class="stage-tag">STAGE <b>02</b> · 18:36 · 评审</p>
+  <h2>七项硬伤，与一次反证</h2>
+  <p>对另一支研究团队的调研报告提出七项硬伤：NN/g 数据存疑、宪法自相矛盾、示例色板命中自家反模式、排版层缺失、字距条款判反、抽签抽的是流派名、回写只增不减。对方修了六项——但其中一项指控被反证推翻：评审核验 NN/g 时抓错了文章（1996 年论文页，而非报告实际引用的 2024 年文章），三个数字逐字属实。评审方当场认账。<b class="num">教训入库：核验必须先比对被引的准确篇名</b>。</p>
+  <p class="result">修复 6 项 · 指控被反证 1 项 · 宪法升至 v2.2</p>
+</section>
+
+<section class="stage band" aria-label="第三阶段，实战翻车">
+  <div class="band-inner">
+    <p class="stage-tag">STAGE <b>03</b> · 22:10 · 实战翻车</p>
+    <h2>自检 0/12，终审 3/5</h2>
+    <p>执行 AI 以设计者身份跑完宪法 v2 全流程：随机抽中卡池里与财税场景距离最远的一张卡，产出企业所得税测算底稿。逐条自检，十二项快检零命中，交出满分答卷。二十分钟后，人工终审到达。</p>
+    <blockquote>
+      说实话，我个人认为是非常经典的 AI 风格。首先是字体，味道太冲了，其次是大量表格、横线的应用，非常糟糕。
+      <span class="who">—— 项目所有者，终审意见，22:36</span>
+    </blockquote>
+    <p>按 C02 簇对产出页（而非设计意图）重新比对：命中 3/5，触发工作包自己的阻断线。三个新机制在当晚被命名：<b class="num">合规最大化病</b>（规则允许 100 条线，人类用 20 条，模型用满 100 条）、<b class="num">映射只搬皮肤</b>（衬线保留了，Light 字重的气质丢了）、<b class="num">自评降级表演</b>（把「是 AI 味」缓和成「缺个性」）。</p>
+    <p class="result">自检 0/12 → 终审 C02 命中 3/5</p>
+  </div>
+</section>
+
+<section class="stage">
+  <p class="stage-tag">STAGE <b>04</b> · 22:40 · 教训固化</p>
+  <h2>把教训写进条款里</h2>
+  <p>维护职责移交，修订以三条教训为依据落盘：B1 增加分隔多样化与线密度定量上限；卡库新增映射规则——气质参数（字重、对比度、x-height）强制携带，不得以渲染兼容为由系统性加粗；工作方式追加铁律——自检的对照物是渲染后的页面，不是设计意图。同夜页面重做：连续细线 10 → 1，宋体字重 600 → 300，虚假承诺文案全删。</p>
+  <blockquote>
+    我不怪你，我只希望咱们能不断完善它，让它真正解决 AI 味的毛病。
+    <span class="who">—— 项目所有者，移交指令，22:40</span>
+  </blockquote>
+  <p class="result">宪法 v2.3 · 卡库 v1.2 · 教训档案立案</p>
+</section>
+
+<section class="stage stage-05">
+  <p class="stage-tag">STAGE <b>05</b> · 23:04 · 双 AI 合流</p>
+  <h2>两个 AI，互相校准</h2>
+  <p>另一支演化线 v5.5.0（160 个文件）从未读过本工作包的任何文档，却独立命名了同样的三个机制——双盲级印证。工作包已送往该线继续完善。终极目标已在当晚立档：<b class="num">把最终版工作包发给任何一个实力不算特别菜的 AI（下限 DeepSeek V4 Flash 正式版），它就能自己避开 AI 味，并做出不错的作品</b>。</p>
+  <p class="result">2 条演化线 · 3 个共同机制 · 1 个终极目标</p>
+</section>
+
+<section class="coda">
+  <h2>结语</h2>
+  <p>这一晚真正被验证的命题是：<strong>品味不必锁死在模型的权重里，它可以被写成可检验的一页。</strong>宪法管下限，卡库管上限，人工三秒对照管终审——三者合起来，是「人负责判断、AI 负责执行」的最小可行结构。</p>
+</section>
+
+<section class="trace" aria-label="本页设计决策溯源表">
+  <h2>附录 · 本页设计决策溯源</h2>
+  <p class="note">本页每一个视觉决策都有出处。「可追溯生成」是工作包 v2.3 的核心主张：产出必须能回答「这个值从哪来」。</p>
+  <div class="scroll">
+  <table>
+    <caption>决策 → 取值 → 来源</caption>
+    <thead>
+      <tr><th scope="col">设计决策</th><th scope="col">本页取值</th><th scope="col" class="src">来源</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>窄栏叙事、正文左对齐</td><td>容器 680px 居中，text-center 计 0 次</td><td class="src">卡4 · L3 / 宪法 B 层</td></tr>
+      <tr><td>单字族字重分层</td><td>Noto Sans SC 400/500/600/700</td><td class="src">卡4 · F2 + 卡库规则5</td></tr>
+      <tr><td>圆角三档制</td><td>12px 一处，无第二值</td><td class="src">卡4 · R1</td></tr>
+      <tr><td>色板六色</td><td>#FBFBFC 系 + 强调 #3366CC 每屏 ≤3 处</td><td class="src">P 轴定案 ① / 宪法 C1</td></tr>
+      <tr><td>数字一等公民</td><td>IBM Plex Mono + tabular-nums</td><td class="src">A 轴定案 ① / 宪法 A5</td></tr>
+      <tr><td>全出血深蓝带</td><td>Stage 03 反白，全页唯一大胆动作</td><td class="src">卡4 P 轴节奏 / 33 号</td></tr>
+      <tr><td>阶段间距双峰</td><td>64 / 72 / 88 / 96 / 112px，去重 ≥4</td><td class="src">宪法 B3 / L6</td></tr>
+      <tr><td>引语排版处理</td><td>左缩进 + 字重 500，无边框无色块</td><td class="src">宪法 B1 / 附录A #35 反面</td></tr>
+      <tr><td>字号七档</td><td>12 / 14 / 15 / 20 / 28 / 40px</td><td class="src">宪法 A1</td></tr>
+      <tr><td>行高分档</td><td>40px→1.2 · 20px→1.4 · 15px→1.7</td><td class="src">宪法 A2</td></tr>
+      <tr><td>字距分档</td><td>≥28px −0.02em · 正文 0 · 小字标签 +.08em</td><td class="src">宪法 A3</td></tr>
+      <tr><td>分隔方式多样化</td><td>留白 / 背景色差 / 1px 结构线，全页细线 1 条</td><td class="src">宪法 B1 v2.3</td></tr>
+      <tr><td>零阴影、零渐变、零图标</td><td>立体感仅边框与色差</td><td class="src">宪法 C3 / C5</td></tr>
+      <tr><td>动效预算</td><td>入场动画 0 个，仅 hover 透明度 0.15s</td><td class="src">宪法 C6</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<footer>
+  <span>GENERATED BY 执行 AI · CONSTITUTION v2.3</span>
+  <span>CARD 04 · STRIPE · 2026-09-02 23:16</span>
+</footer>
+
+</main>
+</div>
+</body>
+</html>

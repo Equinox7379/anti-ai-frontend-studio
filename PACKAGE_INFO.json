@@ -1,0 +1,61 @@
+{
+  "package_version": "6.0.0-rc2",
+  "purpose": "Cold-start package for a no-context strong AI to turn user inspiration into an implemented, rendered and revised project-specific frontend.",
+  "active_entry": "ONE_FILE_MODE.md",
+  "staged_entry": "00_READ_FIRST.md",
+  "source_packages": {
+    "anti-ai-design-studio-v5.5.0.zip": {
+      "files": 160,
+      "sha256": "06d6d3b7ccdd42d84fb101f035f3c9155e42c9c148ca49507aba5807783b9752"
+    },
+    "反AI前端工作包_v2.3.zip": {
+      "files": 14,
+      "sha256": "eec7ef5c75a3b910ec86edb1ed36860248712f294b81116fab8315501abbf4d5"
+    }
+  },
+  "reference_corpus": {
+    "deep": 66,
+    "catalog_archive": 287,
+    "aggregate": 353
+  },
+  "design_principle": "Keep the full knowledge base, but expose a small positive active context; load review-only failure patterns after first render.",
+  "status": "RC_FOR_BLIND_TESTING",
+  "not_claimed": [
+    "guaranteed aesthetic excellence",
+    "universal anti-AI detector",
+    "production validation for any user project"
+  ],
+  "post_render_sequence": [
+    "POST_RENDER_REVIEW.md",
+    "POST_RENDER_EVIDENCE_AND_REVISE.md"
+  ],
+  "primary_source_inputs": {
+    "taste-skill": {
+      "repository": "Leonxlnx/taste-skill",
+      "reviewed": [
+        "README.md",
+        "skills/taste-skill/SKILL.md",
+        "skills/redesign-skill/SKILL.md"
+      ]
+    },
+    "impeccable": {
+      "repository": "pbakaus/impeccable",
+      "reviewed": [
+        "README.md",
+        "skill/reference/init.md",
+        "skill/reference/critique.md",
+        "skill/reference/live.md",
+        "bolder/quieter/distill/harden/adapt/clarify/polish"
+      ]
+    }
+  },
+  "rc2_additions": [
+    "bounded design verbs",
+    "unanchored design review before detector evidence",
+    "descriptive zero-dependency slop detector",
+    "optional cognitive-load lens",
+    "optional lightweight live variant loop",
+    "durable product context separated from surface strategy",
+    "single-source multi-platform entrypoints"
+  ]
+}
