@@ -1,0 +1,89 @@
+{
+  "package_version": "7.0.0-alpha6",
+  "distribution_revision": 2,
+  "status": "PASS",
+  "effectiveness_proven": false,
+  "valid_comparative_benchmark_rows": 0,
+  "runtime": {
+    "bytes": 196857,
+    "members": 79,
+    "zip_test": "PASS",
+    "directory_files": 79,
+    "uncompressed_bytes": 382373,
+    "active_context_files": 24,
+    "active_context_bytes": 53548,
+    "author_packet_members": 14,
+    "guardian_packet_members": 30,
+    "same_build_metadata": {
+      "file_index": true,
+      "allowlist_diff": true,
+      "validation_report": true
+    },
+    "doctor_status": "PASS"
+  },
+  "lab": {
+    "bytes": 3171763,
+    "members": 250,
+    "zip_test": "PASS",
+    "directory_files": 250,
+    "uncompressed_bytes": 3726536,
+    "file_index": {
+      "indexed_files": 247,
+      "excluded": [
+        "FILE_INDEX.csv",
+        "FILE_INDEX.md",
+        "VALIDATION_REPORT.json"
+      ]
+    },
+    "package_doctor_status": "PASS"
+  },
+  "backflow_gate": {
+    "default_closed": true,
+    "allowlist_change_id": "alpha6-runtime-r2-backflow-gate",
+    "audit_record_matches_diff": true,
+    "significant_growth": false,
+    "active_context_growth": {
+      "previous": 53297,
+      "current": 53548,
+      "delta": 251,
+      "ratio": 0.004709,
+      "significant": false
+    },
+    "author_packet_growth": {
+      "previous": 29848,
+      "current": 29876,
+      "delta": 28,
+      "ratio": 0.000938,
+      "significant": false
+    },
+    "guardian_packet_growth": {
+      "previous": 97835,
+      "current": 97835,
+      "delta": 0,
+      "ratio": 0.0,
+      "significant": false
+    },
+    "runtime_file_count_growth": {
+      "previous": 77,
+      "current": 79,
+      "delta": 2,
+      "ratio": 0.025974,
+      "significant": false
+    }
+  },
+  "runtime_reproducibility": {
+    "path_sets_equal": true,
+    "file_bytes_identical": true,
+    "different_files": [],
+    "runtime_file_count": 79,
+    "zip_bytes_identical": true
+  },
+  "external_prompt_matches_runtime_prompt": true,
+  "automatic_delivery_ceiling": "READY_FOR_OWNER_VISUAL_REVIEW",
+  "not_proven": [
+    "guaranteed aesthetic excellence",
+    "universal elimination of AI visual signatures",
+    "cross-model effectiveness",
+    "Owner visual acceptance"
+  ]
+}

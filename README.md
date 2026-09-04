@@ -2,7 +2,7 @@
 
 A research-driven design-director skill for turning a product brief, an existing interface, or a rough creative idea into an implemented, rendered, and revised web interface—without falling back to familiar AI design recipes.
 
-> **Status:** `v6.0.0-rc2` is a release candidate for blind testing. The package structure and tools are validated; cross-model design effectiveness is not yet claimed.
+> **Status:** the current distribution is **`v7.0.0-alpha6-r2`** (Runtime + Lab dual edition, with backflow gate and reproducible build) — download it from the [Releases page](https://github.com/Equinox7379/anti-ai-frontend-studio/releases/tag/v7.0.0-alpha6-r2). See [README_FIRST.md](README_FIRST.md) and [distribution-r2-validation.json](distribution-r2-validation.json). The v6.0.0-rc2 source tree in this repository is retained as the prior research snapshot; cross-model design effectiveness is not yet claimed.
 
 [中文说明](README.zh-CN.md)
 
