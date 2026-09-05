@@ -1,0 +1,111 @@
+{
+  "revision": 3,
+  "run_date": "2026-09-05",
+  "environment": {
+    "os": "Linux cloud container",
+    "python": "3.13.5",
+    "node": "v22.16.0",
+    "browser": "system Chromium",
+    "browser_transport": "explicit offline DOM for component flow"
+  },
+  "suites": [
+    {
+      "test": "test_tools.py",
+      "exit_code": 0,
+      "status": "PASS",
+      "seconds": 2.615
+    },
+    {
+      "test": "test_profiles.py",
+      "exit_code": 0,
+      "status": "PASS",
+      "seconds": 1.157
+    },
+    {
+      "test": "test_content_truth_audit.py",
+      "exit_code": 0,
+      "status": "PASS",
+      "seconds": 0.75
+    },
+    {
+      "test": "test_independence_gate.py",
+      "exit_code": 0,
+      "status": "PASS",
+      "seconds": 0.761
+    },
+    {
+      "test": "test_reference_budget.py",
+      "exit_code": 0,
+      "status": "PASS",
+      "seconds": 2.322
+    },
+    {
+      "test": "test_regression_gate.py",
+      "exit_code": 0,
+      "status": "PASS",
+      "seconds": 0.767
+    },
+    {
+      "test": "test_alpha6_hardening.py",
+      "exit_code": 0,
+      "status": "PASS",
+      "seconds": 12.554
+    },
+    {
+      "test": "test_runtime_pipeline.py",
+      "exit_code": 0,
+      "status": "PASS",
+      "seconds": 5.826
+    },
+    {
+      "test": "test_runtime_backflow_gate.py",
+      "exit_code": 0,
+      "status": "PASS",
+      "seconds": 0.959
+    },
+    {
+      "test": "test_distribution_split.py",
+      "exit_code": 0,
+      "status": "PASS",
+      "seconds": 4.274
+    },
+    {
+      "test": "test_slop_detector.mjs",
+      "exit_code": 0,
+      "status": "PASS",
+      "seconds": 0.075
+    }
+  ],
+  "component_integration": {
+    "tool": "test_component_flow.py",
+    "status": "PASS",
+    "profile": "M",
+    "blueprint_schema": "7.0.0-alpha6-compact",
+    "project_type": "Native split ES modules, not a framework-specific test",
+    "positive_browser_steps": 92,
+    "captured_viewports": 4,
+    "real_failed_assertion_rejected": "PASS",
+    "node_model_tests": 6,
+    "transport": "offline",
+    "http_navigation": "NOT_TESTED",
+    "first_truth": "REVIEW_REQUIRED",
+    "final_truth": "PASS",
+    "regression": "PASS",
+    "artifact_doctors": "PASS",
+    "workflow": "PASS",
+    "assurance_level": "L1",
+    "delivery_state": "READY_FOR_OWNER_VISUAL_REVIEW",
+    "effectiveness_proven": false,
+    "comparative_benchmark_rows_added": 0,
+    "visual_inspection": "Cloud reviewer opened desktop and mobile final PNGs; legible Chinese, no page-level overflow, inline mobile editing preserved. This is fixture readability inspection, not independent aesthetic acceptance."
+  },
+  "limitations": [
+    "HTTP navigation blocked by managed browser policy; component flow executed with explicit offline local-module transport.",
+    "Hardening test confirms capability may honestly report UNAVAILABLE; it is not HTTP success.",
+    "No Windows validation, framework-specific trial, independent context review or comparative aesthetic benchmark."
+  ],
+  "effectiveness_proven": false,
+  "valid_comparative_benchmark_rows": 0,
+  "status": "PASS",
+  "new_contract_test_count": 30
+}
